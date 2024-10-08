@@ -16,9 +16,9 @@ function App() {
 
   useEffect(() => {
     webApp?.expand();
-  }, [webApp]);
 
-  alert(JSON.stringify(webApp?.themeParams));
+    alert(JSON.stringify(webApp));
+  }, [webApp]);
 
   return <RouterProvider router={router} />;
 }
