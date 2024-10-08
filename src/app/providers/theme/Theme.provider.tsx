@@ -34,12 +34,6 @@ export function ThemeProvider({
     const { webApp } = useTelegram();
 
     useEffect(() => {
-      if (!webApp) {
-        console.log('webApp is null');
-      } else {
-        console.log('webApp is initialized');
-      }
-      
       if (webApp && webApp.colorScheme) {
         const initialTheme = webApp.colorScheme === "dark" ? "dark" : "light";
         setTheme(initialTheme);

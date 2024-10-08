@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    @apply border-border;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    @apply text-foreground;
+  }
+}
+
+@layer base {
+  :root {
+    --background: #FFFFFF;
+    --text: #151515
+  }
+
+  .dark {
+    --background: #1F1F1F;
+    --text: #FFFFFF
+  }
+}
