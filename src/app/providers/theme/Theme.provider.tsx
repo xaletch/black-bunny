@@ -34,20 +34,26 @@ export function ThemeProvider({
     const { webApp } = useTelegram();
 
     useEffect(() => {
+      localStorage.setItem(storageKey, theme);
+    }, [theme, storageKey]);
+
+    useEffect(() => {
+      const root = window.document.documentElement;
+      root.classList.remove("light", "dark",);
+
       if (webApp && webApp.colorScheme) {
         const initialTheme = webApp.colorScheme === "dark" ? "dark" : "light";
         setTheme(initialTheme);
 
         console.log('webApp.colorScheme ', webApp.colorScheme)
       }
+
+      root.classList.add(theme);
     }, [webApp, theme]);
 
     const value = {
       theme,
-      setTheme: (theme: Theme) => {
-        localStorage.setItem(storageKey, theme);
-        setTheme(theme);
-      },
+      setTheme,
     };
 
     return (

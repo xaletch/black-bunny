@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AppLayoutImport } from './routes/_app/_layout'
+import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
 
 // Create Virtual Routes
 
@@ -29,6 +30,11 @@ const IndexLazyRoute = IndexLazyImport.update({
 const AppLayoutRoute = AppLayoutImport.update({
   id: '/_app/_layout',
   getParentRoute: () => rootRoute,
+} as any)
+
+const AppLayoutLoginIndexRoute = AppLayoutLoginIndexImport.update({
+  path: '/login/',
+  getParentRoute: () => AppLayoutRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -49,44 +55,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutImport
       parentRoute: typeof rootRoute
     }
+    '/_app/_layout/login/': {
+      id: '/_app/_layout/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof AppLayoutLoginIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface AppLayoutRouteChildren {
+  AppLayoutLoginIndexRoute: typeof AppLayoutLoginIndexRoute
+}
+
+const AppLayoutRouteChildren: AppLayoutRouteChildren = {
+  AppLayoutLoginIndexRoute: AppLayoutLoginIndexRoute,
+}
+
+const AppLayoutRouteWithChildren = AppLayoutRoute._addFileChildren(
+  AppLayoutRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '': typeof AppLayoutRoute
+  '': typeof AppLayoutRouteWithChildren
+  '/login': typeof AppLayoutLoginIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '': typeof AppLayoutRoute
+  '': typeof AppLayoutRouteWithChildren
+  '/login': typeof AppLayoutLoginIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/_app/_layout': typeof AppLayoutRoute
+  '/_app/_layout': typeof AppLayoutRouteWithChildren
+  '/_app/_layout/login/': typeof AppLayoutLoginIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | ''
+  fullPaths: '/' | '' | '/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | ''
-  id: '__root__' | '/' | '/_app/_layout'
+  to: '/' | '' | '/login'
+  id: '__root__' | '/' | '/_app/_layout' | '/_app/_layout/login/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  AppLayoutRoute: typeof AppLayoutRoute
+  AppLayoutRoute: typeof AppLayoutRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AppLayoutRoute: AppLayoutRoute,
+  AppLayoutRoute: AppLayoutRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -109,7 +137,14 @@ export const routeTree = rootRoute
       "filePath": "index.lazy.tsx"
     },
     "/_app/_layout": {
-      "filePath": "_app/_layout.tsx"
+      "filePath": "_app/_layout.tsx",
+      "children": [
+        "/_app/_layout/login/"
+      ]
+    },
+    "/_app/_layout/login/": {
+      "filePath": "_app/_layout/login/index.tsx",
+      "parent": "/_app/_layout"
     }
   }
 }
