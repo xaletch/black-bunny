@@ -16,8 +16,12 @@ function App() {
 
   useEffect(() => {
     webApp?.expand();
+  }, [webApp]);
 
-    alert(JSON.stringify(webApp));
+  useEffect(() => {
+    if (webApp) {
+      alert(JSON.stringify(webApp.colorScheme));
+    }
   }, [webApp]);
 
   return <RouterProvider router={router} />;
