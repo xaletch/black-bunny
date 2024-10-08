@@ -18,7 +18,7 @@ function App() {
     webApp?.expand();
   }, [webApp]);
 
-  console.log(localStorage.getItem("ui-theme"));
+  console.log('theme ', localStorage.getItem("ui-theme"));
 
   return <RouterProvider router={router} />;
 }
