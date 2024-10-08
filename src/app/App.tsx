@@ -18,11 +18,7 @@ function App() {
     webApp?.expand();
   }, [webApp]);
 
-  useEffect(() => {
-    if (webApp) {
-      alert(JSON.stringify(webApp.colorScheme));
-    }
-  }, [webApp]);
+  console.log(localStorage.getItem("ui-theme"))
 
   return <RouterProvider router={router} />;
 }
