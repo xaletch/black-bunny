@@ -18,7 +18,7 @@ function App() {
     webApp?.expand();
   }, [webApp]);
 
-  alert(webApp)
+  alert(JSON.stringify(webApp?.themeParams));
 
   return <RouterProvider router={router} />;
 }
