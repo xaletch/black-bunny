@@ -20,6 +20,8 @@ export const TelegramProvider = ({
     if (app) {
       app.ready();
       setWebApp(app);
+
+      alert(JSON.stringify(app));
     }
   }, []);
 
