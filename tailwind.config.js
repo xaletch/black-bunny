@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
+        text: "var(--text)",
       },
       keyframes: {},
       fontFamily: {},

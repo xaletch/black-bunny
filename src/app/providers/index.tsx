@@ -5,7 +5,7 @@ import { ThemeProvider } from './theme/Theme.provider'
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   return (
     <TelegramProvider>
-      <ThemeProvider>
+      <ThemeProvider defaultTheme="light" storageKey="ui-theme">
         {children}
       </ThemeProvider>
     </TelegramProvider>

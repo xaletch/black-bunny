@@ -17,11 +17,11 @@
 @layer base {
   :root {
     --background: #FFFFFF;
-    --text: #151515
+    --text: #151515;
   }
 
   .dark {
     --background: #1F1F1F;
-    --text: #FFFFFF
+    --text: #FFFFFF;
   }
 }
