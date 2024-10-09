@@ -8,7 +8,9 @@ export default {
         text: "var(--text)",
       },
       keyframes: {},
-      fontFamily: {},
+      fontFamily: {
+        sans: ["Lato", ...fontFamily.sans],
+      },
     },
   },
   darkMode: 'class',
