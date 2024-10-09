@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         white: "var(--text)",
         black: "var(--black)",
+        dark_gray: "var(--dark-gray)",
+        error: "var(--red)",
+        gray: "var(--gray)",
+        icon_bg: "var(--icon-bg)",
       },
       keyframes: {},
       fontFamily: {
