@@ -4,12 +4,12 @@ import { Header } from "../../widgets/header/header"
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="bg-muted">
-      <div>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </div>
+    <div className="bg-muted flex flex-col flex-1">
+      <Header />
+      <main className="flex-1">
+        <div className="px-4">{children}</div>
+      </main>
+      <Footer />
     </div>
   )
 }

@@ -37,25 +37,36 @@
 @layer base {
   * {
     margin: 0;
-    @apply border-border;
   }
   body {
+    max-width: 760px;
+    min-width: 320px;
+    height: 100vh;
+    margin: 0 auto;
     background-color: var(--background);
     color: var(--text);
     font-family: "Lato";
-    font-family: 400;
-    @apply bg-muted text-foreground;
+    font-weight: 400;
   }
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @layer base {
   :root {
     --background: #FFFFFF;
     --text: #151515;
+    --black: #FFFFFF;
   }
 
   .dark {
     --background: #1F1F1F;
     --text: #FFFFFF;
+    --title: #151515;
+    --black: #151515;
   }
 }
