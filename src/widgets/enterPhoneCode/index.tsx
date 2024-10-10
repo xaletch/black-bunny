@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { VerifyIcon } from "@/shared/icons/VerifyIcon"
 import { Shadow } from "@/shared/ui/shadow"
 import { Wrapper } from "@/templates/wrapper"
@@ -7,15 +8,25 @@ import { CodeInput } from "@/shared/ui/codeInput"
 import { useEnterPhoneCode } from "@/shared/hooks/useEnterPhoneCode"
 import { Button } from "@/shared/ui/buttons"
 import { ResendCode } from "@/entities/resend"
-import { useTimer } from "@/shared/hooks/useTimer"
+import { useEffect, useState } from "react"
+import maskPhoneNumber from "@/shared/utils/maskPhoneNumber"
 
 export const EnterPhoneCode = () => {
+  const [phone, setPhone] = useState<number | any>();
+
   const handleConfirm = () => {
-    console.log('confirm')
+    console.log('confirm');
+    localStorage.removeItem('phone');
   }
 
   const { code, handleCode, handleSubmit } = useEnterPhoneCode(handleConfirm);
-  const { min, sec, isCompleted } = useTimer();
+
+  useEffect(() => {
+    if (localStorage.getItem('phone')) {
+      const tel = localStorage.getItem('phone')
+      setPhone(tel)
+    }
+  }, [])
 
   return (
     <Wrapper cl="mt-11 flex flex-col flex-1">
@@ -23,13 +34,13 @@ export const EnterPhoneCode = () => {
       <LoginTitle 
         icon={<VerifyIcon />} 
         title={"Enter Your Phone Code"} 
-        text={"We've sent the code to +******890"} />
+        text={`We've sent the code to ${maskPhoneNumber(phone)}`} />
       <div className="mt-8 flex-1 flex">
         <div className="flex-1 flex flex-col justify-between">
           <div>
             <DigitDisplay size={"grid-cols-5"}>
               {code.map((item, index) => (
-                <CodeInput 
+                <CodeInput
                   key={index} 
                   value={item} 
                   isError={false} 
@@ -40,12 +51,9 @@ export const EnterPhoneCode = () => {
                 />
               ))}
             </DigitDisplay>
-            {!isCompleted && <ResendCode min={min} sec={sec} />}
+            <ResendCode />
           </div>
-          <div className="flex flex-col gap-4">
-            {isCompleted && <Button text={"Resend Code"} onClick={() => console.log('resend')} />}
-            <Button text={"Continue"} onClick={handleSubmit} color={"bg-button"} />
-          </div>
+          <Button text={"Continue"} onClick={handleSubmit} color={"bg-button"} />
         </div>
       </div>
     </Wrapper>

@@ -7,19 +7,30 @@ import { useNavigate } from "@tanstack/react-router"
 import { useState } from "react"
 import { PhoneInput } from "react-international-phone"
 import 'react-international-phone/style.css'
+import { PhoneNumberUtil } from 'google-libphonenumber';
+
+const phoneUtil = PhoneNumberUtil.getInstance(); 
+const isPhoneValid = (phone: string) => {
+  try {
+    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+  } catch (error) {
+    console.log(`phone validate error: ${error}`)
+    return false;
+  }
+};
 
 export const EnterPhone = () => {
   const navigate = useNavigate();
 
-  const [phone, setPhone] = useState<string>('');
-  const [tel, setTel] = useState<boolean>(true);
+  const [phone, setPhone] = useState('');
+  const isValid = isPhoneValid(phone);
 
   const handleContinue = () => {
-    if (tel) {
+    if (isValid) {
       navigate({ to: "/phone-code" });
-      setTel(false);
+      localStorage.setItem("phone", phone);
     }
-  };
+  }; 
 
   return (
     <Wrapper cl={"mt-11 flex flex-col flex-1"}>

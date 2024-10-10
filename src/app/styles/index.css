@@ -149,4 +149,24 @@ input {
   background-color: var(--dark-gray);
   border-radius: 16px;
   box-shadow: var(--shadow);
+  border: none;
+}
+.react-international-phone-country-selector-dropdown__list-item {
+  padding: 10px 12px;
+}
+.react-international-phone-country-selector-dropdown__list-item-dial-code,
+.react-international-phone-country-selector-dropdown__list-item-country-name,
+.react-international-phone-country-selector-dropdown__list-item--selected .react-international-phone-country-selector-dropdown__list-item-dial-code, .react-international-phone-country-selector-dropdown__list-item--focused .react-international-phone-country-selector-dropdown__list-item-dial-code {
+  color: var(--text)
+}
+.react-international-phone-country-selector-dropdown__list-item--focused {
+  background-color: var(--dark-gray);
+}
+.react-international-phone-country-selector-dropdown__list-item:hover {
+  background-color: var(--dark-gray);
+}
+.react-international-phone-country-selector-dropdown__list-item-country-name {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
 }
