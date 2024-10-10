@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
 export interface IDigitDisplay {
-  size: number;
+  size: string;
   children: ReactNode;
 }

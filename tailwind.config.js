@@ -18,6 +18,10 @@ export default {
         icon_bg: "var(--icon-bg)",
         red_light: "var(--red-light)",
         red_transparent: "var(--red-transparent)",
+        green: "var(--green)",
+        button: "var(--button-pink)",
+        hover_stroke: "var(--hover-stroke)",
+        input_text: "var(--input-text)",
       },
       keyframes: {},
       fontFamily: {

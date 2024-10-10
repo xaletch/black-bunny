@@ -25,11 +25,11 @@ export const Pin = () => {
         title={isOneEntry ? "Create Your PIN" : "Confirm Your PIN"} 
         text={isOneEntry ? "Keep your wallet safe with a unique PINx" : "Double-check the PIN code you entered"} />
       <div className="mt-8">
-        <DigitDisplay size={4}>
-          <CodeInput value={isOneEntry ? firstPin[0] : secondPin[0]} isError={isError} isSecret={true} />
-          <CodeInput value={isOneEntry ? firstPin[1] : secondPin[1]} isError={isError} isSecret={true} />
-          <CodeInput value={isOneEntry ? firstPin[2] : secondPin[2]} isError={isError} isSecret={true} />
-          <CodeInput value={isOneEntry ? firstPin[3] : secondPin[3]} isError={isError} isSecret={true} />
+        <DigitDisplay size={"grid-cols-4"}>
+          <CodeInput value={isOneEntry ? firstPin[0] : secondPin[0]} isError={isError} isSecret={true} isInput={false} />
+          <CodeInput value={isOneEntry ? firstPin[1] : secondPin[1]} isError={isError} isSecret={true} isInput={false} />
+          <CodeInput value={isOneEntry ? firstPin[2] : secondPin[2]} isError={isError} isSecret={true} isInput={false} />
+          <CodeInput value={isOneEntry ? firstPin[3] : secondPin[3]} isError={isError} isSecret={true} isInput={false} />
         </DigitDisplay>
         <NumPad setKeys={handleKeys} />
       </div>

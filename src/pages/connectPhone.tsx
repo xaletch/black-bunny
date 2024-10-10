@@ -1,5 +1,7 @@
+import { EnterPhone } from "@/widgets/phone"
+
 export const ConnectPhone = () => {
   return (
-    <div>phone</div>
+    <EnterPhone />
   )
 }
