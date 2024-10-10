@@ -4,9 +4,9 @@ import { LoginTitleProps } from "./loginTitle.interface"
 export const LoginTitle: FC<LoginTitleProps> = ({ icon, title, text }) => {
   return (
     <div className="flex items-center flex-col">
-      <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-icon_bg">{icon}</div>
+      <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full icon-bg">{icon}</div>
       <div className="mt-4">
-        <h1 className="text-xl font-bold color-white">{title}</h1>
+        <h1 className="text-xl font-bold color-white text-center">{title}</h1>
         <p className="mt-1 text-center text-gray">{text}</p>
       </div>
     </div>

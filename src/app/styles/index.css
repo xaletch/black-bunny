@@ -66,7 +66,8 @@
     --red: #D43A3A;
     --gray: #4C4C52;
     --icon-bg: linear-gradient(252deg, rgba(249, 114, 57, 0.12) 0%, rgba(237, 47, 138, 0.12) 51.5%, rgba(46, 138, 235, 0.12) 100%);
-
+    --red-light: #D43A3A;
+    --red-transparent: rgba(251, 25, 25, 0.15);
   }
 
   .dark {
@@ -78,5 +79,11 @@
     --red: #D43A3A;
     --gray: #969696;
     --icon-bg: rgba(255, 255, 255, 0.06);
+    --red-light: #FFFFFF;
+    --red-transparent: rgba(251, 25, 25, 0.15);
   }
+}
+
+.icon-bg {
+  background: var(--icon-bg);
 }

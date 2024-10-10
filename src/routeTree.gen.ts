@@ -14,6 +14,8 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AppLayoutImport } from './routes/_app/_layout'
+import { Route as AppLayoutRegistrationPinIndexImport } from './routes/_app/_layout/registration-pin/index'
+import { Route as AppLayoutPhoneIndexImport } from './routes/_app/_layout/phone/index'
 import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
 
 // Create Virtual Routes
@@ -30,6 +32,17 @@ const IndexLazyRoute = IndexLazyImport.update({
 const AppLayoutRoute = AppLayoutImport.update({
   id: '/_app/_layout',
   getParentRoute: () => rootRoute,
+} as any)
+
+const AppLayoutRegistrationPinIndexRoute =
+  AppLayoutRegistrationPinIndexImport.update({
+    path: '/registration-pin/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutPhoneIndexRoute = AppLayoutPhoneIndexImport.update({
+  path: '/phone/',
+  getParentRoute: () => AppLayoutRoute,
 } as any)
 
 const AppLayoutLoginIndexRoute = AppLayoutLoginIndexImport.update({
@@ -62,6 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutLoginIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/phone/': {
+      id: '/_app/_layout/phone/'
+      path: '/phone'
+      fullPath: '/phone'
+      preLoaderRoute: typeof AppLayoutPhoneIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/registration-pin/': {
+      id: '/_app/_layout/registration-pin/'
+      path: '/registration-pin'
+      fullPath: '/registration-pin'
+      preLoaderRoute: typeof AppLayoutRegistrationPinIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
   }
 }
 
@@ -69,10 +96,14 @@ declare module '@tanstack/react-router' {
 
 interface AppLayoutRouteChildren {
   AppLayoutLoginIndexRoute: typeof AppLayoutLoginIndexRoute
+  AppLayoutPhoneIndexRoute: typeof AppLayoutPhoneIndexRoute
+  AppLayoutRegistrationPinIndexRoute: typeof AppLayoutRegistrationPinIndexRoute
 }
 
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutLoginIndexRoute: AppLayoutLoginIndexRoute,
+  AppLayoutPhoneIndexRoute: AppLayoutPhoneIndexRoute,
+  AppLayoutRegistrationPinIndexRoute: AppLayoutRegistrationPinIndexRoute,
 }
 
 const AppLayoutRouteWithChildren = AppLayoutRoute._addFileChildren(
@@ -83,12 +114,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '': typeof AppLayoutRouteWithChildren
   '/login': typeof AppLayoutLoginIndexRoute
+  '/phone': typeof AppLayoutPhoneIndexRoute
+  '/registration-pin': typeof AppLayoutRegistrationPinIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '': typeof AppLayoutRouteWithChildren
   '/login': typeof AppLayoutLoginIndexRoute
+  '/phone': typeof AppLayoutPhoneIndexRoute
+  '/registration-pin': typeof AppLayoutRegistrationPinIndexRoute
 }
 
 export interface FileRoutesById {
@@ -96,14 +131,22 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/_app/_layout': typeof AppLayoutRouteWithChildren
   '/_app/_layout/login/': typeof AppLayoutLoginIndexRoute
+  '/_app/_layout/phone/': typeof AppLayoutPhoneIndexRoute
+  '/_app/_layout/registration-pin/': typeof AppLayoutRegistrationPinIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/login'
+  fullPaths: '/' | '' | '/login' | '/phone' | '/registration-pin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/login'
-  id: '__root__' | '/' | '/_app/_layout' | '/_app/_layout/login/'
+  to: '/' | '' | '/login' | '/phone' | '/registration-pin'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app/_layout'
+    | '/_app/_layout/login/'
+    | '/_app/_layout/phone/'
+    | '/_app/_layout/registration-pin/'
   fileRoutesById: FileRoutesById
 }
 
@@ -139,11 +182,21 @@ export const routeTree = rootRoute
     "/_app/_layout": {
       "filePath": "_app/_layout.tsx",
       "children": [
-        "/_app/_layout/login/"
+        "/_app/_layout/login/",
+        "/_app/_layout/phone/",
+        "/_app/_layout/registration-pin/"
       ]
     },
     "/_app/_layout/login/": {
       "filePath": "_app/_layout/login/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/phone/": {
+      "filePath": "_app/_layout/phone/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/registration-pin/": {
+      "filePath": "_app/_layout/registration-pin/index.tsx",
       "parent": "/_app/_layout"
     }
   }

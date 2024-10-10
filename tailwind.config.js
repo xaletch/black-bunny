@@ -16,6 +16,8 @@ export default {
         error: "var(--red)",
         gray: "var(--gray)",
         icon_bg: "var(--icon-bg)",
+        red_light: "var(--red-light)",
+        red_transparent: "var(--red-transparent)",
       },
       keyframes: {},
       fontFamily: {

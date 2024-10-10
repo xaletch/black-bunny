@@ -5,7 +5,7 @@ import { Link } from '@tanstack/react-router';
 
 export const Header = () => {
   return (
-    <header className="w-full bg-black">
+    <header className="w-full bg-black relative z-50">
       <div className="px-4 py-5 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button className="hidden">
