@@ -1,18 +1,18 @@
-import { PinIcon } from "@/shared/icons/PinIcon";
-import { LoginTitle } from "../loginTitle";
-import { Wrapper } from "@/templates/wrapper";
-import { Shadow } from "@/shared/ui/shadow";
-import { DigitDisplay } from "../digitDisplay";
-import { CodeInput } from "@/shared/ui/codeInput";
-import { NumPad } from "../numPad";
 import { useRegisterPin } from "@/shared/hooks/useRegisterPin";
+import { PinIcon } from "@/shared/icons/PinIcon";
+import { CodeInput } from "@/shared/ui/codeInput";
+import { Shadow } from "@/shared/ui/shadow";
+import { Wrapper } from "@/templates/wrapper";
+import { DigitDisplay } from "@/widgets/digitDisplay";
+import { LoginTitle } from "@/widgets/loginTitle";
+import { NumPad } from "@/widgets/numPad";
 import { useNavigate } from '@tanstack/react-router'
 
 
-export const Pin = () => {
+export const NewPinContent = () => {
   const navigate = useNavigate();
   const next = () => {
-    navigate({to: "/phone"});
+    navigate({to: "/home"});
   };
 
   const { firstPin, secondPin, isOneEntry, isError, handleKeys } = useRegisterPin(next);
@@ -22,7 +22,7 @@ export const Pin = () => {
       <Shadow cl={"bg-error"} />
       <LoginTitle 
         icon={<PinIcon />} 
-        title={isOneEntry ? "Create Your PIN" : "Confirm Your PIN"} 
+        title={isOneEntry ? "Create Your New PIN" : "Confirm Your PIN"} 
         text={isOneEntry ? "Keep your wallet safe with a unique PIN" : "Double-check the PIN code you entered"} />
       <div className="mt-8">
         <DigitDisplay size={"grid-cols-4"}>
@@ -36,3 +36,4 @@ export const Pin = () => {
     </Wrapper>
   )
 }
+

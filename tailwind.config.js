@@ -22,6 +22,9 @@ export default {
         button: "var(--button-pink)",
         hover_stroke: "var(--hover-stroke)",
         input_text: "var(--input-text)",
+        red_error: "var(--red-err)",
+        bg_blur: "var(--bg-blur)",
+        dot: "var(--dot)",
       },
       keyframes: {},
       fontFamily: {

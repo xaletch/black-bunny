@@ -1,18 +1,17 @@
-import { PinIcon } from "@/shared/icons/PinIcon";
-import { LoginTitle } from "../loginTitle";
-import { Wrapper } from "@/templates/wrapper";
-import { Shadow } from "@/shared/ui/shadow";
-import { DigitDisplay } from "../digitDisplay";
-import { CodeInput } from "@/shared/ui/codeInput";
-import { NumPad } from "../numPad";
-import { useRegisterPin } from "@/shared/hooks/useRegisterPin";
-import { useNavigate } from '@tanstack/react-router'
+import { useRegisterPin } from '@/shared/hooks/useRegisterPin';
+import { PinIcon } from '@/shared/icons/PinIcon';
+import { CodeInput } from '@/shared/ui/codeInput';
+import { Shadow } from '@/shared/ui/shadow';
+import { Wrapper } from '@/templates/wrapper';
+import { DigitDisplay } from '@/widgets/digitDisplay';
+import { LoginTitle } from '@/widgets/loginTitle';
+import { NumPad } from '@/widgets/numPad';
+import { useNavigate } from '@tanstack/react-router';
 
-
-export const Pin = () => {
+export const PhrasesCreatePinContent = () => {
   const navigate = useNavigate();
   const next = () => {
-    navigate({to: "/phone"});
+    navigate({to: "/home"});
   };
 
   const { firstPin, secondPin, isOneEntry, isError, handleKeys } = useRegisterPin(next);

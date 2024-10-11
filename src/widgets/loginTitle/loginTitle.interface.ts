@@ -4,4 +4,5 @@ export interface LoginTitleProps {
   icon: string | ReactElement;
   title: string;
   text: string;
+  color?: string;
 }

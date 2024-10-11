@@ -74,6 +74,9 @@
     --input-text: #969696;
     --stroke: #d1d1d1;
     --shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.26);
+    --red-err: #f6d5d5;
+    --bg-blur: rgba(0, 0, 0, 0.6);
+    --dot: #d1d1d1;
   }
 
   .dark {
@@ -93,6 +96,9 @@
     --input-text: #62626a;
     --stroke: #1f1f1f;
     --shadow: 0 4px 34px 0 rgba(0, 0, 0, 0.49);
+    --red-err: #331e1e;
+    --bg-blur: rgba(0, 0, 0, 0.6);
+    --dot: #4c4c52;
   }
 }
 

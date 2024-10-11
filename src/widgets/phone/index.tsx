@@ -8,6 +8,8 @@ import { useState } from "react"
 import { PhoneInput } from "react-international-phone"
 import 'react-international-phone/style.css'
 import { PhoneNumberUtil } from 'google-libphonenumber';
+import { ConfirmationMenu } from "../confirmationMenu"
+import { ErrorIcon } from "@/shared/icons/ErrorIcon"
 
 const phoneUtil = PhoneNumberUtil.getInstance(); 
 const isPhoneValid = (phone: string) => {
@@ -23,6 +25,7 @@ export const EnterPhone = () => {
   const navigate = useNavigate();
 
   const [phone, setPhone] = useState('');
+  const [isMenu, setIsMenu] = useState<boolean>(false);
   const isValid = isPhoneValid(phone);
 
   const handleContinue = () => {
@@ -34,11 +37,12 @@ export const EnterPhone = () => {
 
   return (
     <Wrapper cl={"mt-11 flex flex-col flex-1"}>
-    <Shadow cl={"bg-green"} />
-    <LoginTitle 
-      icon={<VerifyIcon />} 
-      title={"Set Up 2-Step Verification"} 
-      text={"Enter your phone number so we can text you an authentication code"} />
+      <Shadow cl={"bg-green"} />
+      <LoginTitle 
+        icon={<VerifyIcon />} 
+        title={"Set Up 2-Step Verification"} 
+        text={"Enter your phone number so we can text you an authentication code"}
+      />
       <div className="mt-8 flex-1 flex flex-col justify-between">
         <PhoneInput
           defaultCountry="en"
@@ -48,11 +52,24 @@ export const EnterPhone = () => {
         />
         <div>
           <div className="flex flex-col gap-4">
-            <Button text={"Not Now"} onClick={() => console.log('message')} />
+            <Button text={"Not Now"} onClick={() => setIsMenu(true)} />
             <Button text={"Continue"} onClick={handleContinue} color={"bg-button"} />
           </div>
         </div>
       </div>
+      {isMenu && <ConfirmationMenu close={() => setIsMenu(false)}>
+        <LoginTitle 
+          icon={<ErrorIcon />}
+          color={"bg-red_error"}
+          title={"Protect Your Account"} 
+          text={"Your PIN is your key to your account. If you forget it, you won't be able to recover your account without 2FA."}
+        />
+        <div className="mt-8 flex flex-col gap-4">
+          <Button text={"Not Now"} onClick={() => setIsMenu(false)} />
+          <Button text={"Enable 2FA"} onClick={() => setIsMenu(false)} color={"bg-button"} />
+        </div>
+      </ConfirmationMenu>
+      }
     </Wrapper>
   )
 }
