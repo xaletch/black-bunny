@@ -1,14 +1,16 @@
 import { Wrapper } from "@/templates/wrapper";
-import { WalletBalance } from "./balance";
 import { WalletHead } from "./head";
-import { WalletSlider } from "./slider";
+import { BalanceCard } from "@/features/wallet/dashboard";
+import { WalletSlider } from "@/features/wallet/slider";
+import { WalletCategory } from "@/features/wallet/dashboard/category";
 
 export const WalletContent = () => {
   return (
     <Wrapper cl={"pt-4 flex flex-col flex-1"}>
       <WalletHead />
-      <WalletBalance />
+      <BalanceCard />
       <WalletSlider />
+      <WalletCategory />
     </Wrapper>
   )
 }

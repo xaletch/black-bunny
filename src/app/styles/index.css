@@ -81,6 +81,7 @@
     --navbar-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.26);
     --avatar-border: #FFFFFF;
     --swiper-text: #4c4c52;
+    --category-item: #FFFFFF;
   }
 
   .dark {
@@ -107,6 +108,8 @@
     --navbar-shadow: 0 4px 34px 0 rgba(0, 0, 0, 0.49);
     --avatar-border: #969696;
     --swiper-text: #969696;
+    --sdd-ds: #ffffff1c;
+    --category-item: #4c4c52;
   }
 }
 

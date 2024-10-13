@@ -28,9 +28,20 @@ export default {
         "secondary-100": "var(--secondary-100)",
         "avatar-border": "var(--avatar-border)",
         "swiper-text": "var(--swiper-text)",
+        'white-transparent-10': 'rgba(255, 255, 255, 0.1)',
+        'white-transparent-0': 'rgba(255, 255, 255, 0)',
+        'category-item': 'var(--category-item)',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",
+      },
+      backgroundImage: {
+        'balance-bg': "url('./src/assets/images/gradient.png')",
+        'balance-button': '#ffffff0d',
+      },
+      opacity: {
+        '10': '0.1',
+        '60': '0.6',
       },
       keyframes: {},
       fontFamily: {
