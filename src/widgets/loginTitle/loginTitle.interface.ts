@@ -5,4 +5,5 @@ export interface LoginTitleProps {
   title: string;
   text: string;
   color?: string;
+  cl?: string
 }

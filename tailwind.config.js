@@ -25,6 +25,7 @@ export default {
         red_error: "var(--red-err)",
         bg_blur: "var(--bg-blur)",
         dot: "var(--dot)",
+        "secondary-100": "var(--secondary-100)"
       },
       keyframes: {},
       fontFamily: {

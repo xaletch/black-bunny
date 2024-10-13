@@ -77,6 +77,8 @@
     --red-err: #f6d5d5;
     --bg-blur: rgba(0, 0, 0, 0.6);
     --dot: #d1d1d1;
+    --secondary-100: rgba(0, 0, 0, 0.06);
+
   }
 
   .dark {
@@ -99,6 +101,7 @@
     --red-err: #331e1e;
     --bg-blur: rgba(0, 0, 0, 0.6);
     --dot: #4c4c52;
+    --secondary-100: rgba(255, 255, 255, 0.06);
   }
 }
 

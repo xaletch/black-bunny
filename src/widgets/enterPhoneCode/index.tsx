@@ -10,13 +10,17 @@ import { Button } from "@/shared/ui/buttons"
 import { ResendCode } from "@/entities/resend"
 import { useEffect, useState } from "react"
 import maskPhoneNumber from "@/shared/utils/maskPhoneNumber"
+import { useNavigate } from "@tanstack/react-router"
 
 export const EnterPhoneCode = () => {
   const [phone, setPhone] = useState<number | any>();
+  const navigate = useNavigate();
 
   const handleConfirm = () => {
     console.log('confirm');
     localStorage.removeItem('phone');
+
+    navigate({ to: "/wallet-created" })
   }
 
   const { code, handleCode, handleSubmit } = useEnterPhoneCode(handleConfirm);
