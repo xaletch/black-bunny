@@ -1,7 +1,7 @@
-import { Wrapper } from "@/templates/wrapper"
-import { WalletBalance } from "./balance"
-import { WalletHead } from "./head"
-import { WalletSlider } from "./slider"
+import { Wrapper } from "@/templates/wrapper";
+import { WalletBalance } from "./balance";
+import { WalletHead } from "./head";
+import { WalletSlider } from "./slider";
 
 export const WalletContent = () => {
   return (

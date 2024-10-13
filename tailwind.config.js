@@ -26,6 +26,8 @@ export default {
         bg_blur: "var(--bg-blur)",
         dot: "var(--dot)",
         "secondary-100": "var(--secondary-100)",
+        "avatar-border": "var(--avatar-border)",
+        "swiper-text": "var(--swiper-text)",
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",
