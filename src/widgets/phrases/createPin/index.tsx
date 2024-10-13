@@ -11,7 +11,7 @@ import { useNavigate } from '@tanstack/react-router';
 export const PhrasesCreatePinContent = () => {
   const navigate = useNavigate();
   const next = () => {
-    navigate({to: "/home"});
+    navigate({to: "/wallet"});
   };
 
   const { firstPin, secondPin, isOneEntry, isError, handleKeys } = useRegisterPin(next);

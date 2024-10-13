@@ -13,7 +13,7 @@ export const LogInContent = () => {
   const navigate = useNavigate();
 
   const next = () => {
-    navigate({to: "/home"});
+    navigate({to: "/wallet"});
   };
 
   const { pin, isError, handleKey } = useLogin(next);
