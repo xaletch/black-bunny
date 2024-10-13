@@ -1,15 +1,23 @@
 import { FC, PropsWithChildren } from "react"
-import { Footer } from "../../widgets/footer/footer"
 import { Header } from "../../widgets/header/header"
+import { Navbar } from "@/widgets/navbar"
+import { useLocation } from "@tanstack/react-router"
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
+  const location = useLocation().pathname;
+
+  const isLocation = [
+    "/forgot", "/login", "/forgot/new-pin", "/registration-pin", 
+    "/seed-phrase", "/seed-phrase/pin", "wallet-created", "/phone", "phone-code"
+  ].includes(location);
+
   return (
     <div className="bg-muted flex flex-col flex-1 relative">
       <Header />
       <main className="flex-1 flex">
         <div className="px-4 pb-4 flex flex-col flex-1">{children}</div>
       </main>
-      <Footer />
+      {!isLocation && <Navbar />}
     </div>
   )
 }
