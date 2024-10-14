@@ -22,8 +22,10 @@ import { Route as AppLayoutPhoneIndexImport } from './routes/_app/_layout/phone/
 import { Route as AppLayoutPhoneCodeIndexImport } from './routes/_app/_layout/phone-code/index'
 import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
 import { Route as AppLayoutForgotIndexImport } from './routes/_app/_layout/forgot/index'
+import { Route as AppLayoutWalletChooseIndexImport } from './routes/_app/_layout/wallet/choose/index'
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
 import { Route as AppLayoutForgotNewPinIndexImport } from './routes/_app/_layout/forgot/new-pin/index'
+import { Route as AppLayoutWalletSplatIdImport } from './routes/_app/_layout/wallet/$.id'
 
 // Create Virtual Routes
 
@@ -83,6 +85,13 @@ const AppLayoutForgotIndexRoute = AppLayoutForgotIndexImport.update({
   getParentRoute: () => AppLayoutRoute,
 } as any)
 
+const AppLayoutWalletChooseIndexRoute = AppLayoutWalletChooseIndexImport.update(
+  {
+    path: '/wallet/choose/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any,
+)
+
 const AppLayoutSeedPhrasePinIndexRoute =
   AppLayoutSeedPhrasePinIndexImport.update({
     path: '/seed-phrase/pin/',
@@ -95,6 +104,11 @@ const AppLayoutForgotNewPinIndexRoute = AppLayoutForgotNewPinIndexImport.update(
     getParentRoute: () => AppLayoutRoute,
   } as any,
 )
+
+const AppLayoutWalletSplatIdRoute = AppLayoutWalletSplatIdImport.update({
+  path: '/wallet/$/id',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -170,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutWalletIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/wallet/$/id': {
+      id: '/_app/_layout/wallet/$/id'
+      path: '/wallet/$/id'
+      fullPath: '/wallet/$/id'
+      preLoaderRoute: typeof AppLayoutWalletSplatIdImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/forgot/new-pin/': {
       id: '/_app/_layout/forgot/new-pin/'
       path: '/forgot/new-pin'
@@ -182,6 +203,13 @@ declare module '@tanstack/react-router' {
       path: '/seed-phrase/pin'
       fullPath: '/seed-phrase/pin'
       preLoaderRoute: typeof AppLayoutSeedPhrasePinIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/wallet/choose/': {
+      id: '/_app/_layout/wallet/choose/'
+      path: '/wallet/choose'
+      fullPath: '/wallet/choose'
+      preLoaderRoute: typeof AppLayoutWalletChooseIndexImport
       parentRoute: typeof AppLayoutImport
     }
   }
@@ -198,8 +226,10 @@ interface AppLayoutRouteChildren {
   AppLayoutSeedPhraseIndexRoute: typeof AppLayoutSeedPhraseIndexRoute
   AppLayoutWalletCreatedIndexRoute: typeof AppLayoutWalletCreatedIndexRoute
   AppLayoutWalletIndexRoute: typeof AppLayoutWalletIndexRoute
+  AppLayoutWalletSplatIdRoute: typeof AppLayoutWalletSplatIdRoute
   AppLayoutForgotNewPinIndexRoute: typeof AppLayoutForgotNewPinIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
+  AppLayoutWalletChooseIndexRoute: typeof AppLayoutWalletChooseIndexRoute
 }
 
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
@@ -211,8 +241,10 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutSeedPhraseIndexRoute: AppLayoutSeedPhraseIndexRoute,
   AppLayoutWalletCreatedIndexRoute: AppLayoutWalletCreatedIndexRoute,
   AppLayoutWalletIndexRoute: AppLayoutWalletIndexRoute,
+  AppLayoutWalletSplatIdRoute: AppLayoutWalletSplatIdRoute,
   AppLayoutForgotNewPinIndexRoute: AppLayoutForgotNewPinIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
+  AppLayoutWalletChooseIndexRoute: AppLayoutWalletChooseIndexRoute,
 }
 
 const AppLayoutRouteWithChildren = AppLayoutRoute._addFileChildren(
@@ -230,8 +262,10 @@ export interface FileRoutesByFullPath {
   '/seed-phrase': typeof AppLayoutSeedPhraseIndexRoute
   '/wallet-created': typeof AppLayoutWalletCreatedIndexRoute
   '/wallet': typeof AppLayoutWalletIndexRoute
+  '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/forgot/new-pin': typeof AppLayoutForgotNewPinIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -245,8 +279,10 @@ export interface FileRoutesByTo {
   '/seed-phrase': typeof AppLayoutSeedPhraseIndexRoute
   '/wallet-created': typeof AppLayoutWalletCreatedIndexRoute
   '/wallet': typeof AppLayoutWalletIndexRoute
+  '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/forgot/new-pin': typeof AppLayoutForgotNewPinIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
 }
 
 export interface FileRoutesById {
@@ -261,8 +297,10 @@ export interface FileRoutesById {
   '/_app/_layout/seed-phrase/': typeof AppLayoutSeedPhraseIndexRoute
   '/_app/_layout/wallet-created/': typeof AppLayoutWalletCreatedIndexRoute
   '/_app/_layout/wallet/': typeof AppLayoutWalletIndexRoute
+  '/_app/_layout/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/_app/_layout/forgot/new-pin/': typeof AppLayoutForgotNewPinIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/_app/_layout/wallet/choose/': typeof AppLayoutWalletChooseIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -278,8 +316,10 @@ export interface FileRouteTypes {
     | '/seed-phrase'
     | '/wallet-created'
     | '/wallet'
+    | '/wallet/$/id'
     | '/forgot/new-pin'
     | '/seed-phrase/pin'
+    | '/wallet/choose'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -292,8 +332,10 @@ export interface FileRouteTypes {
     | '/seed-phrase'
     | '/wallet-created'
     | '/wallet'
+    | '/wallet/$/id'
     | '/forgot/new-pin'
     | '/seed-phrase/pin'
+    | '/wallet/choose'
   id:
     | '__root__'
     | '/'
@@ -306,8 +348,10 @@ export interface FileRouteTypes {
     | '/_app/_layout/seed-phrase/'
     | '/_app/_layout/wallet-created/'
     | '/_app/_layout/wallet/'
+    | '/_app/_layout/wallet/$/id'
     | '/_app/_layout/forgot/new-pin/'
     | '/_app/_layout/seed-phrase/pin/'
+    | '/_app/_layout/wallet/choose/'
   fileRoutesById: FileRoutesById
 }
 
@@ -351,8 +395,10 @@ export const routeTree = rootRoute
         "/_app/_layout/seed-phrase/",
         "/_app/_layout/wallet-created/",
         "/_app/_layout/wallet/",
+        "/_app/_layout/wallet/$/id",
         "/_app/_layout/forgot/new-pin/",
-        "/_app/_layout/seed-phrase/pin/"
+        "/_app/_layout/seed-phrase/pin/",
+        "/_app/_layout/wallet/choose/"
       ]
     },
     "/_app/_layout/forgot/": {
@@ -387,12 +433,20 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout/wallet/index.tsx",
       "parent": "/_app/_layout"
     },
+    "/_app/_layout/wallet/$/id": {
+      "filePath": "_app/_layout/wallet/$.id.tsx",
+      "parent": "/_app/_layout"
+    },
     "/_app/_layout/forgot/new-pin/": {
       "filePath": "_app/_layout/forgot/new-pin/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/seed-phrase/pin/": {
       "filePath": "_app/_layout/seed-phrase/pin/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/wallet/choose/": {
+      "filePath": "_app/_layout/wallet/choose/index.tsx",
       "parent": "/_app/_layout"
     }
   }

@@ -49,6 +49,10 @@
     font-weight: 400;
     overflow-x: hidden;
   }
+  html {
+    overflow-x: hidden;
+
+  }
 }
 
 #root {
@@ -82,6 +86,7 @@
     --avatar-border: #FFFFFF;
     --swiper-text: #4c4c52;
     --category-item: #FFFFFF;
+    --select-category-border: transparent;
   }
 
   .dark {
@@ -110,6 +115,7 @@
     --swiper-text: #969696;
     --sdd-ds: #ffffff1c;
     --category-item: #4c4c52;
+    --select-category-border: #d1105f;
   }
 }
 
@@ -214,4 +220,12 @@ input {
 }
 .transaction-arrow svg path {
   fill: var(--text);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -41,9 +41,14 @@ export default {
         "failed": '#d43a3a',
         'confirmed': '#07b195',
         'option-border': '#d1105f',
+        'select-category': '#151515',
+        'select-category-border': 'var(--select-category-border)'
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",
+      },
+      width: {
+        'p-calc': 'calc(100% - 32px)',
       },
       backgroundImage: {
         'balance-bg': "url('./src/assets/images/gradient.png')",
