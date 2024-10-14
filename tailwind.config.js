@@ -7,6 +7,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'mobile': '320px',
+      'max-mobile': {'max': '380px'},
+      'tablet': '640px',
+    },
     extend: {
       colors: {
         background: "var(--background)",

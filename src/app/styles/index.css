@@ -201,6 +201,11 @@ input {
 .swiper-wrapper {
   width: 300px;
 }
+@media screen and (max-width: 340px) {
+  .swiper-wrapper {
+    width: 280px;
+  }
+}
 .swiper-pagination-bullet-active {
   background: var(--text);
 }

@@ -37,7 +37,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, 
           </div>
           {actions && <div className="mt-3 flex items-center gap-2 justify-end">
             {actions.map((item, index) => (
-              <button className={`w-36 h-8 flex items-center justify-center rounded-full text-sm ${item === "Speed Up" ? 'bg-button text-[#FFFFFF]' : 'bg-dark_gray text-white'}`} key={index}>{item}</button>
+              <button className={`w-36 max-mobile:w-full h-8 flex items-center justify-center rounded-full text-sm ${item === "Speed Up" ? 'bg-button text-[#FFFFFF]' : 'bg-dark_gray text-white'}`} key={index}>{item}</button>
             ))}  
           </div>}
         </div>
