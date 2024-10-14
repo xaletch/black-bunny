@@ -1,6 +1,7 @@
 export interface ICategoryItem {
   name: string;
   type?: string;
-  select: boolean;
+  select: string;
   link?: string;
+  onSelect: () => void;
 }

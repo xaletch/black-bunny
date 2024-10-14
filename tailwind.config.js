@@ -31,6 +31,9 @@ export default {
         'white-transparent-10': 'rgba(255, 255, 255, 0.1)',
         'white-transparent-0': 'rgba(255, 255, 255, 0)',
         'category-item': 'var(--category-item)',
+        'pending': '#ff9114',
+        "failed": '#d43a3a',
+        'confirmed': '#07b195',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",

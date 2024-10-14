@@ -38,7 +38,7 @@ export const Navbar = () => {
   const pathname = location.pathname;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-black shadow-navbar-shadow">
+    <div className="fixed bottom-0 w-full bg-black shadow-navbar-shadow max-w-[760px] mx-auto">
       <div className="py-2 px-4">
         <ul className="grid items-center grid-cols-[1fr_1fr_48px_1fr_1fr] gap-2">
           {navbar.map((item, index) => (

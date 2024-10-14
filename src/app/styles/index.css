@@ -33,7 +33,6 @@
   font-weight: 600;
   font-style: normal;
 }
-
 @layer base {
   * {
     margin: 0;
@@ -48,6 +47,7 @@
     font-size: 16px;
     font-family: "Lato";
     font-weight: 400;
+    overflow-x: hidden;
   }
 }
 
@@ -203,4 +203,10 @@ input {
 }
 .swiper-pagination-bullet-active {
   background: var(--text);
+}
+.transaction-arrow svg {
+  transform: rotate(180deg);
+}
+.transaction-arrow svg path {
+  fill: var(--text);
 }
