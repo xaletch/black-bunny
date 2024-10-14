@@ -1,4 +1,5 @@
 export interface TransactionItemProps {
+  currency_icon?:JSX.Element;
   icon?: string;
   type: string;
   status?: string;

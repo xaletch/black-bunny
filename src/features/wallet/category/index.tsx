@@ -8,11 +8,12 @@ import stake from "@/assets/images/stake.png";
 import trade from "@/assets/images/trade.png";
 import { CategoryList } from "./list/item";
 import { TransactionItem } from "@/shared/ui/transactionItem";
-
+import { EthereumIcon } from "@/shared/icons/EthereumIcon";
+import { BTCIcon } from "@/shared/icons/BTCIcon";
 
 const history = [
   {
-    date: "2021-01-01",
+    date: "",
     items: [
       {
         icon: trade,
@@ -24,7 +25,7 @@ const history = [
     ]
   },
   {
-    date: "2021-01-01",
+    date: "8.8.2024",
     items: [
       {
         icon: stake,
@@ -65,6 +66,23 @@ const history = [
   }
 ];
 
+const assets = [
+  {
+    currency_icon: <EthereumIcon />,
+    type: "Ethereum",
+    amount: "$120.45",
+    fee: "+5.34$ (1.35%)",
+    currency: "0.0003431 ETH", 
+  },
+  {
+    currency_icon: <BTCIcon />,
+    type: "Bitcoin",
+    amount: "$230.53",
+    fee: "-2.45$ (5.46%)",
+    currency: "0.0003431  BTC", 
+  }
+]
+
 
 export const WalletCategory = () => {
   const [selectCategory, setSelectCategory] = useState('history');
@@ -81,22 +99,33 @@ export const WalletCategory = () => {
             icon={<PortfolioIcon />}
             title={"Your Portfolio is Empty"}
             text={"Start tracking your investments here"}
-            />           :
+            />
+          :
             <CategoryList>
-              {history.map((item) => (
-                item.items.map((obj, index) => <TransactionItem key={index} {...obj} />)
+              {history.map((item, index) => (
+                <div key={index}>
+                  <p className="text-xs text-[#969696]">{item.date}</p>
+                  <div className="flex flex-col gap-6 pt-3">
+                    {item.items.map((obj, index) => <TransactionItem key={index} {...obj} />)}
+                  </div>
+                </div>
               ))}
             </CategoryList>
           )
         }
         {
           selectCategory === 'assets' && (
-            <LoginTitle
-              cl={'mt-8'}
-              icon={<TransactionSmileIcon />}
-              title={"No Transactions Yet"}
-              text={"Make your first purchase and see it here"} 
-            />
+            assets.length < 0 ?
+              <LoginTitle
+                cl={'mt-8'}
+                icon={<TransactionSmileIcon />}
+                title={"No Transactions Yet"}
+                text={"Make your first purchase and see it here"} 
+              />
+            : 
+              <CategoryList>
+                {assets.map((obj, index) => <TransactionItem key={index} {...obj}/>)}
+              </CategoryList>
           )
         }
       </div>

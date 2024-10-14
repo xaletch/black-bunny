@@ -5,7 +5,7 @@ import { ConfirmIcon, FailedIcon, PendingIcon } from "@/shared/icons/status"
 import { ArrowTopIcon } from "@/shared/icons/ArrowTopIcon"
 
 
-export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, hash, fee, actions, amount, currency, transaction_id, }) => {
+export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, hash, fee, actions, amount, currency, transaction_id, currency_icon }) => {
   return (
     <div className="w-full">
       <div className="flex gap-3">
@@ -13,6 +13,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, 
         {!icon && type === 'sent' && (
           <div className="min-w-12 h-12 transaction-arrow rounded-full flex items-center justify-center bg-dark_gray border border-secondary-100"><ArrowTopIcon/></div>
         )}
+        {currency_icon && <div>{currency_icon}</div>}
         <div className="w-full">
           <div className="flex justify-between items-center py-[2px]">
             <div className="h-10 flex flex-col justify-between">
@@ -32,7 +33,8 @@ export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, 
                 {amount.includes('BTC') && <span className="flex mr-1"><BTCMiniIcon /></span>}
                 {amount}
               </p>}
-              {fee && <p className={`text-xs text-swiper-text ${parseFloat(fee.replace('$', '')) >= 1 ? 'text-confirmed' : ''}`}>{fee}</p>}
+              {fee && <p className={`text-xs ${parseFloat(fee.replace('$', '')) >= 1 ? 'text-confirmed' : 'text-swiper-text'} ${fee.includes('+') && 'text-confirmed' ||fee.includes('-') && '!text-failed'}`}>{fee}</p>
+              }
             </div>
           </div>
           {actions && <div className="mt-3 flex items-center gap-2 justify-end">

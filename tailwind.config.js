@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from "tailwindcss/defaultTheme";
+import { transform } from "typescript";
 
 export default {
   content: [
@@ -39,6 +40,7 @@ export default {
         'pending': '#ff9114',
         "failed": '#d43a3a',
         'confirmed': '#07b195',
+        'option-border': '#d1105f',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",
@@ -50,6 +52,9 @@ export default {
       opacity: {
         '10': '0.1',
         '60': '0.6',
+      },
+      transform: {
+        'translate': '-100%'
       },
       keyframes: {},
       fontFamily: {
