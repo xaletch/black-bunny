@@ -42,7 +42,9 @@ export default {
         'confirmed': '#07b195',
         'option-border': '#d1105f',
         'select-category': '#151515',
-        'select-category-border': 'var(--select-category-border)'
+        'select-category-border': 'var(--select-category-border)',
+        'warning-border': 'var(--warning-border)',
+        'key-border': 'var(--key-border)',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",

@@ -87,6 +87,8 @@
     --swiper-text: #4c4c52;
     --category-item: #FFFFFF;
     --select-category-border: transparent;
+    --warning-border: #d43a3a;
+    --key-border: #d1d1d1;
   }
 
   .dark {
@@ -116,6 +118,8 @@
     --sdd-ds: #ffffff1c;
     --category-item: #4c4c52;
     --select-category-border: #d1105f;
+    --warning-border: transparent;
+    --key-border: #262626;
   }
 }
 
@@ -228,4 +232,11 @@ input {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+.icon-24 svg {
+  width: 24px;
+  height: 24px;
+}
+.w svg path {
+  fill: #FFFFFF;
 }
