@@ -9,4 +9,5 @@ export interface TransactionItemProps {
   amount?: string;
   currency?: string;
   transaction_id?: string;
+  id: string
 }

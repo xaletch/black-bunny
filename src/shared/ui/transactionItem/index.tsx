@@ -3,11 +3,11 @@ import { TransactionItemProps } from "./transactionItem.interface"
 import { BTCMiniIcon } from "@/shared/icons/BTCMiniIcon"
 import { ConfirmIcon, FailedIcon, PendingIcon } from "@/shared/icons/status"
 import { ArrowTopIcon } from "@/shared/icons/ArrowTopIcon"
+import { Link } from "@tanstack/react-router"
 
-
-export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, hash, fee, actions, amount, currency, transaction_id, currency_icon }) => {
+export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, hash, fee, actions, amount, currency, transaction_id, currency_icon, id }) => {
   return (
-    <div className="w-full">
+    <Link to={`/wallet/token/${id}`} className="w-full">
       <div className="flex gap-3">
         {icon && <img className="min-w-12 h-12" src={icon} alt={type} />}
         {!icon && type === 'sent' && (
@@ -44,6 +44,6 @@ export const TransactionItem: FC<TransactionItemProps> = ({ icon, type, status, 
           </div>}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }

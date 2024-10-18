@@ -16,6 +16,7 @@ const history = [
     date: "",
     items: [
       {
+        id: "3843",
         icon: trade,
         type: "Trade",
         amount: "+658,866 HACHI",
@@ -28,6 +29,7 @@ const history = [
     date: "8.8.2024",
     items: [
       {
+        id: "1234",
         icon: stake,
         type: "Stake",
         status: "pending",
@@ -36,12 +38,14 @@ const history = [
         actions: ["Speed Up", "Cancel"], 
       },
       {
+        id: "8473",
         type: "sent",
         transaction_id: "abc123xyz", 
         amount: "0.5 BTC",
         fee: "Free: 0.0001 BTC",
       },
       {
+        id: "9238",
         icon: stake,
         type: "Stake",
         status: "failed",
@@ -49,6 +53,7 @@ const history = [
         fee: "$0",
       },
       {
+        id: "3623",
         icon: trade,
         type: "Trade",
         amount: "+658,866 HACHI",
@@ -56,6 +61,7 @@ const history = [
         currency: "-0 ETH", 
       },
       {
+        id: "2343",
         icon: trade,
         type: "Stake",
         status: "confirmed",
@@ -68,6 +74,7 @@ const history = [
 
 const assets = [
   {
+    id: "5432",
     currency_icon: <EthereumIcon />,
     type: "Ethereum",
     amount: "$120.45",
@@ -75,6 +82,7 @@ const assets = [
     currency: "0.0003431 ETH", 
   },
   {
+    id: "6453",
     currency_icon: <BTCIcon />,
     type: "Bitcoin",
     amount: "$230.53",

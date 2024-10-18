@@ -11,7 +11,7 @@ export const BalanceCard = () => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(hash);
-  }
+  };
 
   return (
     <div className="mt-4 shadow-[0 4px 24px 0 rgba(0, 0, 0, 0.15)] rounded-2xl border border-[#ffffff1c] bg-[#000000] relative bg-balance-bg bg-cover bg-center">
