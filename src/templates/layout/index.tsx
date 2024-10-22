@@ -8,7 +8,8 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const isLocation = [
     "/forgot", "/login", "/forgot/new-pin", "/registration-pin", "/seed-phrase",
     "/seed-phrase/pin", "wallet-created", "/phone", "phone-code", "/wallet/choose",
-  ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location);
+    "/wallet/receive", "/wallet/bridge",
+  ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location) || /\/wallet\/receive\/\d+/.test(location);
 
   return (
     <div className="bg-muted flex flex-col flex-1 relative">

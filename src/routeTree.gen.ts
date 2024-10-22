@@ -23,10 +23,12 @@ import { Route as AppLayoutPhoneCodeIndexImport } from './routes/_app/_layout/ph
 import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
 import { Route as AppLayoutForgotIndexImport } from './routes/_app/_layout/forgot/index'
 import { Route as AppLayoutWalletChooseIndexImport } from './routes/_app/_layout/wallet/choose/index'
+import { Route as AppLayoutWalletBridgeIndexImport } from './routes/_app/_layout/wallet/bridge/index'
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
 import { Route as AppLayoutForgotNewPinIndexImport } from './routes/_app/_layout/forgot/new-pin/index'
 import { Route as AppLayoutWalletSplatIdImport } from './routes/_app/_layout/wallet/$.id'
 import { Route as AppLayoutWalletTokenSplatIdImport } from './routes/_app/_layout/wallet/token/$.id'
+import { Route as AppLayoutWalletReceiveSplatIdImport } from './routes/_app/_layout/wallet/receive/$.id'
 
 // Create Virtual Routes
 
@@ -93,6 +95,13 @@ const AppLayoutWalletChooseIndexRoute = AppLayoutWalletChooseIndexImport.update(
   } as any,
 )
 
+const AppLayoutWalletBridgeIndexRoute = AppLayoutWalletBridgeIndexImport.update(
+  {
+    path: '/wallet/bridge/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any,
+)
+
 const AppLayoutSeedPhrasePinIndexRoute =
   AppLayoutSeedPhrasePinIndexImport.update({
     path: '/seed-phrase/pin/',
@@ -114,6 +123,12 @@ const AppLayoutWalletSplatIdRoute = AppLayoutWalletSplatIdImport.update({
 const AppLayoutWalletTokenSplatIdRoute =
   AppLayoutWalletTokenSplatIdImport.update({
     path: '/wallet/token/$/id',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutWalletReceiveSplatIdRoute =
+  AppLayoutWalletReceiveSplatIdImport.update({
+    path: '/wallet/receive/$/id',
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
@@ -212,11 +227,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutSeedPhrasePinIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/wallet/bridge/': {
+      id: '/_app/_layout/wallet/bridge/'
+      path: '/wallet/bridge'
+      fullPath: '/wallet/bridge'
+      preLoaderRoute: typeof AppLayoutWalletBridgeIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/wallet/choose/': {
       id: '/_app/_layout/wallet/choose/'
       path: '/wallet/choose'
       fullPath: '/wallet/choose'
       preLoaderRoute: typeof AppLayoutWalletChooseIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/wallet/receive/$/id': {
+      id: '/_app/_layout/wallet/receive/$/id'
+      path: '/wallet/receive/$/id'
+      fullPath: '/wallet/receive/$/id'
+      preLoaderRoute: typeof AppLayoutWalletReceiveSplatIdImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/wallet/token/$/id': {
@@ -243,7 +272,9 @@ interface AppLayoutRouteChildren {
   AppLayoutWalletSplatIdRoute: typeof AppLayoutWalletSplatIdRoute
   AppLayoutForgotNewPinIndexRoute: typeof AppLayoutForgotNewPinIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
+  AppLayoutWalletBridgeIndexRoute: typeof AppLayoutWalletBridgeIndexRoute
   AppLayoutWalletChooseIndexRoute: typeof AppLayoutWalletChooseIndexRoute
+  AppLayoutWalletReceiveSplatIdRoute: typeof AppLayoutWalletReceiveSplatIdRoute
   AppLayoutWalletTokenSplatIdRoute: typeof AppLayoutWalletTokenSplatIdRoute
 }
 
@@ -259,7 +290,9 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutWalletSplatIdRoute: AppLayoutWalletSplatIdRoute,
   AppLayoutForgotNewPinIndexRoute: AppLayoutForgotNewPinIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
+  AppLayoutWalletBridgeIndexRoute: AppLayoutWalletBridgeIndexRoute,
   AppLayoutWalletChooseIndexRoute: AppLayoutWalletChooseIndexRoute,
+  AppLayoutWalletReceiveSplatIdRoute: AppLayoutWalletReceiveSplatIdRoute,
   AppLayoutWalletTokenSplatIdRoute: AppLayoutWalletTokenSplatIdRoute,
 }
 
@@ -281,7 +314,9 @@ export interface FileRoutesByFullPath {
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/forgot/new-pin': typeof AppLayoutForgotNewPinIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
+  '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
 }
 
@@ -299,7 +334,9 @@ export interface FileRoutesByTo {
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/forgot/new-pin': typeof AppLayoutForgotNewPinIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
+  '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
 }
 
@@ -318,7 +355,9 @@ export interface FileRoutesById {
   '/_app/_layout/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/_app/_layout/forgot/new-pin/': typeof AppLayoutForgotNewPinIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/_app/_layout/wallet/bridge/': typeof AppLayoutWalletBridgeIndexRoute
   '/_app/_layout/wallet/choose/': typeof AppLayoutWalletChooseIndexRoute
+  '/_app/_layout/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/_app/_layout/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
 }
 
@@ -338,7 +377,9 @@ export interface FileRouteTypes {
     | '/wallet/$/id'
     | '/forgot/new-pin'
     | '/seed-phrase/pin'
+    | '/wallet/bridge'
     | '/wallet/choose'
+    | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -355,7 +396,9 @@ export interface FileRouteTypes {
     | '/wallet/$/id'
     | '/forgot/new-pin'
     | '/seed-phrase/pin'
+    | '/wallet/bridge'
     | '/wallet/choose'
+    | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
   id:
     | '__root__'
@@ -372,7 +415,9 @@ export interface FileRouteTypes {
     | '/_app/_layout/wallet/$/id'
     | '/_app/_layout/forgot/new-pin/'
     | '/_app/_layout/seed-phrase/pin/'
+    | '/_app/_layout/wallet/bridge/'
     | '/_app/_layout/wallet/choose/'
+    | '/_app/_layout/wallet/receive/$/id'
     | '/_app/_layout/wallet/token/$/id'
   fileRoutesById: FileRoutesById
 }
@@ -420,7 +465,9 @@ export const routeTree = rootRoute
         "/_app/_layout/wallet/$/id",
         "/_app/_layout/forgot/new-pin/",
         "/_app/_layout/seed-phrase/pin/",
+        "/_app/_layout/wallet/bridge/",
         "/_app/_layout/wallet/choose/",
+        "/_app/_layout/wallet/receive/$/id",
         "/_app/_layout/wallet/token/$/id"
       ]
     },
@@ -468,8 +515,16 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout/seed-phrase/pin/index.tsx",
       "parent": "/_app/_layout"
     },
+    "/_app/_layout/wallet/bridge/": {
+      "filePath": "_app/_layout/wallet/bridge/index.tsx",
+      "parent": "/_app/_layout"
+    },
     "/_app/_layout/wallet/choose/": {
       "filePath": "_app/_layout/wallet/choose/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/wallet/receive/$/id": {
+      "filePath": "_app/_layout/wallet/receive/$.id.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/wallet/token/$/id": {

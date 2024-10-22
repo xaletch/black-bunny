@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CrossIcon } from "@/shared/icons/CrossIcon"
 import { AllIcon, AvalancheIcon, BaseIcon, BinanceIcon, EthereumIcon2, PolygonIcon } from "@/shared/icons/NetworksIcon";
 import { SelectIcon } from "@/shared/icons/SelectIcon";
@@ -33,7 +34,14 @@ const networks = [
   }
 ];
 
-export const Networks: FC<NetworkInterface> = ({ close, select, handleSelect }) => {
+export const Networks: FC<NetworkInterface> = ({ close, select, handleSelect, handleSelectIcon }) => {
+  const handleClick = (name: string, icon: any) => {
+    handleSelect(name);
+    close();
+    if (handleSelectIcon) {
+        handleSelectIcon(icon);
+    }
+  };
 
   return (
     <div className="rounded-t-3xl bg-black fixed bottom-0 left-0 right-0 z-50" onClick={(e) => e.stopPropagation()}>
@@ -46,7 +54,7 @@ export const Networks: FC<NetworkInterface> = ({ close, select, handleSelect }) 
         <div className="mt-5">
           <div className="flex flex-col gap-3">
             {networks.map((item, index) => (
-              <OptionCard select={select === item.name} onClick={() => {handleSelect(item.name); close()}} key={index}>
+              <OptionCard select={select === item.name} onClick={() => handleClick(item.name, item.icon)} key={index}>
                 <OptionCardContent icon={item.icon}>
                   <div className="flex flex-1">
                     <h3 className="text-white text-base leading-4 font-medium">{item.name}</h3>

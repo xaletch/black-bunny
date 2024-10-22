@@ -5,8 +5,10 @@ import { ButtonWallet } from "@/shared/ui/dashboardButton";
 import { ArrowTopIcon } from "@/shared/icons/ArrowTopIcon";
 import { BridgeIcon } from "@/shared/icons/BridgeIcon";
 import { SupportIcon } from "@/shared/icons/SupportIcon";
+import { useNavigate } from "@tanstack/react-router"
 
 export const BalanceCard = () => {
+  const navigate = useNavigate();
   const hash = "0x65gf...8rh32ioruyfvbhcnkdeorfiuhgvb";
 
   const handleCopy = () => {
@@ -29,8 +31,8 @@ export const BalanceCard = () => {
         </div>
         <div className="mt-4">
           <div className="grid grid-cols-4 justify-between gap-5">
-            <ButtonWallet icon={<ArrowTopIcon />} name={"Receive"} cl={""} onClick={() => {}} />
-            <ButtonWallet icon={<BridgeIcon />} name={"Bridge"} cl={""} onClick={() => {}} />
+            <ButtonWallet icon={<ArrowTopIcon />} name={"Receive"} cl={""} onClick={() => navigate({ to: `/wallet/receive/$/id` })} />
+            <ButtonWallet icon={<BridgeIcon />} name={"Bridge"} cl={""} onClick={() => navigate({ to: `/wallet/bridge` })} />
             <ButtonWallet icon={<ArrowTopIcon />} name={"Send"} cl={"rotate-180"} onClick={() => {}} />
             <ButtonWallet icon={<SupportIcon />} name={"Support"} cl={""} onClick={() => {}} />
           </div>
