@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from "tailwindcss/defaultTheme";
-import { transform } from "typescript";
 
 export default {
   content: [
@@ -45,6 +44,8 @@ export default {
         'select-category-border': 'var(--select-category-border)',
         'warning-border': 'var(--warning-border)',
         'key-border': 'var(--key-border)',
+        'rgba-success': 'var(--rgba-success)',
+        'success-shadow': 'var(--success-shadow)',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",

@@ -12,6 +12,8 @@ import { WalletSeeIcon } from "@/shared/icons/WalletSeeIcon"
 import { Button } from "@/shared/ui/buttons"
 import { ImportIcon } from "@/shared/icons/ImportIcon"
 import { Link } from "@tanstack/react-router";
+import { ImportWalletMenu } from "./importWallet"
+import { CreateWalletMenu } from "./createWallet"
 
 const sort = [
   {
@@ -59,6 +61,11 @@ export const ChooseWallets = () => {
   const [select, setSelect] = useState<string>("all");
   const [selectAccount, setSelectAccount] = useState<string>("Account 1");
 
+  const [isImportWallet, setImportWallet] = useState<boolean>(false);
+  const [stepImportWallet, setStepImportWallet] = useState<number>(0);
+  const [isCreateWallet, setCreateWallet] = useState<boolean>(false);
+  const [stepCreateWallet, setStepCreateWallet] = useState<number>(0);
+  
   return (
     <Wrapper cl="pt-4 flex flex-col flex-1 justify-between overflow-hidden">
       <div>
@@ -87,9 +94,11 @@ export const ChooseWallets = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <Button icon={<ImportIcon />} text={"Import Wallet"} onClick={() => {}} />
-        <Button text={"Create Wallet"} onClick={() => {}} color={"bg-button"}  />
+        <Button icon={<ImportIcon />} text={"Import Wallet"} onClick={() => setImportWallet(true)} />
+        <Button text={"Create Wallet"} onClick={() => setCreateWallet(true)} color={"bg-button"}  />
       </div>
+      {isImportWallet && <ImportWalletMenu stepImportWallet={stepImportWallet} setStepImportWallet={setStepImportWallet} setImportWallet={setImportWallet} />}
+      {isCreateWallet && <CreateWalletMenu stepCreateWallet={stepCreateWallet} setStepCreateWallet={setStepCreateWallet} setCreateWallet={setCreateWallet}/>}
     </Wrapper>
   )
 }

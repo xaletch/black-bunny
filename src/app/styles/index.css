@@ -89,6 +89,8 @@
     --select-category-border: transparent;
     --warning-border: #d43a3a;
     --key-border: #d1d1d1;
+    --rgba-success: rgba(7, 177, 149, 0.16);
+    --success-shadow: rgba(7, 177, 149, 0.48);
   }
 
   .dark {
@@ -120,6 +122,8 @@
     --select-category-border: #d1105f;
     --warning-border: transparent;
     --key-border: #262626;
+    --rgba-success: rgba(255, 255, 255, 0.06);
+    --success-shadow: rgba(7, 177, 149, 0.48);
   }
 }
 
@@ -242,4 +246,8 @@ input {
 }
 .w2 svg path {
   fill: var(--text);
+}
+.full-w img {
+  width: 100%;
+  height: 100%;
 }
