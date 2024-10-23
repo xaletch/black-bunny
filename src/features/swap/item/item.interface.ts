@@ -6,4 +6,5 @@ export interface SnapItemProp {
   rate: string;
   value: string;
   selected: boolean;
+  onClick: () => void;
 }

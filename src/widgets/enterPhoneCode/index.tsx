@@ -17,7 +17,6 @@ export const EnterPhoneCode = () => {
   const navigate = useNavigate();
 
   const handleConfirm = () => {
-    console.log('confirm');
     localStorage.removeItem('phone');
 
     navigate({ to: "/wallet-created" })

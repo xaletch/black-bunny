@@ -5,7 +5,7 @@ import { ChoiceBlockchain } from "@/shared/ui/choiceBlockchain"
 export const WalletHead = ({ open, select, icon }: { open: () => void; select: string, icon?: any }) => {
   return (
     <div className="flex items-center justify-between">
-      <SelectAccount />
+      <SelectAccount isLink={true} />
       <ChoiceBlockchain select={select} open={open} icon={icon} />
     </div>
   )

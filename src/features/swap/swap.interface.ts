@@ -10,4 +10,6 @@ export interface SwapProps {
   items: Items[];
   from: number | null;
   to: number | null;
+  selectionFrom: () => void;
+  selectTo: () => void;
 }
