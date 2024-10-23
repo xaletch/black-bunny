@@ -20,6 +20,9 @@ import { TonIcon } from "@/shared/icons/TonIcon"
 import { EvmIcon } from "@/shared/icons/EvmIcon"
 
 import avatar from "@/assets/images/avatar.png";
+import { SelectCrypto } from "../selectCrypto"
+import { EthereumIcon } from "@/shared/icons/EthereumIcon"
+import { HachiKunIcon } from "@/shared/icons/HaschiKunIcon"
 
 const bridge = [
   {
@@ -111,6 +114,23 @@ const wallets = [
   }
 ]
 
+const crypto = [
+  {
+    icon: <EthereumIcon />,
+    name: "Ethereum",
+    second_name: "Ethereum",
+    amount: "0.002 ETH",
+    price: "$4.91"
+  },
+  {
+    icon: <HachiKunIcon />,
+    name: "Hachi-kun",
+    second_name: "Ethereum",
+    amount: "567,475 HACHI",
+    price: "$1.87"
+  }
+]
+
 export const BridgeContent = () => {
   const [from, setFrom] = useState<number | null>(null);
   const [selectFrom, setSelectFrom] = useState<number | null>(null);
@@ -127,7 +147,9 @@ export const BridgeContent = () => {
 
   const [isSelectAccount, setIsSelectAccount] = useState<boolean>(false);
   const [selectAccount, setSelectAccount] = useState<string>("Account 1");
-  
+
+  const [isSelectCrypto, setIsSelectCrypto] = useState<boolean>(false);
+
   const handleSelectFrom = () => {
     setFrom(selectFrom);
     setIsFrom(false)
@@ -145,13 +167,13 @@ export const BridgeContent = () => {
   return (
     <Wrapper cl={"pt-4 flex-1"} >
       <ShadowMany bg_one={"bg-green"} bg_two={"bg-error"} />
-      <div className="w-full">
+      <div className="w-full relative z-50">
         <div className="flex items-center justify-between">
           <SelectAccount isLink={false} onClick={() => setIsSelectAccount(true)} />
           <button className="flex items-center relative z-50" onClick={() => setInfo(true)}><InfoIcon /></button>
         </div>
         <div className="mt-4">
-          <BridgeNetwork />
+          <BridgeNetwork handleClick={() => setIsSelectCrypto(true)}/>
           <div className="my-3">
             <Swap items={bridge} from={from} selectionFrom={() => setIsFrom(true)} selectTo={() => setIsTo(true)} to={to} />
           </div>
@@ -266,6 +288,15 @@ export const BridgeContent = () => {
               <div className="mt-8">
               <Button text={"Change"} onClick={() => setIsSelectAccount(false)} color={"bg-button"} />
             </div>
+            </div>
+          </ConfirmationMenu>
+        )}
+
+        {isSelectCrypto && (
+          <ConfirmationMenu close={() => setIsSelectCrypto(false)}>
+            <SelectCrypto crypto={crypto} />
+            <div className="mt-8">
+              <Button text={"Select"} onClick={() => setIsSelectCrypto(false)} color={"bg-button"} />
             </div>
           </ConfirmationMenu>
         )}

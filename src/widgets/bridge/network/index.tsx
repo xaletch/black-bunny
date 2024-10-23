@@ -1,8 +1,8 @@
 import { ArrowIcon } from "@/shared/icons/ArrowIcon"
 
-export const BridgeNetwork = () => {
+export const BridgeNetwork = ({ handleClick }: { handleClick: () => void }) => {
   return (
-    <div className="w-full h-14 bg-secondary-100 rounded-2xl">
+    <div className="w-full h-14 bg-secondary-100 rounded-2xl" onClick={handleClick}>
       <div className="px-3 py-2 h-full flex items-center justify-between">
         <div>
           <h3 className="text-sm font-medium text-white">Network</h3>
