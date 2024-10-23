@@ -15,6 +15,11 @@ import { LoginTitle } from "../loginTitle"
 import { BridgeIcon2 } from "@/shared/icons/Bridge.icon"
 import { BridgeConfirmation } from "./confirmation"
 import { MenuSuccess } from "../menuSuccess"
+import { SolanaIcon } from "@/shared/icons/SolanaIcon"
+import { TonIcon } from "@/shared/icons/TonIcon"
+import { EvmIcon } from "@/shared/icons/EvmIcon"
+
+import avatar from "@/assets/images/avatar.png";
 
 const bridge = [
   {
@@ -82,6 +87,30 @@ const networks = [
   }
 ];
 
+const wallets = [
+  {
+    img: avatar,
+    name: "Account 1",
+    coin_icon: <EvmIcon/>,
+    coin: "evm",
+    id: "1",
+  },
+  {
+    img: avatar,
+    name: "Account 2",
+    coin_icon: <SolanaIcon/>,
+    coin: "sol",
+    id: "2",
+  },
+  {
+    img: avatar,
+    name: "Account 3",
+    coin_icon: <TonIcon/>,
+    coin: "ton",
+    id: "3",
+  }
+]
+
 export const BridgeContent = () => {
   const [from, setFrom] = useState<number | null>(null);
   const [selectFrom, setSelectFrom] = useState<number | null>(null);
@@ -97,7 +126,7 @@ export const BridgeContent = () => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const [isSelectAccount, setIsSelectAccount] = useState<boolean>(false);
-  
+  const [selectAccount, setSelectAccount] = useState<string>("Account 1");
   
   const handleSelectFrom = () => {
     setFrom(selectFrom);
@@ -118,7 +147,7 @@ export const BridgeContent = () => {
       <ShadowMany bg_one={"bg-green"} bg_two={"bg-error"} />
       <div className="w-full">
         <div className="flex items-center justify-between">
-          <SelectAccount isLink={false} />
+          <SelectAccount isLink={false} onClick={() => setIsSelectAccount(true)} />
           <button className="flex items-center relative z-50" onClick={() => setInfo(true)}><InfoIcon /></button>
         </div>
         <div className="mt-4">
@@ -219,7 +248,24 @@ export const BridgeContent = () => {
         {isSelectAccount && (
           <ConfirmationMenu close={() => setIsSelectAccount(false)}>
             <div>
-
+              <div className="flex flex-col gap-3 pt-9">
+              {wallets.map((item, index) => (
+                <OptionCard key={index} select={selectAccount === item.name} onClick={() => setSelectAccount(item.name)}>
+                  <OptionCardContent icon={item.img}>
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-white text-base leading-4 font-medium">{item.name}</h3>
+                      <div className="mt-1 flex items-center gap-1">
+                        <span className="flex">{item.coin_icon}</span>
+                        <p className="uppercase text-sm font-medium text-white">{item.coin}</p>
+                      </div>
+                    </div>
+                  </OptionCardContent>
+                </OptionCard>
+              ))}
+              </div>
+              <div className="mt-8">
+              <Button text={"Change"} onClick={() => setIsSelectAccount(false)} color={"bg-button"} />
+            </div>
             </div>
           </ConfirmationMenu>
         )}
