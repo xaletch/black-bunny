@@ -18,7 +18,7 @@ export const WalletTokenContent = () => {
         <TokenHistory />
       </div>
       <div className="flex items-center gap-2 mt-14">
-        <Button text={"Send"} onClick={() => {} } />
+        <Button text={"Send"} onClick={() => navigate({ to: "/wallet/send/to" })} />
         <Button text={"Receive"} onClick={() => navigate({ to: `/wallet/receive/$/id` })} color={"bg-button"} />
       </div>
     </Wrapper>
