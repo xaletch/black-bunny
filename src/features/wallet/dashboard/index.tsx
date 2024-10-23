@@ -33,7 +33,7 @@ export const BalanceCard = () => {
           <div className="grid grid-cols-4 justify-between gap-5">
             <ButtonWallet icon={<ArrowTopIcon />} name={"Receive"} cl={""} onClick={() => navigate({ to: `/wallet/receive/$/id` })} />
             <ButtonWallet icon={<BridgeIcon />} name={"Bridge"} cl={""} onClick={() => navigate({ to: `/wallet/bridge` })} />
-            <ButtonWallet icon={<ArrowTopIcon />} name={"Send"} cl={"rotate-180"} onClick={() => {}} />
+            <ButtonWallet icon={<ArrowTopIcon />} name={"Send"} cl={"rotate-180"} onClick={() => navigate({ to: "/wallet/send" })} />
             <ButtonWallet icon={<SupportIcon />} name={"Support"} cl={""} onClick={() => {}} />
           </div>
         </div>

@@ -8,7 +8,8 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const isLocation = [
     "/forgot", "/login", "/forgot/new-pin", "/registration-pin", "/seed-phrase",
     "/seed-phrase/pin", "wallet-created", "/phone", "phone-code", "/wallet/choose",
-    "/wallet/receive", "/wallet/bridge",
+    "/wallet/receive", "/wallet/bridge", "/wallet/send", "/wallet/receive/id", "/wallet/send/to",
+    "/wallet/send/to/transaction"
   ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location) || /\/wallet\/receive\/\d+/.test(location);
 
   return (

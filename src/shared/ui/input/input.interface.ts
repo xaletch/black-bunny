@@ -5,4 +5,5 @@ export interface InputProps {
   type: string;
   cl?: string;
   isToken?: boolean;
+  icon?: string | JSX.Element;
 }

@@ -254,3 +254,6 @@ input {
 .bg-f {
   backdrop-filter: blur(24px);
 }
+.transform {
+  transform: translateY(-50%);
+}
