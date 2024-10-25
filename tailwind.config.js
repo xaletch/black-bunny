@@ -46,6 +46,10 @@ export default {
         'key-border': 'var(--key-border)',
         'rgba-success': 'var(--rgba-success)',
         'success-shadow': 'var(--success-shadow)',
+        'card': 'var(--bg-card)',
+        'category-bg': 'var(--category-bg)',
+        'line': 'var(--line)',
+        'checkbox': 'var(--checkbox)',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",

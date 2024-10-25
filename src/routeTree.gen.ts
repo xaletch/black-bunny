@@ -21,11 +21,15 @@ import { Route as AppLayoutRegistrationPinIndexImport } from './routes/_app/_lay
 import { Route as AppLayoutPhoneIndexImport } from './routes/_app/_layout/phone/index'
 import { Route as AppLayoutPhoneCodeIndexImport } from './routes/_app/_layout/phone-code/index'
 import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
+import { Route as AppLayoutHotTokensIndexImport } from './routes/_app/_layout/hot-tokens/index'
 import { Route as AppLayoutForgotIndexImport } from './routes/_app/_layout/forgot/index'
 import { Route as AppLayoutWalletSendIndexImport } from './routes/_app/_layout/wallet/send/index'
 import { Route as AppLayoutWalletChooseIndexImport } from './routes/_app/_layout/wallet/choose/index'
 import { Route as AppLayoutWalletBridgeIndexImport } from './routes/_app/_layout/wallet/bridge/index'
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
+import { Route as AppLayoutHotTokensStopLossOrderIndexImport } from './routes/_app/_layout/hot-tokens/stop-loss-order/index'
+import { Route as AppLayoutHotTokensMarketOrderIndexImport } from './routes/_app/_layout/hot-tokens/market-order/index'
+import { Route as AppLayoutHotTokensLimitOrderIndexImport } from './routes/_app/_layout/hot-tokens/limit-order/index'
 import { Route as AppLayoutForgotNewPinIndexImport } from './routes/_app/_layout/forgot/new-pin/index'
 import { Route as AppLayoutWalletSplatIdImport } from './routes/_app/_layout/wallet/$.id'
 import { Route as AppLayoutWalletSendToIndexImport } from './routes/_app/_layout/wallet/send/to/index'
@@ -86,6 +90,11 @@ const AppLayoutLoginIndexRoute = AppLayoutLoginIndexImport.update({
   getParentRoute: () => AppLayoutRoute,
 } as any)
 
+const AppLayoutHotTokensIndexRoute = AppLayoutHotTokensIndexImport.update({
+  path: '/hot-tokens/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
+
 const AppLayoutForgotIndexRoute = AppLayoutForgotIndexImport.update({
   path: '/forgot/',
   getParentRoute: () => AppLayoutRoute,
@@ -113,6 +122,24 @@ const AppLayoutWalletBridgeIndexRoute = AppLayoutWalletBridgeIndexImport.update(
 const AppLayoutSeedPhrasePinIndexRoute =
   AppLayoutSeedPhrasePinIndexImport.update({
     path: '/seed-phrase/pin/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutHotTokensStopLossOrderIndexRoute =
+  AppLayoutHotTokensStopLossOrderIndexImport.update({
+    path: '/hot-tokens/stop-loss-order/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutHotTokensMarketOrderIndexRoute =
+  AppLayoutHotTokensMarketOrderIndexImport.update({
+    path: '/hot-tokens/market-order/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutHotTokensLimitOrderIndexRoute =
+  AppLayoutHotTokensLimitOrderIndexImport.update({
+    path: '/hot-tokens/limit-order/',
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
@@ -178,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutForgotIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/hot-tokens/': {
+      id: '/_app/_layout/hot-tokens/'
+      path: '/hot-tokens'
+      fullPath: '/hot-tokens'
+      preLoaderRoute: typeof AppLayoutHotTokensIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/login/': {
       id: '/_app/_layout/login/'
       path: '/login'
@@ -239,6 +273,27 @@ declare module '@tanstack/react-router' {
       path: '/forgot/new-pin'
       fullPath: '/forgot/new-pin'
       preLoaderRoute: typeof AppLayoutForgotNewPinIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/hot-tokens/limit-order/': {
+      id: '/_app/_layout/hot-tokens/limit-order/'
+      path: '/hot-tokens/limit-order'
+      fullPath: '/hot-tokens/limit-order'
+      preLoaderRoute: typeof AppLayoutHotTokensLimitOrderIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/hot-tokens/market-order/': {
+      id: '/_app/_layout/hot-tokens/market-order/'
+      path: '/hot-tokens/market-order'
+      fullPath: '/hot-tokens/market-order'
+      preLoaderRoute: typeof AppLayoutHotTokensMarketOrderIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/hot-tokens/stop-loss-order/': {
+      id: '/_app/_layout/hot-tokens/stop-loss-order/'
+      path: '/hot-tokens/stop-loss-order'
+      fullPath: '/hot-tokens/stop-loss-order'
+      preLoaderRoute: typeof AppLayoutHotTokensStopLossOrderIndexImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/seed-phrase/pin/': {
@@ -304,6 +359,7 @@ declare module '@tanstack/react-router' {
 
 interface AppLayoutRouteChildren {
   AppLayoutForgotIndexRoute: typeof AppLayoutForgotIndexRoute
+  AppLayoutHotTokensIndexRoute: typeof AppLayoutHotTokensIndexRoute
   AppLayoutLoginIndexRoute: typeof AppLayoutLoginIndexRoute
   AppLayoutPhoneCodeIndexRoute: typeof AppLayoutPhoneCodeIndexRoute
   AppLayoutPhoneIndexRoute: typeof AppLayoutPhoneIndexRoute
@@ -313,6 +369,9 @@ interface AppLayoutRouteChildren {
   AppLayoutWalletIndexRoute: typeof AppLayoutWalletIndexRoute
   AppLayoutWalletSplatIdRoute: typeof AppLayoutWalletSplatIdRoute
   AppLayoutForgotNewPinIndexRoute: typeof AppLayoutForgotNewPinIndexRoute
+  AppLayoutHotTokensLimitOrderIndexRoute: typeof AppLayoutHotTokensLimitOrderIndexRoute
+  AppLayoutHotTokensMarketOrderIndexRoute: typeof AppLayoutHotTokensMarketOrderIndexRoute
+  AppLayoutHotTokensStopLossOrderIndexRoute: typeof AppLayoutHotTokensStopLossOrderIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
   AppLayoutWalletBridgeIndexRoute: typeof AppLayoutWalletBridgeIndexRoute
   AppLayoutWalletChooseIndexRoute: typeof AppLayoutWalletChooseIndexRoute
@@ -325,6 +384,7 @@ interface AppLayoutRouteChildren {
 
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutForgotIndexRoute: AppLayoutForgotIndexRoute,
+  AppLayoutHotTokensIndexRoute: AppLayoutHotTokensIndexRoute,
   AppLayoutLoginIndexRoute: AppLayoutLoginIndexRoute,
   AppLayoutPhoneCodeIndexRoute: AppLayoutPhoneCodeIndexRoute,
   AppLayoutPhoneIndexRoute: AppLayoutPhoneIndexRoute,
@@ -334,6 +394,12 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutWalletIndexRoute: AppLayoutWalletIndexRoute,
   AppLayoutWalletSplatIdRoute: AppLayoutWalletSplatIdRoute,
   AppLayoutForgotNewPinIndexRoute: AppLayoutForgotNewPinIndexRoute,
+  AppLayoutHotTokensLimitOrderIndexRoute:
+    AppLayoutHotTokensLimitOrderIndexRoute,
+  AppLayoutHotTokensMarketOrderIndexRoute:
+    AppLayoutHotTokensMarketOrderIndexRoute,
+  AppLayoutHotTokensStopLossOrderIndexRoute:
+    AppLayoutHotTokensStopLossOrderIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
   AppLayoutWalletBridgeIndexRoute: AppLayoutWalletBridgeIndexRoute,
   AppLayoutWalletChooseIndexRoute: AppLayoutWalletChooseIndexRoute,
@@ -353,6 +419,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '': typeof AppLayoutRouteWithChildren
   '/forgot': typeof AppLayoutForgotIndexRoute
+  '/hot-tokens': typeof AppLayoutHotTokensIndexRoute
   '/login': typeof AppLayoutLoginIndexRoute
   '/phone-code': typeof AppLayoutPhoneCodeIndexRoute
   '/phone': typeof AppLayoutPhoneIndexRoute
@@ -362,6 +429,9 @@ export interface FileRoutesByFullPath {
   '/wallet': typeof AppLayoutWalletIndexRoute
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/forgot/new-pin': typeof AppLayoutForgotNewPinIndexRoute
+  '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
+  '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
+  '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
@@ -376,6 +446,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '': typeof AppLayoutRouteWithChildren
   '/forgot': typeof AppLayoutForgotIndexRoute
+  '/hot-tokens': typeof AppLayoutHotTokensIndexRoute
   '/login': typeof AppLayoutLoginIndexRoute
   '/phone-code': typeof AppLayoutPhoneCodeIndexRoute
   '/phone': typeof AppLayoutPhoneIndexRoute
@@ -385,6 +456,9 @@ export interface FileRoutesByTo {
   '/wallet': typeof AppLayoutWalletIndexRoute
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/forgot/new-pin': typeof AppLayoutForgotNewPinIndexRoute
+  '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
+  '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
+  '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
@@ -400,6 +474,7 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/_app/_layout': typeof AppLayoutRouteWithChildren
   '/_app/_layout/forgot/': typeof AppLayoutForgotIndexRoute
+  '/_app/_layout/hot-tokens/': typeof AppLayoutHotTokensIndexRoute
   '/_app/_layout/login/': typeof AppLayoutLoginIndexRoute
   '/_app/_layout/phone-code/': typeof AppLayoutPhoneCodeIndexRoute
   '/_app/_layout/phone/': typeof AppLayoutPhoneIndexRoute
@@ -409,6 +484,9 @@ export interface FileRoutesById {
   '/_app/_layout/wallet/': typeof AppLayoutWalletIndexRoute
   '/_app/_layout/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
   '/_app/_layout/forgot/new-pin/': typeof AppLayoutForgotNewPinIndexRoute
+  '/_app/_layout/hot-tokens/limit-order/': typeof AppLayoutHotTokensLimitOrderIndexRoute
+  '/_app/_layout/hot-tokens/market-order/': typeof AppLayoutHotTokensMarketOrderIndexRoute
+  '/_app/_layout/hot-tokens/stop-loss-order/': typeof AppLayoutHotTokensStopLossOrderIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
   '/_app/_layout/wallet/bridge/': typeof AppLayoutWalletBridgeIndexRoute
   '/_app/_layout/wallet/choose/': typeof AppLayoutWalletChooseIndexRoute
@@ -425,6 +503,7 @@ export interface FileRouteTypes {
     | '/'
     | ''
     | '/forgot'
+    | '/hot-tokens'
     | '/login'
     | '/phone-code'
     | '/phone'
@@ -434,6 +513,9 @@ export interface FileRouteTypes {
     | '/wallet'
     | '/wallet/$/id'
     | '/forgot/new-pin'
+    | '/hot-tokens/limit-order'
+    | '/hot-tokens/market-order'
+    | '/hot-tokens/stop-loss-order'
     | '/seed-phrase/pin'
     | '/wallet/bridge'
     | '/wallet/choose'
@@ -447,6 +529,7 @@ export interface FileRouteTypes {
     | '/'
     | ''
     | '/forgot'
+    | '/hot-tokens'
     | '/login'
     | '/phone-code'
     | '/phone'
@@ -456,6 +539,9 @@ export interface FileRouteTypes {
     | '/wallet'
     | '/wallet/$/id'
     | '/forgot/new-pin'
+    | '/hot-tokens/limit-order'
+    | '/hot-tokens/market-order'
+    | '/hot-tokens/stop-loss-order'
     | '/seed-phrase/pin'
     | '/wallet/bridge'
     | '/wallet/choose'
@@ -469,6 +555,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_app/_layout'
     | '/_app/_layout/forgot/'
+    | '/_app/_layout/hot-tokens/'
     | '/_app/_layout/login/'
     | '/_app/_layout/phone-code/'
     | '/_app/_layout/phone/'
@@ -478,6 +565,9 @@ export interface FileRouteTypes {
     | '/_app/_layout/wallet/'
     | '/_app/_layout/wallet/$/id'
     | '/_app/_layout/forgot/new-pin/'
+    | '/_app/_layout/hot-tokens/limit-order/'
+    | '/_app/_layout/hot-tokens/market-order/'
+    | '/_app/_layout/hot-tokens/stop-loss-order/'
     | '/_app/_layout/seed-phrase/pin/'
     | '/_app/_layout/wallet/bridge/'
     | '/_app/_layout/wallet/choose/'
@@ -522,6 +612,7 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout.tsx",
       "children": [
         "/_app/_layout/forgot/",
+        "/_app/_layout/hot-tokens/",
         "/_app/_layout/login/",
         "/_app/_layout/phone-code/",
         "/_app/_layout/phone/",
@@ -531,6 +622,9 @@ export const routeTree = rootRoute
         "/_app/_layout/wallet/",
         "/_app/_layout/wallet/$/id",
         "/_app/_layout/forgot/new-pin/",
+        "/_app/_layout/hot-tokens/limit-order/",
+        "/_app/_layout/hot-tokens/market-order/",
+        "/_app/_layout/hot-tokens/stop-loss-order/",
         "/_app/_layout/seed-phrase/pin/",
         "/_app/_layout/wallet/bridge/",
         "/_app/_layout/wallet/choose/",
@@ -543,6 +637,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/forgot/": {
       "filePath": "_app/_layout/forgot/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/hot-tokens/": {
+      "filePath": "_app/_layout/hot-tokens/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/login/": {
@@ -579,6 +677,18 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/forgot/new-pin/": {
       "filePath": "_app/_layout/forgot/new-pin/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/hot-tokens/limit-order/": {
+      "filePath": "_app/_layout/hot-tokens/limit-order/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/hot-tokens/market-order/": {
+      "filePath": "_app/_layout/hot-tokens/market-order/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/hot-tokens/stop-loss-order/": {
+      "filePath": "_app/_layout/hot-tokens/stop-loss-order/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/seed-phrase/pin/": {

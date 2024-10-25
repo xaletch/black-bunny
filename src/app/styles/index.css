@@ -91,6 +91,10 @@
     --key-border: #d1d1d1;
     --rgba-success: rgba(7, 177, 149, 0.16);
     --success-shadow: rgba(7, 177, 149, 0.48);
+    --bg-card: #f2f2f2;
+    --category-bg: #FFFFFF;
+    --line: rgba(0, 0, 0, 0.12);
+    --checkbox: #969696;
   }
 
   .dark {
@@ -124,6 +128,10 @@
     --key-border: #262626;
     --rgba-success: rgba(255, 255, 255, 0.06);
     --success-shadow: rgba(7, 177, 149, 0.48);
+    --bg-card: #151515;
+    --category-bg: rgba(255, 255, 255, 0.06);
+    --line: #969696;
+    --checkbox: #FFFFFF;
   }
 }
 
@@ -255,5 +263,27 @@ input {
   backdrop-filter: blur(24px);
 }
 .transform {
+  transform: translateY(-50%);
+}
+.icon-16 svg {
+  width: 16px;
+  height: 16px;
+}
+.i-search svg path {
+  fill: var(--input-text);
+}
+.d svg path {
+  fill: var(--text);
+}
+.w12 svg {
+  width: 12px;
+  height: 12px;
+}
+.failed-svg svg path {
+  fill: var(--red);
+}
+.a-center {
+  top: 50%;
+  right: 16px;
   transform: translateY(-50%);
 }

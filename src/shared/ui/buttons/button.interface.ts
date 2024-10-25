@@ -4,4 +4,5 @@ export interface ButtonProps {
   onClick: () => void;
   color?: string;
   icon_cl?: string;
+  cl?: string;
 }

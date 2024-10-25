@@ -14,7 +14,7 @@ const navbar = [
   {
     name: "Hot tokens",
     icon: <TokenIcon />,
-    link: "/token"
+    link: "/hot-tokens"
   },
   {
     name: "",

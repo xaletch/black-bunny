@@ -2,7 +2,6 @@ import { TankIcon } from "@/shared/icons/TankIcon"
 import { TokenHistoryItem } from "./item"
 
 export const TokenHistory = () => {
-
   return (
     <div className="mt-8">
       <div className="flex items-center justify-between pb-2 border-b border-b-secondary-100">
