@@ -99,7 +99,7 @@ export const ImportWalletMenu: FC<ImportWalletMenuProps> = ({ stepImportWallet, 
               </div>
               <PhrasesList>
                 {allPhrases.map((phrase, i) => (
-                  <Phrase key={i} phrase={phrase} numeric={i + 1} onChange={(e) => addPhrase(i, e.target.value)} />
+                  <Phrase key={i} phrase={phrase} numeric={i + 1} onChange={(e) => addPhrase(i, e.target.value)} isHide={false} />
                 ))}
               </PhrasesList>
               <div className="flex flex-col gap-4 w-full mt-6">
