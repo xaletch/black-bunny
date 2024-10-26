@@ -50,6 +50,8 @@ export default {
         'category-bg': 'var(--category-bg)',
         'line': 'var(--line)',
         'checkbox': 'var(--checkbox)',
+        'setting-border:': 'var(--setting-border)',
+        'bg-checkbox': 'var(--bg-checkbox)',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",

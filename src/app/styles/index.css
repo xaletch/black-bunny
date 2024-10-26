@@ -95,6 +95,8 @@
     --category-bg: #FFFFFF;
     --line: rgba(0, 0, 0, 0.12);
     --checkbox: #969696;
+    --setting-border: rgba(0, 0, 0, 0.12);
+    --bg-checkbox: #d1d1d1;
   }
 
   .dark {
@@ -132,6 +134,8 @@
     --category-bg: rgba(255, 255, 255, 0.06);
     --line: #969696;
     --checkbox: #FFFFFF;
+    --setting-border: #4c4c52;
+    --bg-checkbox: #262626;
   }
 }
 

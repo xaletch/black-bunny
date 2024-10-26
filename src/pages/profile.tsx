@@ -1,5 +1,5 @@
+import { ProfileContent } from "@/widgets/profile"
+
 export const Profile = () => {
-  return (
-    <div>profile</div>
-  )
+  return <ProfileContent />
 }
