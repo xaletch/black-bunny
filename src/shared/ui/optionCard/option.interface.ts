@@ -4,4 +4,5 @@ export interface OptionCardProps {
   children: ReactNode;
   select: boolean;
   onClick: () => void;
+  cl?: string;
 }

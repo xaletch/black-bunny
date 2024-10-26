@@ -53,6 +53,7 @@ export default {
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",
+        'level-shadow': '0 0 4px 2px rgba(238, 53, 130, 0.36)',
       },
       width: {
         'p-calc': 'calc(100% - 32px)',
@@ -60,10 +61,14 @@ export default {
       backgroundImage: {
         'balance-bg': "url('./src/assets/images/gradient.png')",
         'balance-button': '#ffffff0d',
+        'level-gradient': 'linear-gradient(202deg, #f97239 0%, #ed2f8a 40.99%, #c26cea 86.83%, #8886ee 100%)',
       },
       opacity: {
         '10': '0.1',
         '60': '0.6',
+      },
+      backdropBlur: {
+        custom: '7px',
       },
       transform: {
         'translate': '-100%'

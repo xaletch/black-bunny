@@ -16,8 +16,10 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AppLayoutImport } from './routes/_app/_layout'
 import { Route as AppLayoutWalletIndexImport } from './routes/_app/_layout/wallet/index'
 import { Route as AppLayoutWalletCreatedIndexImport } from './routes/_app/_layout/wallet-created/index'
+import { Route as AppLayoutTeamIndexImport } from './routes/_app/_layout/team/index'
 import { Route as AppLayoutSeedPhraseIndexImport } from './routes/_app/_layout/seed-phrase/index'
 import { Route as AppLayoutRegistrationPinIndexImport } from './routes/_app/_layout/registration-pin/index'
+import { Route as AppLayoutProfileIndexImport } from './routes/_app/_layout/profile/index'
 import { Route as AppLayoutPhoneIndexImport } from './routes/_app/_layout/phone/index'
 import { Route as AppLayoutPhoneCodeIndexImport } from './routes/_app/_layout/phone-code/index'
 import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
@@ -64,6 +66,11 @@ const AppLayoutWalletCreatedIndexRoute =
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
+const AppLayoutTeamIndexRoute = AppLayoutTeamIndexImport.update({
+  path: '/team/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
+
 const AppLayoutSeedPhraseIndexRoute = AppLayoutSeedPhraseIndexImport.update({
   path: '/seed-phrase/',
   getParentRoute: () => AppLayoutRoute,
@@ -74,6 +81,11 @@ const AppLayoutRegistrationPinIndexRoute =
     path: '/registration-pin/',
     getParentRoute: () => AppLayoutRoute,
   } as any)
+
+const AppLayoutProfileIndexRoute = AppLayoutProfileIndexImport.update({
+  path: '/profile/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
 
 const AppLayoutPhoneIndexRoute = AppLayoutPhoneIndexImport.update({
   path: '/phone/',
@@ -233,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutPhoneIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/profile/': {
+      id: '/_app/_layout/profile/'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AppLayoutProfileIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/registration-pin/': {
       id: '/_app/_layout/registration-pin/'
       path: '/registration-pin'
@@ -245,6 +264,13 @@ declare module '@tanstack/react-router' {
       path: '/seed-phrase'
       fullPath: '/seed-phrase'
       preLoaderRoute: typeof AppLayoutSeedPhraseIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/team/': {
+      id: '/_app/_layout/team/'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof AppLayoutTeamIndexImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/wallet-created/': {
@@ -363,8 +389,10 @@ interface AppLayoutRouteChildren {
   AppLayoutLoginIndexRoute: typeof AppLayoutLoginIndexRoute
   AppLayoutPhoneCodeIndexRoute: typeof AppLayoutPhoneCodeIndexRoute
   AppLayoutPhoneIndexRoute: typeof AppLayoutPhoneIndexRoute
+  AppLayoutProfileIndexRoute: typeof AppLayoutProfileIndexRoute
   AppLayoutRegistrationPinIndexRoute: typeof AppLayoutRegistrationPinIndexRoute
   AppLayoutSeedPhraseIndexRoute: typeof AppLayoutSeedPhraseIndexRoute
+  AppLayoutTeamIndexRoute: typeof AppLayoutTeamIndexRoute
   AppLayoutWalletCreatedIndexRoute: typeof AppLayoutWalletCreatedIndexRoute
   AppLayoutWalletIndexRoute: typeof AppLayoutWalletIndexRoute
   AppLayoutWalletSplatIdRoute: typeof AppLayoutWalletSplatIdRoute
@@ -388,8 +416,10 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutLoginIndexRoute: AppLayoutLoginIndexRoute,
   AppLayoutPhoneCodeIndexRoute: AppLayoutPhoneCodeIndexRoute,
   AppLayoutPhoneIndexRoute: AppLayoutPhoneIndexRoute,
+  AppLayoutProfileIndexRoute: AppLayoutProfileIndexRoute,
   AppLayoutRegistrationPinIndexRoute: AppLayoutRegistrationPinIndexRoute,
   AppLayoutSeedPhraseIndexRoute: AppLayoutSeedPhraseIndexRoute,
+  AppLayoutTeamIndexRoute: AppLayoutTeamIndexRoute,
   AppLayoutWalletCreatedIndexRoute: AppLayoutWalletCreatedIndexRoute,
   AppLayoutWalletIndexRoute: AppLayoutWalletIndexRoute,
   AppLayoutWalletSplatIdRoute: AppLayoutWalletSplatIdRoute,
@@ -423,8 +453,10 @@ export interface FileRoutesByFullPath {
   '/login': typeof AppLayoutLoginIndexRoute
   '/phone-code': typeof AppLayoutPhoneCodeIndexRoute
   '/phone': typeof AppLayoutPhoneIndexRoute
+  '/profile': typeof AppLayoutProfileIndexRoute
   '/registration-pin': typeof AppLayoutRegistrationPinIndexRoute
   '/seed-phrase': typeof AppLayoutSeedPhraseIndexRoute
+  '/team': typeof AppLayoutTeamIndexRoute
   '/wallet-created': typeof AppLayoutWalletCreatedIndexRoute
   '/wallet': typeof AppLayoutWalletIndexRoute
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
@@ -450,8 +482,10 @@ export interface FileRoutesByTo {
   '/login': typeof AppLayoutLoginIndexRoute
   '/phone-code': typeof AppLayoutPhoneCodeIndexRoute
   '/phone': typeof AppLayoutPhoneIndexRoute
+  '/profile': typeof AppLayoutProfileIndexRoute
   '/registration-pin': typeof AppLayoutRegistrationPinIndexRoute
   '/seed-phrase': typeof AppLayoutSeedPhraseIndexRoute
+  '/team': typeof AppLayoutTeamIndexRoute
   '/wallet-created': typeof AppLayoutWalletCreatedIndexRoute
   '/wallet': typeof AppLayoutWalletIndexRoute
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
@@ -478,8 +512,10 @@ export interface FileRoutesById {
   '/_app/_layout/login/': typeof AppLayoutLoginIndexRoute
   '/_app/_layout/phone-code/': typeof AppLayoutPhoneCodeIndexRoute
   '/_app/_layout/phone/': typeof AppLayoutPhoneIndexRoute
+  '/_app/_layout/profile/': typeof AppLayoutProfileIndexRoute
   '/_app/_layout/registration-pin/': typeof AppLayoutRegistrationPinIndexRoute
   '/_app/_layout/seed-phrase/': typeof AppLayoutSeedPhraseIndexRoute
+  '/_app/_layout/team/': typeof AppLayoutTeamIndexRoute
   '/_app/_layout/wallet-created/': typeof AppLayoutWalletCreatedIndexRoute
   '/_app/_layout/wallet/': typeof AppLayoutWalletIndexRoute
   '/_app/_layout/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
@@ -507,8 +543,10 @@ export interface FileRouteTypes {
     | '/login'
     | '/phone-code'
     | '/phone'
+    | '/profile'
     | '/registration-pin'
     | '/seed-phrase'
+    | '/team'
     | '/wallet-created'
     | '/wallet'
     | '/wallet/$/id'
@@ -533,8 +571,10 @@ export interface FileRouteTypes {
     | '/login'
     | '/phone-code'
     | '/phone'
+    | '/profile'
     | '/registration-pin'
     | '/seed-phrase'
+    | '/team'
     | '/wallet-created'
     | '/wallet'
     | '/wallet/$/id'
@@ -559,8 +599,10 @@ export interface FileRouteTypes {
     | '/_app/_layout/login/'
     | '/_app/_layout/phone-code/'
     | '/_app/_layout/phone/'
+    | '/_app/_layout/profile/'
     | '/_app/_layout/registration-pin/'
     | '/_app/_layout/seed-phrase/'
+    | '/_app/_layout/team/'
     | '/_app/_layout/wallet-created/'
     | '/_app/_layout/wallet/'
     | '/_app/_layout/wallet/$/id'
@@ -616,8 +658,10 @@ export const routeTree = rootRoute
         "/_app/_layout/login/",
         "/_app/_layout/phone-code/",
         "/_app/_layout/phone/",
+        "/_app/_layout/profile/",
         "/_app/_layout/registration-pin/",
         "/_app/_layout/seed-phrase/",
+        "/_app/_layout/team/",
         "/_app/_layout/wallet-created/",
         "/_app/_layout/wallet/",
         "/_app/_layout/wallet/$/id",
@@ -655,12 +699,20 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout/phone/index.tsx",
       "parent": "/_app/_layout"
     },
+    "/_app/_layout/profile/": {
+      "filePath": "_app/_layout/profile/index.tsx",
+      "parent": "/_app/_layout"
+    },
     "/_app/_layout/registration-pin/": {
       "filePath": "_app/_layout/registration-pin/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/seed-phrase/": {
       "filePath": "_app/_layout/seed-phrase/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/team/": {
+      "filePath": "_app/_layout/team/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/wallet-created/": {

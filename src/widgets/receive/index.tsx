@@ -19,7 +19,7 @@ export const Receive = () => {
       <Shadow cl={"bg-error"} />
       <div>
         <WalletHead select={selectNetwork} open={() => setChooseCategory(true)} icon={selectIcon} />
-        <QrCode />
+        <QrCode label={"Your Ethereum address"} value={"0x4B6C9766d3...B5567r90b6"} isCopy={true} />
         <div className="mt-5">
           <div className="px-4">
             <p className="text-center text-sm text-swiper-text font-medium">ETH Tokens received on this network can't be used or traded on other networks like Base, Solana, Binance Smart Chain, Polygon, Avalanche, Arbitrum, or TON.</p>
