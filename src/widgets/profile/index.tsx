@@ -20,7 +20,7 @@ export const ProfileContent = () => {
   return (
     <Wrapper cl={"pt-4 pb-16"}>
       <ShadowMany bg_one={"bg-green"} bg_two={"bg-error"} />
-      <div className="relative z-40 flex flex-col gap-8">
+      <div className="relative z-10 flex flex-col gap-8">
         <ProfileWrapper name={"News"}>
           <ProfileBlock>
             <SettingItem name={"Next Releases"} link={""} isLine={false}>
@@ -37,7 +37,7 @@ export const ProfileContent = () => {
             <SettingItem name={"Export Seed Phrase"} link={"/profile/seed-phrase"} isLine={true}>
               <SettingIcon icon={<ExportIcon />} color={"fe2c57"} />
             </SettingItem>
-            <SettingItem name={"Security"} link={""} isLine={true}>
+            <SettingItem name={"Security"} link={"/profile/security"} isLine={true}>
               <SettingIcon icon={<SecurityIcon />} color={"919193"} />
             </SettingItem>
             <SettingItem name={"Language"} link={""} isLine={true}>
