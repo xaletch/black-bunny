@@ -48,7 +48,7 @@ export const TeamContent = () => {
   }
 
   return (
-    <Wrapper cl={"pt-4"}>
+    <Wrapper cl={"pt-4 pb-16"}>
       <ShadowMany bg_one={"bg-green"} bg_two={"bg-error"} />
       <LeaguesLevel onClick={() => setIsLeagues(true)} />
       <div className="mt-[14px] grid grid-cols-2 gap-2">

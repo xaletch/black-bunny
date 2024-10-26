@@ -29,6 +29,7 @@ import { Route as AppLayoutWalletSendIndexImport } from './routes/_app/_layout/w
 import { Route as AppLayoutWalletChooseIndexImport } from './routes/_app/_layout/wallet/choose/index'
 import { Route as AppLayoutWalletBridgeIndexImport } from './routes/_app/_layout/wallet/bridge/index'
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
+import { Route as AppLayoutProfileSeedPhraseIndexImport } from './routes/_app/_layout/profile/seed-phrase/index'
 import { Route as AppLayoutHotTokensStopLossOrderIndexImport } from './routes/_app/_layout/hot-tokens/stop-loss-order/index'
 import { Route as AppLayoutHotTokensMarketOrderIndexImport } from './routes/_app/_layout/hot-tokens/market-order/index'
 import { Route as AppLayoutHotTokensLimitOrderIndexImport } from './routes/_app/_layout/hot-tokens/limit-order/index'
@@ -134,6 +135,12 @@ const AppLayoutWalletBridgeIndexRoute = AppLayoutWalletBridgeIndexImport.update(
 const AppLayoutSeedPhrasePinIndexRoute =
   AppLayoutSeedPhrasePinIndexImport.update({
     path: '/seed-phrase/pin/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutProfileSeedPhraseIndexRoute =
+  AppLayoutProfileSeedPhraseIndexImport.update({
+    path: '/profile/seed-phrase/',
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
@@ -322,6 +329,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutHotTokensStopLossOrderIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/profile/seed-phrase/': {
+      id: '/_app/_layout/profile/seed-phrase/'
+      path: '/profile/seed-phrase'
+      fullPath: '/profile/seed-phrase'
+      preLoaderRoute: typeof AppLayoutProfileSeedPhraseIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/seed-phrase/pin/': {
       id: '/_app/_layout/seed-phrase/pin/'
       path: '/seed-phrase/pin'
@@ -400,6 +414,7 @@ interface AppLayoutRouteChildren {
   AppLayoutHotTokensLimitOrderIndexRoute: typeof AppLayoutHotTokensLimitOrderIndexRoute
   AppLayoutHotTokensMarketOrderIndexRoute: typeof AppLayoutHotTokensMarketOrderIndexRoute
   AppLayoutHotTokensStopLossOrderIndexRoute: typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  AppLayoutProfileSeedPhraseIndexRoute: typeof AppLayoutProfileSeedPhraseIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
   AppLayoutWalletBridgeIndexRoute: typeof AppLayoutWalletBridgeIndexRoute
   AppLayoutWalletChooseIndexRoute: typeof AppLayoutWalletChooseIndexRoute
@@ -430,6 +445,7 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
     AppLayoutHotTokensMarketOrderIndexRoute,
   AppLayoutHotTokensStopLossOrderIndexRoute:
     AppLayoutHotTokensStopLossOrderIndexRoute,
+  AppLayoutProfileSeedPhraseIndexRoute: AppLayoutProfileSeedPhraseIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
   AppLayoutWalletBridgeIndexRoute: AppLayoutWalletBridgeIndexRoute,
   AppLayoutWalletChooseIndexRoute: AppLayoutWalletChooseIndexRoute,
@@ -464,6 +480,7 @@ export interface FileRoutesByFullPath {
   '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
@@ -493,6 +510,7 @@ export interface FileRoutesByTo {
   '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
@@ -523,6 +541,7 @@ export interface FileRoutesById {
   '/_app/_layout/hot-tokens/limit-order/': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/_app/_layout/hot-tokens/market-order/': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/_app/_layout/hot-tokens/stop-loss-order/': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/_app/_layout/profile/seed-phrase/': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
   '/_app/_layout/wallet/bridge/': typeof AppLayoutWalletBridgeIndexRoute
   '/_app/_layout/wallet/choose/': typeof AppLayoutWalletChooseIndexRoute
@@ -554,6 +573,7 @@ export interface FileRouteTypes {
     | '/hot-tokens/limit-order'
     | '/hot-tokens/market-order'
     | '/hot-tokens/stop-loss-order'
+    | '/profile/seed-phrase'
     | '/seed-phrase/pin'
     | '/wallet/bridge'
     | '/wallet/choose'
@@ -582,6 +602,7 @@ export interface FileRouteTypes {
     | '/hot-tokens/limit-order'
     | '/hot-tokens/market-order'
     | '/hot-tokens/stop-loss-order'
+    | '/profile/seed-phrase'
     | '/seed-phrase/pin'
     | '/wallet/bridge'
     | '/wallet/choose'
@@ -610,6 +631,7 @@ export interface FileRouteTypes {
     | '/_app/_layout/hot-tokens/limit-order/'
     | '/_app/_layout/hot-tokens/market-order/'
     | '/_app/_layout/hot-tokens/stop-loss-order/'
+    | '/_app/_layout/profile/seed-phrase/'
     | '/_app/_layout/seed-phrase/pin/'
     | '/_app/_layout/wallet/bridge/'
     | '/_app/_layout/wallet/choose/'
@@ -669,6 +691,7 @@ export const routeTree = rootRoute
         "/_app/_layout/hot-tokens/limit-order/",
         "/_app/_layout/hot-tokens/market-order/",
         "/_app/_layout/hot-tokens/stop-loss-order/",
+        "/_app/_layout/profile/seed-phrase/",
         "/_app/_layout/seed-phrase/pin/",
         "/_app/_layout/wallet/bridge/",
         "/_app/_layout/wallet/choose/",
@@ -741,6 +764,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/hot-tokens/stop-loss-order/": {
       "filePath": "_app/_layout/hot-tokens/stop-loss-order/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/profile/seed-phrase/": {
+      "filePath": "_app/_layout/profile/seed-phrase/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/seed-phrase/pin/": {
