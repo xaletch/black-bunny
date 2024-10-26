@@ -12,7 +12,7 @@ import { useNavigate } from '@tanstack/react-router'
 import { useState } from "react";
 
 
-export const NewPinContent = () => {
+export const SecurityNewPinContent = () => {
   const navigate = useNavigate();
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
 
@@ -22,7 +22,7 @@ export const NewPinContent = () => {
 
   const handleContinue = () => {
     setIsSuccess(false);
-    navigate({to: "/wallet"});
+    navigate({to: "/profile/security"});
   }
 
   const { firstPin, secondPin, isOneEntry, isError, handleKeys } = useRegisterPin(next);

@@ -31,12 +31,14 @@ import { Route as AppLayoutWalletBridgeIndexImport } from './routes/_app/_layout
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
 import { Route as AppLayoutProfileSeedPhraseIndexImport } from './routes/_app/_layout/profile/seed-phrase/index'
 import { Route as AppLayoutProfileSecurityIndexImport } from './routes/_app/_layout/profile/security/index'
+import { Route as AppLayoutProfileLanguageIndexImport } from './routes/_app/_layout/profile/language/index'
 import { Route as AppLayoutHotTokensStopLossOrderIndexImport } from './routes/_app/_layout/hot-tokens/stop-loss-order/index'
 import { Route as AppLayoutHotTokensMarketOrderIndexImport } from './routes/_app/_layout/hot-tokens/market-order/index'
 import { Route as AppLayoutHotTokensLimitOrderIndexImport } from './routes/_app/_layout/hot-tokens/limit-order/index'
 import { Route as AppLayoutForgotNewPinIndexImport } from './routes/_app/_layout/forgot/new-pin/index'
 import { Route as AppLayoutWalletSplatIdImport } from './routes/_app/_layout/wallet/$.id'
 import { Route as AppLayoutWalletSendToIndexImport } from './routes/_app/_layout/wallet/send/to/index'
+import { Route as AppLayoutProfileSecurityPinIndexImport } from './routes/_app/_layout/profile/security/pin/index'
 import { Route as AppLayoutWalletTokenSplatIdImport } from './routes/_app/_layout/wallet/token/$.id'
 import { Route as AppLayoutWalletReceiveSplatIdImport } from './routes/_app/_layout/wallet/receive/$.id'
 import { Route as AppLayoutWalletSendToTransactionIndexImport } from './routes/_app/_layout/wallet/send/to/transaction/index'
@@ -151,6 +153,12 @@ const AppLayoutProfileSecurityIndexRoute =
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
+const AppLayoutProfileLanguageIndexRoute =
+  AppLayoutProfileLanguageIndexImport.update({
+    path: '/profile/language/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
 const AppLayoutHotTokensStopLossOrderIndexRoute =
   AppLayoutHotTokensStopLossOrderIndexImport.update({
     path: '/hot-tokens/stop-loss-order/',
@@ -187,6 +195,12 @@ const AppLayoutWalletSendToIndexRoute = AppLayoutWalletSendToIndexImport.update(
     getParentRoute: () => AppLayoutRoute,
   } as any,
 )
+
+const AppLayoutProfileSecurityPinIndexRoute =
+  AppLayoutProfileSecurityPinIndexImport.update({
+    path: '/profile/security/pin/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
 
 const AppLayoutWalletTokenSplatIdRoute =
   AppLayoutWalletTokenSplatIdImport.update({
@@ -336,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutHotTokensStopLossOrderIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/profile/language/': {
+      id: '/_app/_layout/profile/language/'
+      path: '/profile/language'
+      fullPath: '/profile/language'
+      preLoaderRoute: typeof AppLayoutProfileLanguageIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/profile/security/': {
       id: '/_app/_layout/profile/security/'
       path: '/profile/security'
@@ -392,6 +413,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutWalletTokenSplatIdImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/profile/security/pin/': {
+      id: '/_app/_layout/profile/security/pin/'
+      path: '/profile/security/pin'
+      fullPath: '/profile/security/pin'
+      preLoaderRoute: typeof AppLayoutProfileSecurityPinIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/wallet/send/to/': {
       id: '/_app/_layout/wallet/send/to/'
       path: '/wallet/send/to'
@@ -428,6 +456,7 @@ interface AppLayoutRouteChildren {
   AppLayoutHotTokensLimitOrderIndexRoute: typeof AppLayoutHotTokensLimitOrderIndexRoute
   AppLayoutHotTokensMarketOrderIndexRoute: typeof AppLayoutHotTokensMarketOrderIndexRoute
   AppLayoutHotTokensStopLossOrderIndexRoute: typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  AppLayoutProfileLanguageIndexRoute: typeof AppLayoutProfileLanguageIndexRoute
   AppLayoutProfileSecurityIndexRoute: typeof AppLayoutProfileSecurityIndexRoute
   AppLayoutProfileSeedPhraseIndexRoute: typeof AppLayoutProfileSeedPhraseIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
@@ -436,6 +465,7 @@ interface AppLayoutRouteChildren {
   AppLayoutWalletSendIndexRoute: typeof AppLayoutWalletSendIndexRoute
   AppLayoutWalletReceiveSplatIdRoute: typeof AppLayoutWalletReceiveSplatIdRoute
   AppLayoutWalletTokenSplatIdRoute: typeof AppLayoutWalletTokenSplatIdRoute
+  AppLayoutProfileSecurityPinIndexRoute: typeof AppLayoutProfileSecurityPinIndexRoute
   AppLayoutWalletSendToIndexRoute: typeof AppLayoutWalletSendToIndexRoute
   AppLayoutWalletSendToTransactionIndexRoute: typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -460,6 +490,7 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
     AppLayoutHotTokensMarketOrderIndexRoute,
   AppLayoutHotTokensStopLossOrderIndexRoute:
     AppLayoutHotTokensStopLossOrderIndexRoute,
+  AppLayoutProfileLanguageIndexRoute: AppLayoutProfileLanguageIndexRoute,
   AppLayoutProfileSecurityIndexRoute: AppLayoutProfileSecurityIndexRoute,
   AppLayoutProfileSeedPhraseIndexRoute: AppLayoutProfileSeedPhraseIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
@@ -468,6 +499,7 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutWalletSendIndexRoute: AppLayoutWalletSendIndexRoute,
   AppLayoutWalletReceiveSplatIdRoute: AppLayoutWalletReceiveSplatIdRoute,
   AppLayoutWalletTokenSplatIdRoute: AppLayoutWalletTokenSplatIdRoute,
+  AppLayoutProfileSecurityPinIndexRoute: AppLayoutProfileSecurityPinIndexRoute,
   AppLayoutWalletSendToIndexRoute: AppLayoutWalletSendToIndexRoute,
   AppLayoutWalletSendToTransactionIndexRoute:
     AppLayoutWalletSendToTransactionIndexRoute,
@@ -496,6 +528,7 @@ export interface FileRoutesByFullPath {
   '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/profile/language': typeof AppLayoutProfileLanguageIndexRoute
   '/profile/security': typeof AppLayoutProfileSecurityIndexRoute
   '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
@@ -504,6 +537,7 @@ export interface FileRoutesByFullPath {
   '/wallet/send': typeof AppLayoutWalletSendIndexRoute
   '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
+  '/profile/security/pin': typeof AppLayoutProfileSecurityPinIndexRoute
   '/wallet/send/to': typeof AppLayoutWalletSendToIndexRoute
   '/wallet/send/to/transaction': typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -527,6 +561,7 @@ export interface FileRoutesByTo {
   '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/profile/language': typeof AppLayoutProfileLanguageIndexRoute
   '/profile/security': typeof AppLayoutProfileSecurityIndexRoute
   '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
@@ -535,6 +570,7 @@ export interface FileRoutesByTo {
   '/wallet/send': typeof AppLayoutWalletSendIndexRoute
   '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
+  '/profile/security/pin': typeof AppLayoutProfileSecurityPinIndexRoute
   '/wallet/send/to': typeof AppLayoutWalletSendToIndexRoute
   '/wallet/send/to/transaction': typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -559,6 +595,7 @@ export interface FileRoutesById {
   '/_app/_layout/hot-tokens/limit-order/': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/_app/_layout/hot-tokens/market-order/': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/_app/_layout/hot-tokens/stop-loss-order/': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/_app/_layout/profile/language/': typeof AppLayoutProfileLanguageIndexRoute
   '/_app/_layout/profile/security/': typeof AppLayoutProfileSecurityIndexRoute
   '/_app/_layout/profile/seed-phrase/': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
@@ -567,6 +604,7 @@ export interface FileRoutesById {
   '/_app/_layout/wallet/send/': typeof AppLayoutWalletSendIndexRoute
   '/_app/_layout/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/_app/_layout/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
+  '/_app/_layout/profile/security/pin/': typeof AppLayoutProfileSecurityPinIndexRoute
   '/_app/_layout/wallet/send/to/': typeof AppLayoutWalletSendToIndexRoute
   '/_app/_layout/wallet/send/to/transaction/': typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -592,6 +630,7 @@ export interface FileRouteTypes {
     | '/hot-tokens/limit-order'
     | '/hot-tokens/market-order'
     | '/hot-tokens/stop-loss-order'
+    | '/profile/language'
     | '/profile/security'
     | '/profile/seed-phrase'
     | '/seed-phrase/pin'
@@ -600,6 +639,7 @@ export interface FileRouteTypes {
     | '/wallet/send'
     | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
+    | '/profile/security/pin'
     | '/wallet/send/to'
     | '/wallet/send/to/transaction'
   fileRoutesByTo: FileRoutesByTo
@@ -622,6 +662,7 @@ export interface FileRouteTypes {
     | '/hot-tokens/limit-order'
     | '/hot-tokens/market-order'
     | '/hot-tokens/stop-loss-order'
+    | '/profile/language'
     | '/profile/security'
     | '/profile/seed-phrase'
     | '/seed-phrase/pin'
@@ -630,6 +671,7 @@ export interface FileRouteTypes {
     | '/wallet/send'
     | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
+    | '/profile/security/pin'
     | '/wallet/send/to'
     | '/wallet/send/to/transaction'
   id:
@@ -652,6 +694,7 @@ export interface FileRouteTypes {
     | '/_app/_layout/hot-tokens/limit-order/'
     | '/_app/_layout/hot-tokens/market-order/'
     | '/_app/_layout/hot-tokens/stop-loss-order/'
+    | '/_app/_layout/profile/language/'
     | '/_app/_layout/profile/security/'
     | '/_app/_layout/profile/seed-phrase/'
     | '/_app/_layout/seed-phrase/pin/'
@@ -660,6 +703,7 @@ export interface FileRouteTypes {
     | '/_app/_layout/wallet/send/'
     | '/_app/_layout/wallet/receive/$/id'
     | '/_app/_layout/wallet/token/$/id'
+    | '/_app/_layout/profile/security/pin/'
     | '/_app/_layout/wallet/send/to/'
     | '/_app/_layout/wallet/send/to/transaction/'
   fileRoutesById: FileRoutesById
@@ -713,6 +757,7 @@ export const routeTree = rootRoute
         "/_app/_layout/hot-tokens/limit-order/",
         "/_app/_layout/hot-tokens/market-order/",
         "/_app/_layout/hot-tokens/stop-loss-order/",
+        "/_app/_layout/profile/language/",
         "/_app/_layout/profile/security/",
         "/_app/_layout/profile/seed-phrase/",
         "/_app/_layout/seed-phrase/pin/",
@@ -721,6 +766,7 @@ export const routeTree = rootRoute
         "/_app/_layout/wallet/send/",
         "/_app/_layout/wallet/receive/$/id",
         "/_app/_layout/wallet/token/$/id",
+        "/_app/_layout/profile/security/pin/",
         "/_app/_layout/wallet/send/to/",
         "/_app/_layout/wallet/send/to/transaction/"
       ]
@@ -789,6 +835,10 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout/hot-tokens/stop-loss-order/index.tsx",
       "parent": "/_app/_layout"
     },
+    "/_app/_layout/profile/language/": {
+      "filePath": "_app/_layout/profile/language/index.tsx",
+      "parent": "/_app/_layout"
+    },
     "/_app/_layout/profile/security/": {
       "filePath": "_app/_layout/profile/security/index.tsx",
       "parent": "/_app/_layout"
@@ -819,6 +869,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/wallet/token/$/id": {
       "filePath": "_app/_layout/wallet/token/$.id.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/profile/security/pin/": {
+      "filePath": "_app/_layout/profile/security/pin/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/wallet/send/to/": {

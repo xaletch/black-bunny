@@ -10,7 +10,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     "/seed-phrase/pin", "wallet-created", "/phone", "phone-code", "/wallet/choose",
     "/wallet/receive", "/wallet/bridge", "/wallet/send", "/wallet/receive/id", "/wallet/send/to",
     "/wallet/send/to/transaction", "/hot-tokens/market-order", "/hot-tokens/limit-order", "/hot-tokens/stop-loss-order",
-    "/profile/seed-phrase"
+    "/profile/seed-phrase", "/profile/security", "/profile/security/pin", "/profile/language"
   ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location) || /\/wallet\/receive\/\d+/.test(location);
 
   return (

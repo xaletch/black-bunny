@@ -6,4 +6,5 @@ export interface LoginTitleProps {
   text: string;
   color?: string;
   cl?: string
+  cl_icon?: string;
 }

@@ -40,7 +40,7 @@ export const ProfileContent = () => {
             <SettingItem name={"Security"} link={"/profile/security"} isLine={true}>
               <SettingIcon icon={<SecurityIcon />} color={"919193"} />
             </SettingItem>
-            <SettingItem name={"Language"} link={""} isLine={true}>
+            <SettingItem name={"Language"} link={"/profile/language"} isLine={true}>
               <SettingIcon icon={<LanguageIcon />} color={"5754e1"} />
             </SettingItem>
             <SettingItem name={"Customization"} link={""} isLine={true}>
