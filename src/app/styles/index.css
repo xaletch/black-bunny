@@ -302,3 +302,26 @@ input {
   width: 20px;
   height: 20px;
 }
+
+
+.rnc__notification-item {
+  box-shadow: none !important;
+}
+.rnc__notification-container {
+  display: flex;
+  justify-content: center;
+}
+.rnc__notification-container--top-left,
+.rnc__notification-container--top-right {
+  position: fixed;
+  left: 0;
+  right: 0;
+  padding: 0 0 0 16px;
+  pointer-events: none;
+}
+.rnc__notification {
+  width: 100% !important;
+  border-radius: 100%;
+  margin: 0 auto;
+  pointer-events: auto;
+}

@@ -4,7 +4,6 @@ import { ShadowMany } from "@/shared/ui/shadow/many"
 import { TeamItem } from "@/entities/team/item"
 import { CopyIcon } from "@/shared/icons/CopyIcon"
 import { QrIcon } from "@/shared/icons/QrIcon"
-import CopyText from "@/shared/utils/copyText"
 import { RewardsWrapper } from "./rewards"
 import { RewardsSortWrapper } from "./rewards/sort"
 import { RewardSort } from "@/features/reward-sort"
@@ -19,6 +18,7 @@ import { AboutLeaguesMenu, leagues } from "./about-leagues-menu"
 import { ItemInfoMenu } from "./about-leagues-menu/item-info-menu"
 import { QrCode } from "../receive/qrcode"
 import { Button } from "@/shared/ui/buttons"
+import CopyText from "@/shared/utils/copyText"
 
 const periodItems = ["All Time", "Today", "Month", "Year"];
 

@@ -2,8 +2,8 @@ import { FC } from "react"
 import { TradeCardProps } from "./trade-card.interface"
 import { DotsIcon } from "@/shared/icons/DotsIcon"
 import { CopyIcon } from "@/shared/icons/CopyIcon"
-import CopyText from "@/shared/utils/copyText"
 import { Button } from "@/shared/ui/buttons"
+import CopyText from "@/shared/utils/copyText"
 
 export const TradeCard:FC<TradeCardProps> = ({ icon, name, amount, profit, ca, orders, free, handleTrade, onActions }) => {
   return (
