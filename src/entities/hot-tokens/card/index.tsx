@@ -11,7 +11,7 @@ export const TokensCard: FC<TokenCardProps> = ({ avatar, card_numeric, name, CA,
     <div className="bg-card rounded-[20px]">
       <div className="p-4 flex flex-col">
         <TokensCardHead avatar={avatar} card_numeric={card_numeric} name={name} CA={CA} P={P} />
-        <TokensCardAnalytic discount={discount} percent={percent} isAnalyticUp={isAnalyticUp} />
+        <TokensCardAnalytic discount={discount} percent={percent} isAnalyticUp={isAnalyticUp} isAnalytic={true} />
         <TokensCardStatistics liquidity={info.liquidity} volume={info.volume} mcap={info.mcap} age={info.age} holders={info.holders} tax={info.tax} />
         <div className="mt-4 flex items-center gap-2">
           <div className="flex-1">

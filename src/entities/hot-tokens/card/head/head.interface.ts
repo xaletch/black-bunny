@@ -4,4 +4,5 @@ export interface TokenCardHeadProps {
   card_numeric: string;
   CA: string;
   P: string;
+  isToken? : boolean;
 }

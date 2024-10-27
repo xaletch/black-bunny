@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AppLayoutImport } from './routes/_app/_layout'
 import { Route as AppLayoutWalletIndexImport } from './routes/_app/_layout/wallet/index'
 import { Route as AppLayoutWalletCreatedIndexImport } from './routes/_app/_layout/wallet-created/index'
+import { Route as AppLayoutTradeIndexImport } from './routes/_app/_layout/trade/index'
 import { Route as AppLayoutTeamIndexImport } from './routes/_app/_layout/team/index'
 import { Route as AppLayoutSeedPhraseIndexImport } from './routes/_app/_layout/seed-phrase/index'
 import { Route as AppLayoutRegistrationPinIndexImport } from './routes/_app/_layout/registration-pin/index'
@@ -28,6 +29,9 @@ import { Route as AppLayoutForgotIndexImport } from './routes/_app/_layout/forgo
 import { Route as AppLayoutWalletSendIndexImport } from './routes/_app/_layout/wallet/send/index'
 import { Route as AppLayoutWalletChooseIndexImport } from './routes/_app/_layout/wallet/choose/index'
 import { Route as AppLayoutWalletBridgeIndexImport } from './routes/_app/_layout/wallet/bridge/index'
+import { Route as AppLayoutTradeWalletsIndexImport } from './routes/_app/_layout/trade/wallets/index'
+import { Route as AppLayoutTradeHideIndexImport } from './routes/_app/_layout/trade/hide/index'
+import { Route as AppLayoutTradeActionIndexImport } from './routes/_app/_layout/trade/action/index'
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
 import { Route as AppLayoutProfileTwoFactorIndexImport } from './routes/_app/_layout/profile/two-factor/index'
 import { Route as AppLayoutProfileSeedPhraseIndexImport } from './routes/_app/_layout/profile/seed-phrase/index'
@@ -46,6 +50,7 @@ import { Route as AppLayoutProfileTwoFactorChangeCodeIndexImport } from './route
 import { Route as AppLayoutProfileSecurityPinIndexImport } from './routes/_app/_layout/profile/security/pin/index'
 import { Route as AppLayoutWalletTokenSplatIdImport } from './routes/_app/_layout/wallet/token/$.id'
 import { Route as AppLayoutWalletReceiveSplatIdImport } from './routes/_app/_layout/wallet/receive/$.id'
+import { Route as AppLayoutTradeTokenSplatIdImport } from './routes/_app/_layout/trade/token/$.id'
 import { Route as AppLayoutWalletSendToTransactionIndexImport } from './routes/_app/_layout/wallet/send/to/transaction/index'
 
 // Create Virtual Routes
@@ -74,6 +79,11 @@ const AppLayoutWalletCreatedIndexRoute =
     path: '/wallet-created/',
     getParentRoute: () => AppLayoutRoute,
   } as any)
+
+const AppLayoutTradeIndexRoute = AppLayoutTradeIndexImport.update({
+  path: '/trade/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
 
 const AppLayoutTeamIndexRoute = AppLayoutTeamIndexImport.update({
   path: '/team/',
@@ -139,6 +149,23 @@ const AppLayoutWalletBridgeIndexRoute = AppLayoutWalletBridgeIndexImport.update(
     getParentRoute: () => AppLayoutRoute,
   } as any,
 )
+
+const AppLayoutTradeWalletsIndexRoute = AppLayoutTradeWalletsIndexImport.update(
+  {
+    path: '/trade/wallets/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any,
+)
+
+const AppLayoutTradeHideIndexRoute = AppLayoutTradeHideIndexImport.update({
+  path: '/trade/hide/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
+
+const AppLayoutTradeActionIndexRoute = AppLayoutTradeActionIndexImport.update({
+  path: '/trade/action/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
 
 const AppLayoutSeedPhrasePinIndexRoute =
   AppLayoutSeedPhrasePinIndexImport.update({
@@ -249,6 +276,13 @@ const AppLayoutWalletReceiveSplatIdRoute =
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
+const AppLayoutTradeTokenSplatIdRoute = AppLayoutTradeTokenSplatIdImport.update(
+  {
+    path: '/trade/token/$/id',
+    getParentRoute: () => AppLayoutRoute,
+  } as any,
+)
+
 const AppLayoutWalletSendToTransactionIndexRoute =
   AppLayoutWalletSendToTransactionIndexImport.update({
     path: '/wallet/send/to/transaction/',
@@ -334,6 +368,13 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof AppLayoutTeamIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/trade/': {
+      id: '/_app/_layout/trade/'
+      path: '/trade'
+      fullPath: '/trade'
+      preLoaderRoute: typeof AppLayoutTradeIndexImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/wallet-created/': {
@@ -427,6 +468,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutSeedPhrasePinIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/trade/action/': {
+      id: '/_app/_layout/trade/action/'
+      path: '/trade/action'
+      fullPath: '/trade/action'
+      preLoaderRoute: typeof AppLayoutTradeActionIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/trade/hide/': {
+      id: '/_app/_layout/trade/hide/'
+      path: '/trade/hide'
+      fullPath: '/trade/hide'
+      preLoaderRoute: typeof AppLayoutTradeHideIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/trade/wallets/': {
+      id: '/_app/_layout/trade/wallets/'
+      path: '/trade/wallets'
+      fullPath: '/trade/wallets'
+      preLoaderRoute: typeof AppLayoutTradeWalletsIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/wallet/bridge/': {
       id: '/_app/_layout/wallet/bridge/'
       path: '/wallet/bridge'
@@ -446,6 +508,13 @@ declare module '@tanstack/react-router' {
       path: '/wallet/send'
       fullPath: '/wallet/send'
       preLoaderRoute: typeof AppLayoutWalletSendIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/trade/token/$/id': {
+      id: '/_app/_layout/trade/token/$/id'
+      path: '/trade/token/$/id'
+      fullPath: '/trade/token/$/id'
+      preLoaderRoute: typeof AppLayoutTradeTokenSplatIdImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/wallet/receive/$/id': {
@@ -519,6 +588,7 @@ interface AppLayoutRouteChildren {
   AppLayoutRegistrationPinIndexRoute: typeof AppLayoutRegistrationPinIndexRoute
   AppLayoutSeedPhraseIndexRoute: typeof AppLayoutSeedPhraseIndexRoute
   AppLayoutTeamIndexRoute: typeof AppLayoutTeamIndexRoute
+  AppLayoutTradeIndexRoute: typeof AppLayoutTradeIndexRoute
   AppLayoutWalletCreatedIndexRoute: typeof AppLayoutWalletCreatedIndexRoute
   AppLayoutWalletIndexRoute: typeof AppLayoutWalletIndexRoute
   AppLayoutWalletSplatIdRoute: typeof AppLayoutWalletSplatIdRoute
@@ -532,9 +602,13 @@ interface AppLayoutRouteChildren {
   AppLayoutProfileSeedPhraseIndexRoute: typeof AppLayoutProfileSeedPhraseIndexRoute
   AppLayoutProfileTwoFactorIndexRoute: typeof AppLayoutProfileTwoFactorIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
+  AppLayoutTradeActionIndexRoute: typeof AppLayoutTradeActionIndexRoute
+  AppLayoutTradeHideIndexRoute: typeof AppLayoutTradeHideIndexRoute
+  AppLayoutTradeWalletsIndexRoute: typeof AppLayoutTradeWalletsIndexRoute
   AppLayoutWalletBridgeIndexRoute: typeof AppLayoutWalletBridgeIndexRoute
   AppLayoutWalletChooseIndexRoute: typeof AppLayoutWalletChooseIndexRoute
   AppLayoutWalletSendIndexRoute: typeof AppLayoutWalletSendIndexRoute
+  AppLayoutTradeTokenSplatIdRoute: typeof AppLayoutTradeTokenSplatIdRoute
   AppLayoutWalletReceiveSplatIdRoute: typeof AppLayoutWalletReceiveSplatIdRoute
   AppLayoutWalletTokenSplatIdRoute: typeof AppLayoutWalletTokenSplatIdRoute
   AppLayoutProfileSecurityPinIndexRoute: typeof AppLayoutProfileSecurityPinIndexRoute
@@ -555,6 +629,7 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutRegistrationPinIndexRoute: AppLayoutRegistrationPinIndexRoute,
   AppLayoutSeedPhraseIndexRoute: AppLayoutSeedPhraseIndexRoute,
   AppLayoutTeamIndexRoute: AppLayoutTeamIndexRoute,
+  AppLayoutTradeIndexRoute: AppLayoutTradeIndexRoute,
   AppLayoutWalletCreatedIndexRoute: AppLayoutWalletCreatedIndexRoute,
   AppLayoutWalletIndexRoute: AppLayoutWalletIndexRoute,
   AppLayoutWalletSplatIdRoute: AppLayoutWalletSplatIdRoute,
@@ -572,9 +647,13 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutProfileSeedPhraseIndexRoute: AppLayoutProfileSeedPhraseIndexRoute,
   AppLayoutProfileTwoFactorIndexRoute: AppLayoutProfileTwoFactorIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
+  AppLayoutTradeActionIndexRoute: AppLayoutTradeActionIndexRoute,
+  AppLayoutTradeHideIndexRoute: AppLayoutTradeHideIndexRoute,
+  AppLayoutTradeWalletsIndexRoute: AppLayoutTradeWalletsIndexRoute,
   AppLayoutWalletBridgeIndexRoute: AppLayoutWalletBridgeIndexRoute,
   AppLayoutWalletChooseIndexRoute: AppLayoutWalletChooseIndexRoute,
   AppLayoutWalletSendIndexRoute: AppLayoutWalletSendIndexRoute,
+  AppLayoutTradeTokenSplatIdRoute: AppLayoutTradeTokenSplatIdRoute,
   AppLayoutWalletReceiveSplatIdRoute: AppLayoutWalletReceiveSplatIdRoute,
   AppLayoutWalletTokenSplatIdRoute: AppLayoutWalletTokenSplatIdRoute,
   AppLayoutProfileSecurityPinIndexRoute: AppLayoutProfileSecurityPinIndexRoute,
@@ -605,6 +684,7 @@ export interface FileRoutesByFullPath {
   '/registration-pin': typeof AppLayoutRegistrationPinIndexRoute
   '/seed-phrase': typeof AppLayoutSeedPhraseIndexRoute
   '/team': typeof AppLayoutTeamIndexRoute
+  '/trade': typeof AppLayoutTradeIndexRoute
   '/wallet-created': typeof AppLayoutWalletCreatedIndexRoute
   '/wallet': typeof AppLayoutWalletIndexRoute
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
@@ -618,9 +698,13 @@ export interface FileRoutesByFullPath {
   '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/profile/two-factor': typeof AppLayoutProfileTwoFactorIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/trade/action': typeof AppLayoutTradeActionIndexRoute
+  '/trade/hide': typeof AppLayoutTradeHideIndexRoute
+  '/trade/wallets': typeof AppLayoutTradeWalletsIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
   '/wallet/send': typeof AppLayoutWalletSendIndexRoute
+  '/trade/token/$/id': typeof AppLayoutTradeTokenSplatIdRoute
   '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
   '/profile/security/pin': typeof AppLayoutProfileSecurityPinIndexRoute
@@ -643,6 +727,7 @@ export interface FileRoutesByTo {
   '/registration-pin': typeof AppLayoutRegistrationPinIndexRoute
   '/seed-phrase': typeof AppLayoutSeedPhraseIndexRoute
   '/team': typeof AppLayoutTeamIndexRoute
+  '/trade': typeof AppLayoutTradeIndexRoute
   '/wallet-created': typeof AppLayoutWalletCreatedIndexRoute
   '/wallet': typeof AppLayoutWalletIndexRoute
   '/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
@@ -656,9 +741,13 @@ export interface FileRoutesByTo {
   '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/profile/two-factor': typeof AppLayoutProfileTwoFactorIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/trade/action': typeof AppLayoutTradeActionIndexRoute
+  '/trade/hide': typeof AppLayoutTradeHideIndexRoute
+  '/trade/wallets': typeof AppLayoutTradeWalletsIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
   '/wallet/send': typeof AppLayoutWalletSendIndexRoute
+  '/trade/token/$/id': typeof AppLayoutTradeTokenSplatIdRoute
   '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
   '/profile/security/pin': typeof AppLayoutProfileSecurityPinIndexRoute
@@ -682,6 +771,7 @@ export interface FileRoutesById {
   '/_app/_layout/registration-pin/': typeof AppLayoutRegistrationPinIndexRoute
   '/_app/_layout/seed-phrase/': typeof AppLayoutSeedPhraseIndexRoute
   '/_app/_layout/team/': typeof AppLayoutTeamIndexRoute
+  '/_app/_layout/trade/': typeof AppLayoutTradeIndexRoute
   '/_app/_layout/wallet-created/': typeof AppLayoutWalletCreatedIndexRoute
   '/_app/_layout/wallet/': typeof AppLayoutWalletIndexRoute
   '/_app/_layout/wallet/$/id': typeof AppLayoutWalletSplatIdRoute
@@ -695,9 +785,13 @@ export interface FileRoutesById {
   '/_app/_layout/profile/seed-phrase/': typeof AppLayoutProfileSeedPhraseIndexRoute
   '/_app/_layout/profile/two-factor/': typeof AppLayoutProfileTwoFactorIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
+  '/_app/_layout/trade/action/': typeof AppLayoutTradeActionIndexRoute
+  '/_app/_layout/trade/hide/': typeof AppLayoutTradeHideIndexRoute
+  '/_app/_layout/trade/wallets/': typeof AppLayoutTradeWalletsIndexRoute
   '/_app/_layout/wallet/bridge/': typeof AppLayoutWalletBridgeIndexRoute
   '/_app/_layout/wallet/choose/': typeof AppLayoutWalletChooseIndexRoute
   '/_app/_layout/wallet/send/': typeof AppLayoutWalletSendIndexRoute
+  '/_app/_layout/trade/token/$/id': typeof AppLayoutTradeTokenSplatIdRoute
   '/_app/_layout/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/_app/_layout/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
   '/_app/_layout/profile/security/pin/': typeof AppLayoutProfileSecurityPinIndexRoute
@@ -722,6 +816,7 @@ export interface FileRouteTypes {
     | '/registration-pin'
     | '/seed-phrase'
     | '/team'
+    | '/trade'
     | '/wallet-created'
     | '/wallet'
     | '/wallet/$/id'
@@ -735,9 +830,13 @@ export interface FileRouteTypes {
     | '/profile/seed-phrase'
     | '/profile/two-factor'
     | '/seed-phrase/pin'
+    | '/trade/action'
+    | '/trade/hide'
+    | '/trade/wallets'
     | '/wallet/bridge'
     | '/wallet/choose'
     | '/wallet/send'
+    | '/trade/token/$/id'
     | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
     | '/profile/security/pin'
@@ -759,6 +858,7 @@ export interface FileRouteTypes {
     | '/registration-pin'
     | '/seed-phrase'
     | '/team'
+    | '/trade'
     | '/wallet-created'
     | '/wallet'
     | '/wallet/$/id'
@@ -772,9 +872,13 @@ export interface FileRouteTypes {
     | '/profile/seed-phrase'
     | '/profile/two-factor'
     | '/seed-phrase/pin'
+    | '/trade/action'
+    | '/trade/hide'
+    | '/trade/wallets'
     | '/wallet/bridge'
     | '/wallet/choose'
     | '/wallet/send'
+    | '/trade/token/$/id'
     | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
     | '/profile/security/pin'
@@ -796,6 +900,7 @@ export interface FileRouteTypes {
     | '/_app/_layout/registration-pin/'
     | '/_app/_layout/seed-phrase/'
     | '/_app/_layout/team/'
+    | '/_app/_layout/trade/'
     | '/_app/_layout/wallet-created/'
     | '/_app/_layout/wallet/'
     | '/_app/_layout/wallet/$/id'
@@ -809,9 +914,13 @@ export interface FileRouteTypes {
     | '/_app/_layout/profile/seed-phrase/'
     | '/_app/_layout/profile/two-factor/'
     | '/_app/_layout/seed-phrase/pin/'
+    | '/_app/_layout/trade/action/'
+    | '/_app/_layout/trade/hide/'
+    | '/_app/_layout/trade/wallets/'
     | '/_app/_layout/wallet/bridge/'
     | '/_app/_layout/wallet/choose/'
     | '/_app/_layout/wallet/send/'
+    | '/_app/_layout/trade/token/$/id'
     | '/_app/_layout/wallet/receive/$/id'
     | '/_app/_layout/wallet/token/$/id'
     | '/_app/_layout/profile/security/pin/'
@@ -864,6 +973,7 @@ export const routeTree = rootRoute
         "/_app/_layout/registration-pin/",
         "/_app/_layout/seed-phrase/",
         "/_app/_layout/team/",
+        "/_app/_layout/trade/",
         "/_app/_layout/wallet-created/",
         "/_app/_layout/wallet/",
         "/_app/_layout/wallet/$/id",
@@ -877,9 +987,13 @@ export const routeTree = rootRoute
         "/_app/_layout/profile/seed-phrase/",
         "/_app/_layout/profile/two-factor/",
         "/_app/_layout/seed-phrase/pin/",
+        "/_app/_layout/trade/action/",
+        "/_app/_layout/trade/hide/",
+        "/_app/_layout/trade/wallets/",
         "/_app/_layout/wallet/bridge/",
         "/_app/_layout/wallet/choose/",
         "/_app/_layout/wallet/send/",
+        "/_app/_layout/trade/token/$/id",
         "/_app/_layout/wallet/receive/$/id",
         "/_app/_layout/wallet/token/$/id",
         "/_app/_layout/profile/security/pin/",
@@ -924,6 +1038,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/team/": {
       "filePath": "_app/_layout/team/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/trade/": {
+      "filePath": "_app/_layout/trade/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/wallet-created/": {
@@ -978,6 +1096,18 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout/seed-phrase/pin/index.tsx",
       "parent": "/_app/_layout"
     },
+    "/_app/_layout/trade/action/": {
+      "filePath": "_app/_layout/trade/action/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/trade/hide/": {
+      "filePath": "_app/_layout/trade/hide/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/trade/wallets/": {
+      "filePath": "_app/_layout/trade/wallets/index.tsx",
+      "parent": "/_app/_layout"
+    },
     "/_app/_layout/wallet/bridge/": {
       "filePath": "_app/_layout/wallet/bridge/index.tsx",
       "parent": "/_app/_layout"
@@ -988,6 +1118,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/wallet/send/": {
       "filePath": "_app/_layout/wallet/send/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/trade/token/$/id": {
+      "filePath": "_app/_layout/trade/token/$.id.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/wallet/receive/$/id": {

@@ -52,6 +52,7 @@ export default {
         'checkbox': 'var(--checkbox)',
         'setting-border:': 'var(--setting-border)',
         'bg-checkbox': 'var(--bg-checkbox)',
+        'border2': 'var(--border2',
       },
       boxShadow: {
         "navbar-shadow": "var(--navbar-shadow)",

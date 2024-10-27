@@ -12,6 +12,7 @@ import { OptionCard } from "@/shared/ui/optionCard"
 import avatar from "@/assets/images/avatar.png";
 import { HotTokensTrade } from "@/entities/hot-tokens/trade"
 import { TradeItem } from "@/entities/hot-tokens/trade/item"
+import { useNavigate } from "@tanstack/react-router"
 
 const category = [
   {
@@ -53,6 +54,7 @@ const info = {
 }
 
 export const HotTokensContent = () => {
+  const navigate = useNavigate();
   const [selectCategory, setSelectCategory] = useState<number>(1);
   const [select, setSelect] = useState<number>(1);
   const [isCategory, setIsCategory] = useState<boolean>(false);  
@@ -155,14 +157,14 @@ export const HotTokensContent = () => {
               <div className="flex flex-col gap-3">
                 {selectTrade === 0 ? (
                   <>
-                    <TradeItem link={"/hot-tokens/market-order"} name={"Market Order"} description={"Buy immediately at the current market price."}/>
-                    <TradeItem link={"/hot-tokens/limit-order"} name={"Limit Order"} description={"Set a specific price to buy. Order executes when the market reaches your price."}/>
+                    <TradeItem onClick={() => navigate({ to: "/hot-tokens/market-order" })} name={"Market Order"} description={"Buy immediately at the current market price."}/>
+                    <TradeItem onClick={() => navigate({ to: "/hot-tokens/limit-order" })} name={"Limit Order"} description={"Set a specific price to buy. Order executes when the market reaches your price."}/>
                   </>
                 ) : (
                   <>
-                    <TradeItem link={"/hot-tokens/market-order"} name={"Market Order"} description={"Sell immediately at the current market price."}/>
-                    <TradeItem link={"/hot-tokens/limit-order"} name={"Limit Order"} description={"Set a specific price to sell. Order executes when the market reaches your price."}/>
-                    <TradeItem link={"/hot-tokens/stop-loss-order"} name={"Stop Loss Order"} description={"Automatically sell when the price drops to your set level to minimize losses."}/>
+                    <TradeItem onClick={() => navigate({ to: "/hot-tokens/market-order" })} name={"Market Order"} description={"Sell immediately at the current market price."}/>
+                    <TradeItem onClick={() => navigate({ to: "/hot-tokens/limit-order" })} name={"Limit Order"} description={"Set a specific price to sell. Order executes when the market reaches your price."}/>
+                    <TradeItem onClick={() => navigate({ to: "/hot-tokens/stop-loss-order" })} name={"Stop Loss Order"} description={"Automatically sell when the price drops to your set level to minimize losses."}/>
                   </>
                 )}
               </div>

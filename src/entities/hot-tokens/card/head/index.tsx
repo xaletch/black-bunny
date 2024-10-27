@@ -4,14 +4,16 @@ import { CopyIcon } from "@/shared/icons/CopyIcon"
 import { NoteIcon } from "@/shared/icons/NoteIcon"
 import CopyText from "@/shared/utils/copyText"
 
-export const TokensCardHead: FC<TokenCardHeadProps> = ({ avatar, card_numeric, name, CA, P }) => {
+export const TokensCardHead: FC<TokenCardHeadProps> = ({ avatar, card_numeric, name, CA, P, isToken }) => {
+  console.log(isToken)
   return (
     <div className="flex items-center gap-4">
       <div className='w-12 h-12'>
         <img className="w-full rounded-full" src={avatar} alt={name} />
       </div>
       <div className="flex-1">
-        <h3 className="text-base font-bold text-white leading-[1.5]"><span className="text-green">#{card_numeric}</span> {name}</h3>
+        <h3 className="text-base font-bold text-white leading-[1.5]">
+        {!isToken && <span className="text-green">#{card_numeric}</span>}  {name}</h3>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             <div className="flex items-center gap-1">
@@ -29,9 +31,9 @@ export const TokensCardHead: FC<TokenCardHeadProps> = ({ avatar, card_numeric, n
           </div>
         </div>
       </div>
-      <div className="w-8 h-8 flex items-center justify-center">
+      {!isToken && <div className="w-8 h-8 flex items-center justify-center">
         <NoteIcon />
-      </div>
+      </div>}
     </div>
   )
 }

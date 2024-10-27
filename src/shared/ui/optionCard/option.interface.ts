@@ -5,4 +5,5 @@ export interface OptionCardProps {
   select: boolean;
   onClick: () => void;
   cl?: string;
+  border?: string;
 }

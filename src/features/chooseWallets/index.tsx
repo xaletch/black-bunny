@@ -11,7 +11,7 @@ import { OptionCardContent } from "@/shared/ui/optionCard/content"
 import { WalletSeeIcon } from "@/shared/icons/WalletSeeIcon"
 import { Button } from "@/shared/ui/buttons"
 import { ImportIcon } from "@/shared/icons/ImportIcon"
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { ImportWalletMenu } from "./importWallet"
 import { CreateWalletMenu } from "./createWallet"
 
@@ -58,6 +58,9 @@ const wallets = [
 ]
 
 export const ChooseWallets = () => {
+  const location = useLocation().pathname;
+  const navigate = useNavigate();
+
   const [select, setSelect] = useState<string>("all");
   const [selectAccount, setSelectAccount] = useState<string>("Account 1");
 
@@ -65,6 +68,16 @@ export const ChooseWallets = () => {
   const [stepImportWallet, setStepImportWallet] = useState<number>(0);
   const [isCreateWallet, setCreateWallet] = useState<boolean>(false);
   const [stepCreateWallet, setStepCreateWallet] = useState<number>(0);
+
+  const handleSelectAccount = (account: string) => {
+    if (location === "/trade/wallets") {
+      setSelectAccount(account);
+      navigate({ to: "/trade" });
+    } else {
+      setSelectAccount(account);
+
+    }
+  }
   
   return (
     <Wrapper cl="pt-4 flex flex-col flex-1 justify-between overflow-hidden">
@@ -77,7 +90,7 @@ export const ChooseWallets = () => {
         <div className="mt-5">
           <div className="flex flex-col gap-3">
             {wallets.map((item, index) => (
-              <OptionCard key={index} select={selectAccount === item.name} onClick={() => setSelectAccount(item.name)}>
+              <OptionCard key={index} select={selectAccount === item.name} onClick={() => handleSelectAccount(item.name)}>
                 <OptionCardContent icon={item.img}>
                   <div className="flex flex-col flex-1">
                     <h3 className="text-white text-base leading-4 font-medium">{item.name}</h3>

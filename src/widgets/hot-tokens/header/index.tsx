@@ -1,12 +1,14 @@
 import avatar from "@/assets/images/avatar.png";
 import { EthereumIcon2 } from "@/shared/icons/NetworksIcon";
+import { useNavigate } from "@tanstack/react-router"
 
-export const HotTokensHeader = () => {
+export const HotTokensHeader = ({ link }: { link?: string }) => {
+  const navigate = useNavigate();
   return (
     <div className="w-full relative z-50">
       <div className="pt-2 pb-3 grid grid-cols-2">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10">
+          <div className="w-10 h-10" onClick={link ? () => navigate({ to: link }) : () => {}}>
             <img className="w-full rounded-full" src={avatar} alt="account 1" />
           </div>
           <div>
