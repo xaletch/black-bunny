@@ -13,6 +13,9 @@ import { CardsContentWrapper } from "../card-wrapper"
 import { LoginTitle } from "@/widgets/loginTitle"
 import { ConfirmationMenu } from "@/widgets/confirmationMenu"
 import { EyeIcon } from "@/shared/icons/EyeIcon"
+import { TradeActions } from "../actions"
+import { WarningIcon } from "@/shared/icons/WarningIcon"
+import { Button } from "@/shared/ui/buttons"
 
 const category = [
   {
@@ -37,7 +40,8 @@ export const TradeHideContent = () => {
   const [isCategory, setIsCategory] = useState<boolean>(false);  
 
   const [searchValue, setSearchValue] = useState<string>("");
-
+  const [isActions, setIsActions] = useState<boolean>(false);
+  const [isDelete, setIsDelete] = useState<boolean>(false);
   const noTrade = true;
 
   const handleSelectCategory = (index: number) => {
@@ -61,8 +65,8 @@ export const TradeHideContent = () => {
         </TokenTrade>
         {!noTrade && (
           <CardsContentWrapper>
-            <TradeCard handleTrade={() => { } } icon={<BaseIcon />} name={"Brian ArmstrongCoin base"} amount={"148.76"} profit={"+90.09"} ca={"CA: 0x4...B5r9"} orders={"1"} free={"4.65M of 18M"} />
-            <TradeCard handleTrade={() => { } } icon={<EthereumIcon/>} name={"Pepe"} amount={"148.76"} profit={"+90.09"} ca={"CA: 0x4...B5r9"} orders={"2"} free={"4.65M of 18M"} />
+            <TradeCard handleTrade={() => { } } icon={<BaseIcon />} name={"Brian ArmstrongCoin base"} amount={"148.76"} profit={"+90.09"} ca={"CA: 0x4...B5r9"} orders={"1"} free={"4.65M of 18M"} onActions={() => setIsActions(true)} />
+            <TradeCard handleTrade={() => { } } icon={<EthereumIcon />} name={"Pepe"} amount={"148.76"} profit={"+90.09"} ca={"CA: 0x4...B5r9"} orders={"2"} free={"4.65M of 18M"} onActions={() => setIsActions(true)} />
           </CardsContentWrapper>
         )}
       </div>
@@ -88,6 +92,16 @@ export const TradeHideContent = () => {
               ))}
             </div>
         </div>
+        </ConfirmationMenu>
+      )}
+      {isActions && <TradeActions close={() => setIsActions(false)} isDelete={() => setIsDelete(true)} />}
+      {isDelete && (
+        <ConfirmationMenu close={() => setIsDelete(false)}>
+          <LoginTitle icon={<WarningIcon/>} title={"Confirm Order Deletion"} cl_icon={"icon-32"} color={"bg-red_error"} text={"Are you sure you want to delete orders? This action cannot be undone."} />
+          <div className="mt-8 flex flex-col gap-4">
+            <Button text={"Delete"} cl={"text-failed"} onClick={() => setIsDelete(false)} />
+            <Button text={"Cancel"} onClick={() => setIsDelete(false)} color={"bg-button"} />
+          </div>
         </ConfirmationMenu>
       )}
     </Wrapper>
