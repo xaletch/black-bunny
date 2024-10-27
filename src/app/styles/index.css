@@ -295,3 +295,7 @@ input {
   width: 32px;
   height: 32px;
 }
+.icon-20 svg {
+  width: 20px;
+  height: 20px;
+}

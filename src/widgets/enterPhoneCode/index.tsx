@@ -10,16 +10,27 @@ import { Button } from "@/shared/ui/buttons"
 import { ResendCode } from "@/entities/resend"
 import { useEffect, useState } from "react"
 import maskPhoneNumber from "@/shared/utils/maskPhoneNumber"
-import { useNavigate } from "@tanstack/react-router"
+import { useLocation, useNavigate } from "@tanstack/react-router"
+import { MenuSuccess } from "../menuSuccess"
+import { ConfirmationMenu } from "../confirmationMenu"
 
 export const EnterPhoneCode = () => {
   const [phone, setPhone] = useState<number | any>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const handleConfirm = () => {
     localStorage.removeItem('phone');
+    setIsSuccess(true);
+  }
 
-    navigate({ to: "/wallet-created" })
+  const handleNext = () => {
+    if (location.pathname === "/profile/two-factor/change-code") {
+      navigate({ to: "/profile/two-factor" });
+    } else {
+      navigate({ to: "/wallet-created" });
+    }
   }
 
   const { code, handleCode, handleSubmit } = useEnterPhoneCode(handleConfirm);
@@ -59,6 +70,11 @@ export const EnterPhoneCode = () => {
           <Button text={"Continue"} onClick={handleSubmit} color={"bg-button"} />
         </div>
       </div>
+      {isSuccess && (
+        <ConfirmationMenu close={() => setIsSuccess(false)}>
+          <MenuSuccess text={"Two-factor authentication is now enabled for your account."} type={"Success!"} button_text={"Continue"} next={handleNext} />
+        </ConfirmationMenu>
+      )}
     </Wrapper>
   )
 }

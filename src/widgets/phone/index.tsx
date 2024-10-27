@@ -3,7 +3,7 @@ import { LoginTitle } from "../loginTitle"
 import { Shadow } from "@/shared/ui/shadow"
 import { VerifyIcon } from "@/shared/icons/VerifyIcon"
 import { Button } from "@/shared/ui/buttons"
-import { useNavigate } from "@tanstack/react-router"
+import { useLocation, useNavigate } from "@tanstack/react-router"
 import { useState } from "react"
 import { PhoneInput } from "react-international-phone"
 import 'react-international-phone/style.css'
@@ -23,6 +23,7 @@ const isPhoneValid = (phone: string) => {
 
 export const EnterPhone = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [phone, setPhone] = useState('');
   const [isMenu, setIsMenu] = useState<boolean>(false);
@@ -30,7 +31,11 @@ export const EnterPhone = () => {
 
   const handleContinue = () => {
     if (isValid) {
-      navigate({ to: "/phone-code" });
+      if (location.pathname === "/profile/two-factor/enable" || location.pathname === "/profile/two-factor/change") {
+        navigate({ to: "/profile/two-factor/change-code" });
+      } else {
+        navigate({ to: "/phone-code" });
+      }
       localStorage.setItem("phone", phone);
     }
   }; 
@@ -40,8 +45,8 @@ export const EnterPhone = () => {
       <Shadow cl={"bg-green"} />
       <LoginTitle 
         icon={<VerifyIcon />} 
-        title={"Set Up 2-Step Verification"} 
-        text={"Enter your phone number so we can text you an authentication code"}
+        title={location.pathname === "/profile/two-factor/enable" || location.pathname === "/phone" ? "Set Up 2-Step Verification" : "Change 2FA"} 
+        text={location.pathname === "/profile/two-factor/enable" || location.pathname === "/phone" ? "Enter your phone number so we can text you an authentication code" : "Enter your current phone number"}
       />
       <div className="mt-8 flex-1 flex flex-col justify-between">
         <PhoneInput
@@ -52,7 +57,11 @@ export const EnterPhone = () => {
         />
         <div>
           <div className="flex flex-col gap-4">
-            <Button text={"Not Now"} onClick={() => setIsMenu(true)} />
+            {location.pathname === "/profile/two-factor/enable" || location.pathname === "/profile/two-factor/change" ? (
+              <Button text={"Cancel"} onClick={() => navigate({ to: "/profile/two-factor" })} />
+            ) : (
+              <Button text={"Not Now"} onClick={() => setIsMenu(true)} />
+            )}
             <Button text={"Continue"} onClick={handleContinue} color={"bg-button"} />
           </div>
         </div>

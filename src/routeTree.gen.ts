@@ -29,15 +29,20 @@ import { Route as AppLayoutWalletSendIndexImport } from './routes/_app/_layout/w
 import { Route as AppLayoutWalletChooseIndexImport } from './routes/_app/_layout/wallet/choose/index'
 import { Route as AppLayoutWalletBridgeIndexImport } from './routes/_app/_layout/wallet/bridge/index'
 import { Route as AppLayoutSeedPhrasePinIndexImport } from './routes/_app/_layout/seed-phrase/pin/index'
+import { Route as AppLayoutProfileTwoFactorIndexImport } from './routes/_app/_layout/profile/two-factor/index'
 import { Route as AppLayoutProfileSeedPhraseIndexImport } from './routes/_app/_layout/profile/seed-phrase/index'
 import { Route as AppLayoutProfileSecurityIndexImport } from './routes/_app/_layout/profile/security/index'
 import { Route as AppLayoutProfileLanguageIndexImport } from './routes/_app/_layout/profile/language/index'
+import { Route as AppLayoutProfileCustomizationIndexImport } from './routes/_app/_layout/profile/customization/index'
 import { Route as AppLayoutHotTokensStopLossOrderIndexImport } from './routes/_app/_layout/hot-tokens/stop-loss-order/index'
 import { Route as AppLayoutHotTokensMarketOrderIndexImport } from './routes/_app/_layout/hot-tokens/market-order/index'
 import { Route as AppLayoutHotTokensLimitOrderIndexImport } from './routes/_app/_layout/hot-tokens/limit-order/index'
 import { Route as AppLayoutForgotNewPinIndexImport } from './routes/_app/_layout/forgot/new-pin/index'
 import { Route as AppLayoutWalletSplatIdImport } from './routes/_app/_layout/wallet/$.id'
 import { Route as AppLayoutWalletSendToIndexImport } from './routes/_app/_layout/wallet/send/to/index'
+import { Route as AppLayoutProfileTwoFactorEnableIndexImport } from './routes/_app/_layout/profile/two-factor/enable/index'
+import { Route as AppLayoutProfileTwoFactorChangeIndexImport } from './routes/_app/_layout/profile/two-factor/change/index'
+import { Route as AppLayoutProfileTwoFactorChangeCodeIndexImport } from './routes/_app/_layout/profile/two-factor/change-code/index'
 import { Route as AppLayoutProfileSecurityPinIndexImport } from './routes/_app/_layout/profile/security/pin/index'
 import { Route as AppLayoutWalletTokenSplatIdImport } from './routes/_app/_layout/wallet/token/$.id'
 import { Route as AppLayoutWalletReceiveSplatIdImport } from './routes/_app/_layout/wallet/receive/$.id'
@@ -141,6 +146,12 @@ const AppLayoutSeedPhrasePinIndexRoute =
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
+const AppLayoutProfileTwoFactorIndexRoute =
+  AppLayoutProfileTwoFactorIndexImport.update({
+    path: '/profile/two-factor/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
 const AppLayoutProfileSeedPhraseIndexRoute =
   AppLayoutProfileSeedPhraseIndexImport.update({
     path: '/profile/seed-phrase/',
@@ -156,6 +167,12 @@ const AppLayoutProfileSecurityIndexRoute =
 const AppLayoutProfileLanguageIndexRoute =
   AppLayoutProfileLanguageIndexImport.update({
     path: '/profile/language/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutProfileCustomizationIndexRoute =
+  AppLayoutProfileCustomizationIndexImport.update({
+    path: '/profile/customization/',
     getParentRoute: () => AppLayoutRoute,
   } as any)
 
@@ -195,6 +212,24 @@ const AppLayoutWalletSendToIndexRoute = AppLayoutWalletSendToIndexImport.update(
     getParentRoute: () => AppLayoutRoute,
   } as any,
 )
+
+const AppLayoutProfileTwoFactorEnableIndexRoute =
+  AppLayoutProfileTwoFactorEnableIndexImport.update({
+    path: '/profile/two-factor/enable/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutProfileTwoFactorChangeIndexRoute =
+  AppLayoutProfileTwoFactorChangeIndexImport.update({
+    path: '/profile/two-factor/change/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
+
+const AppLayoutProfileTwoFactorChangeCodeIndexRoute =
+  AppLayoutProfileTwoFactorChangeCodeIndexImport.update({
+    path: '/profile/two-factor/change-code/',
+    getParentRoute: () => AppLayoutRoute,
+  } as any)
 
 const AppLayoutProfileSecurityPinIndexRoute =
   AppLayoutProfileSecurityPinIndexImport.update({
@@ -350,6 +385,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutHotTokensStopLossOrderIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/profile/customization/': {
+      id: '/_app/_layout/profile/customization/'
+      path: '/profile/customization'
+      fullPath: '/profile/customization'
+      preLoaderRoute: typeof AppLayoutProfileCustomizationIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/profile/language/': {
       id: '/_app/_layout/profile/language/'
       path: '/profile/language'
@@ -369,6 +411,13 @@ declare module '@tanstack/react-router' {
       path: '/profile/seed-phrase'
       fullPath: '/profile/seed-phrase'
       preLoaderRoute: typeof AppLayoutProfileSeedPhraseIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/profile/two-factor/': {
+      id: '/_app/_layout/profile/two-factor/'
+      path: '/profile/two-factor'
+      fullPath: '/profile/two-factor'
+      preLoaderRoute: typeof AppLayoutProfileTwoFactorIndexImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/seed-phrase/pin/': {
@@ -420,6 +469,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLayoutProfileSecurityPinIndexImport
       parentRoute: typeof AppLayoutImport
     }
+    '/_app/_layout/profile/two-factor/change-code/': {
+      id: '/_app/_layout/profile/two-factor/change-code/'
+      path: '/profile/two-factor/change-code'
+      fullPath: '/profile/two-factor/change-code'
+      preLoaderRoute: typeof AppLayoutProfileTwoFactorChangeCodeIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/profile/two-factor/change/': {
+      id: '/_app/_layout/profile/two-factor/change/'
+      path: '/profile/two-factor/change'
+      fullPath: '/profile/two-factor/change'
+      preLoaderRoute: typeof AppLayoutProfileTwoFactorChangeIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/profile/two-factor/enable/': {
+      id: '/_app/_layout/profile/two-factor/enable/'
+      path: '/profile/two-factor/enable'
+      fullPath: '/profile/two-factor/enable'
+      preLoaderRoute: typeof AppLayoutProfileTwoFactorEnableIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
     '/_app/_layout/wallet/send/to/': {
       id: '/_app/_layout/wallet/send/to/'
       path: '/wallet/send/to'
@@ -456,9 +526,11 @@ interface AppLayoutRouteChildren {
   AppLayoutHotTokensLimitOrderIndexRoute: typeof AppLayoutHotTokensLimitOrderIndexRoute
   AppLayoutHotTokensMarketOrderIndexRoute: typeof AppLayoutHotTokensMarketOrderIndexRoute
   AppLayoutHotTokensStopLossOrderIndexRoute: typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  AppLayoutProfileCustomizationIndexRoute: typeof AppLayoutProfileCustomizationIndexRoute
   AppLayoutProfileLanguageIndexRoute: typeof AppLayoutProfileLanguageIndexRoute
   AppLayoutProfileSecurityIndexRoute: typeof AppLayoutProfileSecurityIndexRoute
   AppLayoutProfileSeedPhraseIndexRoute: typeof AppLayoutProfileSeedPhraseIndexRoute
+  AppLayoutProfileTwoFactorIndexRoute: typeof AppLayoutProfileTwoFactorIndexRoute
   AppLayoutSeedPhrasePinIndexRoute: typeof AppLayoutSeedPhrasePinIndexRoute
   AppLayoutWalletBridgeIndexRoute: typeof AppLayoutWalletBridgeIndexRoute
   AppLayoutWalletChooseIndexRoute: typeof AppLayoutWalletChooseIndexRoute
@@ -466,6 +538,9 @@ interface AppLayoutRouteChildren {
   AppLayoutWalletReceiveSplatIdRoute: typeof AppLayoutWalletReceiveSplatIdRoute
   AppLayoutWalletTokenSplatIdRoute: typeof AppLayoutWalletTokenSplatIdRoute
   AppLayoutProfileSecurityPinIndexRoute: typeof AppLayoutProfileSecurityPinIndexRoute
+  AppLayoutProfileTwoFactorChangeCodeIndexRoute: typeof AppLayoutProfileTwoFactorChangeCodeIndexRoute
+  AppLayoutProfileTwoFactorChangeIndexRoute: typeof AppLayoutProfileTwoFactorChangeIndexRoute
+  AppLayoutProfileTwoFactorEnableIndexRoute: typeof AppLayoutProfileTwoFactorEnableIndexRoute
   AppLayoutWalletSendToIndexRoute: typeof AppLayoutWalletSendToIndexRoute
   AppLayoutWalletSendToTransactionIndexRoute: typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -490,9 +565,12 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
     AppLayoutHotTokensMarketOrderIndexRoute,
   AppLayoutHotTokensStopLossOrderIndexRoute:
     AppLayoutHotTokensStopLossOrderIndexRoute,
+  AppLayoutProfileCustomizationIndexRoute:
+    AppLayoutProfileCustomizationIndexRoute,
   AppLayoutProfileLanguageIndexRoute: AppLayoutProfileLanguageIndexRoute,
   AppLayoutProfileSecurityIndexRoute: AppLayoutProfileSecurityIndexRoute,
   AppLayoutProfileSeedPhraseIndexRoute: AppLayoutProfileSeedPhraseIndexRoute,
+  AppLayoutProfileTwoFactorIndexRoute: AppLayoutProfileTwoFactorIndexRoute,
   AppLayoutSeedPhrasePinIndexRoute: AppLayoutSeedPhrasePinIndexRoute,
   AppLayoutWalletBridgeIndexRoute: AppLayoutWalletBridgeIndexRoute,
   AppLayoutWalletChooseIndexRoute: AppLayoutWalletChooseIndexRoute,
@@ -500,6 +578,12 @@ const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutWalletReceiveSplatIdRoute: AppLayoutWalletReceiveSplatIdRoute,
   AppLayoutWalletTokenSplatIdRoute: AppLayoutWalletTokenSplatIdRoute,
   AppLayoutProfileSecurityPinIndexRoute: AppLayoutProfileSecurityPinIndexRoute,
+  AppLayoutProfileTwoFactorChangeCodeIndexRoute:
+    AppLayoutProfileTwoFactorChangeCodeIndexRoute,
+  AppLayoutProfileTwoFactorChangeIndexRoute:
+    AppLayoutProfileTwoFactorChangeIndexRoute,
+  AppLayoutProfileTwoFactorEnableIndexRoute:
+    AppLayoutProfileTwoFactorEnableIndexRoute,
   AppLayoutWalletSendToIndexRoute: AppLayoutWalletSendToIndexRoute,
   AppLayoutWalletSendToTransactionIndexRoute:
     AppLayoutWalletSendToTransactionIndexRoute,
@@ -528,9 +612,11 @@ export interface FileRoutesByFullPath {
   '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/profile/customization': typeof AppLayoutProfileCustomizationIndexRoute
   '/profile/language': typeof AppLayoutProfileLanguageIndexRoute
   '/profile/security': typeof AppLayoutProfileSecurityIndexRoute
   '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
+  '/profile/two-factor': typeof AppLayoutProfileTwoFactorIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
@@ -538,6 +624,9 @@ export interface FileRoutesByFullPath {
   '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
   '/profile/security/pin': typeof AppLayoutProfileSecurityPinIndexRoute
+  '/profile/two-factor/change-code': typeof AppLayoutProfileTwoFactorChangeCodeIndexRoute
+  '/profile/two-factor/change': typeof AppLayoutProfileTwoFactorChangeIndexRoute
+  '/profile/two-factor/enable': typeof AppLayoutProfileTwoFactorEnableIndexRoute
   '/wallet/send/to': typeof AppLayoutWalletSendToIndexRoute
   '/wallet/send/to/transaction': typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -561,9 +650,11 @@ export interface FileRoutesByTo {
   '/hot-tokens/limit-order': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/hot-tokens/market-order': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/hot-tokens/stop-loss-order': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/profile/customization': typeof AppLayoutProfileCustomizationIndexRoute
   '/profile/language': typeof AppLayoutProfileLanguageIndexRoute
   '/profile/security': typeof AppLayoutProfileSecurityIndexRoute
   '/profile/seed-phrase': typeof AppLayoutProfileSeedPhraseIndexRoute
+  '/profile/two-factor': typeof AppLayoutProfileTwoFactorIndexRoute
   '/seed-phrase/pin': typeof AppLayoutSeedPhrasePinIndexRoute
   '/wallet/bridge': typeof AppLayoutWalletBridgeIndexRoute
   '/wallet/choose': typeof AppLayoutWalletChooseIndexRoute
@@ -571,6 +662,9 @@ export interface FileRoutesByTo {
   '/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
   '/profile/security/pin': typeof AppLayoutProfileSecurityPinIndexRoute
+  '/profile/two-factor/change-code': typeof AppLayoutProfileTwoFactorChangeCodeIndexRoute
+  '/profile/two-factor/change': typeof AppLayoutProfileTwoFactorChangeIndexRoute
+  '/profile/two-factor/enable': typeof AppLayoutProfileTwoFactorEnableIndexRoute
   '/wallet/send/to': typeof AppLayoutWalletSendToIndexRoute
   '/wallet/send/to/transaction': typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -595,9 +689,11 @@ export interface FileRoutesById {
   '/_app/_layout/hot-tokens/limit-order/': typeof AppLayoutHotTokensLimitOrderIndexRoute
   '/_app/_layout/hot-tokens/market-order/': typeof AppLayoutHotTokensMarketOrderIndexRoute
   '/_app/_layout/hot-tokens/stop-loss-order/': typeof AppLayoutHotTokensStopLossOrderIndexRoute
+  '/_app/_layout/profile/customization/': typeof AppLayoutProfileCustomizationIndexRoute
   '/_app/_layout/profile/language/': typeof AppLayoutProfileLanguageIndexRoute
   '/_app/_layout/profile/security/': typeof AppLayoutProfileSecurityIndexRoute
   '/_app/_layout/profile/seed-phrase/': typeof AppLayoutProfileSeedPhraseIndexRoute
+  '/_app/_layout/profile/two-factor/': typeof AppLayoutProfileTwoFactorIndexRoute
   '/_app/_layout/seed-phrase/pin/': typeof AppLayoutSeedPhrasePinIndexRoute
   '/_app/_layout/wallet/bridge/': typeof AppLayoutWalletBridgeIndexRoute
   '/_app/_layout/wallet/choose/': typeof AppLayoutWalletChooseIndexRoute
@@ -605,6 +701,9 @@ export interface FileRoutesById {
   '/_app/_layout/wallet/receive/$/id': typeof AppLayoutWalletReceiveSplatIdRoute
   '/_app/_layout/wallet/token/$/id': typeof AppLayoutWalletTokenSplatIdRoute
   '/_app/_layout/profile/security/pin/': typeof AppLayoutProfileSecurityPinIndexRoute
+  '/_app/_layout/profile/two-factor/change-code/': typeof AppLayoutProfileTwoFactorChangeCodeIndexRoute
+  '/_app/_layout/profile/two-factor/change/': typeof AppLayoutProfileTwoFactorChangeIndexRoute
+  '/_app/_layout/profile/two-factor/enable/': typeof AppLayoutProfileTwoFactorEnableIndexRoute
   '/_app/_layout/wallet/send/to/': typeof AppLayoutWalletSendToIndexRoute
   '/_app/_layout/wallet/send/to/transaction/': typeof AppLayoutWalletSendToTransactionIndexRoute
 }
@@ -630,9 +729,11 @@ export interface FileRouteTypes {
     | '/hot-tokens/limit-order'
     | '/hot-tokens/market-order'
     | '/hot-tokens/stop-loss-order'
+    | '/profile/customization'
     | '/profile/language'
     | '/profile/security'
     | '/profile/seed-phrase'
+    | '/profile/two-factor'
     | '/seed-phrase/pin'
     | '/wallet/bridge'
     | '/wallet/choose'
@@ -640,6 +741,9 @@ export interface FileRouteTypes {
     | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
     | '/profile/security/pin'
+    | '/profile/two-factor/change-code'
+    | '/profile/two-factor/change'
+    | '/profile/two-factor/enable'
     | '/wallet/send/to'
     | '/wallet/send/to/transaction'
   fileRoutesByTo: FileRoutesByTo
@@ -662,9 +766,11 @@ export interface FileRouteTypes {
     | '/hot-tokens/limit-order'
     | '/hot-tokens/market-order'
     | '/hot-tokens/stop-loss-order'
+    | '/profile/customization'
     | '/profile/language'
     | '/profile/security'
     | '/profile/seed-phrase'
+    | '/profile/two-factor'
     | '/seed-phrase/pin'
     | '/wallet/bridge'
     | '/wallet/choose'
@@ -672,6 +778,9 @@ export interface FileRouteTypes {
     | '/wallet/receive/$/id'
     | '/wallet/token/$/id'
     | '/profile/security/pin'
+    | '/profile/two-factor/change-code'
+    | '/profile/two-factor/change'
+    | '/profile/two-factor/enable'
     | '/wallet/send/to'
     | '/wallet/send/to/transaction'
   id:
@@ -694,9 +803,11 @@ export interface FileRouteTypes {
     | '/_app/_layout/hot-tokens/limit-order/'
     | '/_app/_layout/hot-tokens/market-order/'
     | '/_app/_layout/hot-tokens/stop-loss-order/'
+    | '/_app/_layout/profile/customization/'
     | '/_app/_layout/profile/language/'
     | '/_app/_layout/profile/security/'
     | '/_app/_layout/profile/seed-phrase/'
+    | '/_app/_layout/profile/two-factor/'
     | '/_app/_layout/seed-phrase/pin/'
     | '/_app/_layout/wallet/bridge/'
     | '/_app/_layout/wallet/choose/'
@@ -704,6 +815,9 @@ export interface FileRouteTypes {
     | '/_app/_layout/wallet/receive/$/id'
     | '/_app/_layout/wallet/token/$/id'
     | '/_app/_layout/profile/security/pin/'
+    | '/_app/_layout/profile/two-factor/change-code/'
+    | '/_app/_layout/profile/two-factor/change/'
+    | '/_app/_layout/profile/two-factor/enable/'
     | '/_app/_layout/wallet/send/to/'
     | '/_app/_layout/wallet/send/to/transaction/'
   fileRoutesById: FileRoutesById
@@ -757,9 +871,11 @@ export const routeTree = rootRoute
         "/_app/_layout/hot-tokens/limit-order/",
         "/_app/_layout/hot-tokens/market-order/",
         "/_app/_layout/hot-tokens/stop-loss-order/",
+        "/_app/_layout/profile/customization/",
         "/_app/_layout/profile/language/",
         "/_app/_layout/profile/security/",
         "/_app/_layout/profile/seed-phrase/",
+        "/_app/_layout/profile/two-factor/",
         "/_app/_layout/seed-phrase/pin/",
         "/_app/_layout/wallet/bridge/",
         "/_app/_layout/wallet/choose/",
@@ -767,6 +883,9 @@ export const routeTree = rootRoute
         "/_app/_layout/wallet/receive/$/id",
         "/_app/_layout/wallet/token/$/id",
         "/_app/_layout/profile/security/pin/",
+        "/_app/_layout/profile/two-factor/change-code/",
+        "/_app/_layout/profile/two-factor/change/",
+        "/_app/_layout/profile/two-factor/enable/",
         "/_app/_layout/wallet/send/to/",
         "/_app/_layout/wallet/send/to/transaction/"
       ]
@@ -835,6 +954,10 @@ export const routeTree = rootRoute
       "filePath": "_app/_layout/hot-tokens/stop-loss-order/index.tsx",
       "parent": "/_app/_layout"
     },
+    "/_app/_layout/profile/customization/": {
+      "filePath": "_app/_layout/profile/customization/index.tsx",
+      "parent": "/_app/_layout"
+    },
     "/_app/_layout/profile/language/": {
       "filePath": "_app/_layout/profile/language/index.tsx",
       "parent": "/_app/_layout"
@@ -845,6 +968,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/profile/seed-phrase/": {
       "filePath": "_app/_layout/profile/seed-phrase/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/profile/two-factor/": {
+      "filePath": "_app/_layout/profile/two-factor/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/seed-phrase/pin/": {
@@ -873,6 +1000,18 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/profile/security/pin/": {
       "filePath": "_app/_layout/profile/security/pin/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/profile/two-factor/change-code/": {
+      "filePath": "_app/_layout/profile/two-factor/change-code/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/profile/two-factor/change/": {
+      "filePath": "_app/_layout/profile/two-factor/change/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/profile/two-factor/enable/": {
+      "filePath": "_app/_layout/profile/two-factor/enable/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/wallet/send/to/": {

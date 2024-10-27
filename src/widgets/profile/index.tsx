@@ -43,10 +43,10 @@ export const ProfileContent = () => {
             <SettingItem name={"Language"} link={"/profile/language"} isLine={true}>
               <SettingIcon icon={<LanguageIcon />} color={"5754e1"} />
             </SettingItem>
-            <SettingItem name={"Customization"} link={""} isLine={true}>
+            <SettingItem name={"Customization"} link={"/profile/customization"} isLine={true}>
               <SettingIcon icon={<CustomizationIcon />} color={"ff3439"} />
             </SettingItem>
-            <SettingItem name={"Two-Factor Authentication"} link={""} isLine={false}>
+            <SettingItem name={"Two-Factor Authentication"} link={"/profile/two-factor"} isLine={false}>
               <SettingIcon icon={<AuthorizationIcon />} color={"047ef3"} />
             </SettingItem>
           </ProfileBlock>
