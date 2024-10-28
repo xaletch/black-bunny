@@ -28,14 +28,23 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     if (webApp) {
       const backButton = webApp.BackButton;
 
-      if (hiddenButtonPaths.includes(location)) {
-        backButton.hide();
+      if (backButton) {
+        console.log("BackButton initialized:", backButton); 
+
+        if (hiddenButtonPaths.includes(location)) {
+          backButton.hide();
+          console.log("Back button hidden for:", location);
+        } else {
+          backButton.show();
+          console.log("Back button shown for:", location);
+
+          backButton.onClick = () => {
+            console.log("Back button clicked. Current history length:", window.history.length);
+            window.history.back();
+          };
+        }
       } else {
-        backButton.show();
-        backButton.onClick = () => {
-          console.log("click 2");
-          window.history.back();
-        };
+        console.warn("BackButton is not available");
       }
     }
   }, [webApp, location]);
