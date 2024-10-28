@@ -14,8 +14,6 @@ export const TelegramProvider = ({
   children: React.ReactNode;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
-  const [currentRoute, setCurrentRoute] = useState<string>('/');
-  const [history, setHistory] = useState<string[]>([]);
 
   const noBackButtonRoutes = [
     "/login",
@@ -39,28 +37,21 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
-      if (noBackButtonRoutes.includes(currentRoute)) {
+      if (noBackButtonRoutes.includes(window.location.pathname)) {
         backButton.hide();
       } else {
         backButton.show();
       }
 
       backButton.onClick(() => {
-        setCurrentRoute(() => {
-          const newHistory = [...history];
-          newHistory.pop();
-
-          const lastRoute = newHistory[newHistory.length - 1] || '/';
-          setHistory(newHistory);
-          return lastRoute;
-        });
+        window.history.back();
       });
 
       return () => {
         backButton.hide();
       };
     }
-  }, [currentRoute]);
+  }, []);
 
   const value = useMemo(() => {
     return webApp
