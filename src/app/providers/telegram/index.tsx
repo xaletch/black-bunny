@@ -25,6 +25,11 @@ export const TelegramProvider = ({
       //   console.log("history:", window.history.length);
       //     window.history.back();
       // };
+
+      app.BackButton.onClick = () => {
+        console.log("Back button clicked. Current history length:", window.history.length);
+        window.history.back();
+      };
     }
   }, []);
 
