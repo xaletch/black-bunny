@@ -29,6 +29,16 @@ export const TelegramProvider = ({
     "/wallet-created",
   ];
 
+  const updatePath = (newPath: string) => {
+    setCurrentPath(newPath);
+    
+    if (noBackButtonRoutes.includes(newPath)) {
+      webApp?.BackButton.hide();
+    } else {
+      webApp?.BackButton.show();
+    }
+  };
+
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const app = (window as any).Telegram?.WebApp;
@@ -38,20 +48,13 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
-      const updatePath = () => {
-        const newPath = window.location.pathname;
-        console.log('new path: ', newPath);
-        setCurrentPath(newPath);
-        if (noBackButtonRoutes.includes(newPath)) {
-          backButton.hide();
-        } else {
-          backButton.show();
-        }
+      updatePath(window.location.pathname);
+
+      const handlePopState = () => {
+        updatePath(window.location.pathname);
       };
 
-      updatePath();
-
-      window.addEventListener('popstate', updatePath);
+      window.addEventListener('popstate', handlePopState);
 
       backButton.onClick(() => {
         window.history.back();
@@ -59,10 +62,15 @@ export const TelegramProvider = ({
 
       return () => {
         backButton.hide();
-        window.removeEventListener('popstate', updatePath);
+        window.removeEventListener('popstate', handlePopState);
       };
     }
   }, []);
+
+  const navigate = (path: string) => {
+    window.history.pushState({}, '', path);
+    updatePath(path);
+  };
 
   const value = useMemo(() => {
     return webApp
@@ -70,7 +78,8 @@ export const TelegramProvider = ({
           webApp,
           unsafeData: webApp.initDataUnsafe,
           user: webApp.initDataUnsafe.user,
-          currentPath
+          currentPath,
+          navigate
         }
       : {};
   }, [webApp, currentPath]);
