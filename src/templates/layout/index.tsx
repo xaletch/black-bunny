@@ -33,6 +33,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (webApp) {
       const backButton = webApp.BackButton;
+      console.log("button initialized:", backButton); 
 
       if (hiddenButton.includes(location)) {
         backButton.hide();
