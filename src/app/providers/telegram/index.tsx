@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { IWebApp, ITelegramUser } from "./telegram.types";
+import { useCurrentPath } from "@/contexts/current-path";
 // import { useLocation } from "@tanstack/react-router"
 
 export interface ITelegramContext {
@@ -10,12 +11,12 @@ export const TelegramContext = createContext<ITelegramContext>({});
 export const useTelegram = () => useContext(TelegramContext);
 export const TelegramProvider = ({
   children,
-  currentPath,
 }: {
   children: React.ReactNode;
-  currentPath: string;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
+
+  const { currentPath } = useCurrentPath();
 
   const noBackButtonRoutes = [
     "/login",
