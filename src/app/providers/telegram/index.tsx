@@ -21,14 +21,42 @@ export const TelegramProvider = ({
       app.ready();
       setWebApp(app);
 
-      // app.BackButton.onClick = () => {
-      //   console.log("history:", window.history.length);
-      //     window.history.back();
-      // };
+      const manageBackButton = () => {
+        const noBackButtonRoutes = [
+          "/login",
+          "/forgot",
+          "/forgot/new-pin",
+          "/wallet",
+          "/seed-phrase",
+          "/seed-phrase/pin",
+          "/registration-pin",
+          "/phone",
+          "/phone-code",
+          "/wallet-created",
+        ];
+
+        const currentPath = window.location.pathname;
+        if (noBackButtonRoutes.includes(currentPath)) {
+          app.BackButton.hide();
+        } else {
+          app.BackButton.show();
+        }
+      }
+
+      manageBackButton();
+
+      const handlePopState = () => {
+        manageBackButton();
+      };
+      window.addEventListener("popstate", handlePopState);
 
       app.BackButton.onClick = () => {
-        console.log("Back button clicked. Current history length:", window.history.length);
         window.history.back();
+      };
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+        app.BackButton.offClick();
       };
     }
   }, []);

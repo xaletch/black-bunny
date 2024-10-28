@@ -17,7 +17,9 @@ function App() {
     webApp?.expand();
   }, [webApp]);
 
-  return <RouterProvider router={router} />
+  return (
+    <RouterProvider router={router} />
+  );
 }
 
 export default App
