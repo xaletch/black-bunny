@@ -9,8 +9,10 @@ export const TelegramContext = createContext<ITelegramContext>({});
 export const useTelegram = () => useContext(TelegramContext);
 export const TelegramProvider = ({
   children,
+  currentPath,
 }: {
   children: React.ReactNode;
+  currentPath: string;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
 
@@ -20,20 +22,32 @@ export const TelegramProvider = ({
     if (app) {
       app.ready();
       setWebApp(app);
-
-      const backButton = app.BackButton;
-      backButton.show();
-
-      backButton.onClick(() => {
-        window.history.back();
-      });
-
-      return () => {
-        backButton.offClick();
-        backButton.hide();
-      };
     }
   }, []);
+
+  useEffect(() => {
+    if (webApp) {
+      const backButton = webApp.BackButton;
+      const hiddenBackButtonRoutes = [
+        "/login",
+        "/forgot",
+        "/forgot/new-pin",
+        "/wallet",
+        "/seed-phrase",
+        "/seed-phrase/pin",
+        "/registration-pin",
+        "/phone",
+        "/phone-code",
+        "/wallet-created"
+      ];
+
+      if (hiddenBackButtonRoutes.includes(currentPath)) {
+        backButton.hide();
+      } else {
+        backButton.show();
+      }
+    }
+  }, [webApp, currentPath]);
 
   const value = useMemo(() => {
     return webApp
