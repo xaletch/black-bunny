@@ -34,7 +34,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     if (webApp) {
       const backButton = webApp.BackButton;
       
-      if (hiddenButton) {
+      if (hiddenButton.includes(location)) {
         backButton.hide();
       } else {
         backButton.show();
