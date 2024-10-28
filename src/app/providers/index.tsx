@@ -9,7 +9,7 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <ReactNotifications />
-      <TelegramProvider >
+      <TelegramProvider currentPath='/seed-phrase' >
         <ThemeProvider defaultTheme="light" storageKey="ui-theme">
           {children}
         </ThemeProvider>

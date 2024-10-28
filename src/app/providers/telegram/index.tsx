@@ -10,11 +10,12 @@ export const TelegramContext = createContext<ITelegramContext>({});
 export const useTelegram = () => useContext(TelegramContext);
 export const TelegramProvider = ({
   children,
+  currentPath,
 }: {
   children: React.ReactNode;
+  currentPath: string;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   const noBackButtonRoutes = [
     "/login",
@@ -29,15 +30,15 @@ export const TelegramProvider = ({
     "/wallet-created",
   ];
 
-  const updatePath = (newPath: string) => {
-    setCurrentPath(newPath);
+  // const updatePath = (newPath: string) => {
+  //   setCurrentPath(newPath);
     
-    if (noBackButtonRoutes.includes(newPath)) {
-      webApp?.BackButton.hide();
-    } else {
-      webApp?.BackButton.show();
-    }
-  };
+  //   if (noBackButtonRoutes.includes(newPath)) {
+  //     webApp?.BackButton.hide();
+  //   } else {
+  //     webApp?.BackButton.show();
+  //   }
+  // };
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,13 +49,11 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
-      updatePath(window.location.pathname);
-
-      const handlePopState = () => {
-        updatePath(window.location.pathname);
-      };
-
-      window.addEventListener('popstate', handlePopState);
+      if (noBackButtonRoutes.includes(currentPath)) {
+        backButton.hide();
+      } else {
+        backButton.show();
+      }
 
       backButton.onClick(() => {
         window.history.back();
@@ -62,15 +61,9 @@ export const TelegramProvider = ({
 
       return () => {
         backButton.hide();
-        window.removeEventListener('popstate', handlePopState);
       };
     }
-  }, []);
-
-  const navigate = (path: string) => {
-    window.history.pushState({}, '', path);
-    updatePath(path);
-  };
+  }, [currentPath]);
 
   const value = useMemo(() => {
     return webApp
@@ -78,8 +71,7 @@ export const TelegramProvider = ({
           webApp,
           unsafeData: webApp.initDataUnsafe,
           user: webApp.initDataUnsafe.user,
-          currentPath,
-          navigate
+          currentPath
         }
       : {};
   }, [webApp, currentPath]);
