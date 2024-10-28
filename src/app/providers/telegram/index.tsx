@@ -22,6 +22,7 @@ export const TelegramProvider = ({
       setWebApp(app);
 
       app.BackButton.onClick = () => {
+        console.log("history:", window.history.length);
         if (window.history.length > 1) {
           window.history.back();
         } else {
