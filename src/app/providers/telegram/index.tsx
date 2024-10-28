@@ -30,16 +30,6 @@ export const TelegramProvider = ({
     "/wallet-created",
   ];
 
-  // const updatePath = (newPath: string) => {
-  //   setCurrentPath(newPath);
-    
-  //   if (noBackButtonRoutes.includes(newPath)) {
-  //     webApp?.BackButton.hide();
-  //   } else {
-  //     webApp?.BackButton.show();
-  //   }
-  // };
-
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const app = (window as any).Telegram?.WebApp;
@@ -49,7 +39,10 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
+      console.log('currentPath: ', currentPath);
+
       if (noBackButtonRoutes.includes(currentPath)) {
+        console.log('currentPath include: ', currentPath);
         backButton.hide();
       } else {
         backButton.show();
