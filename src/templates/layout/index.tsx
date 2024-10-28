@@ -33,14 +33,14 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (webApp) {
       const backButton = webApp.BackButton;
-      
+
       if (hiddenButton.includes(location)) {
         backButton.hide();
       } else {
         backButton.show();
       }
     }
-  }, [webApp]);
+  }, [webApp, location]);
 
   return (
     <div className="bg-muted flex flex-col flex-1 relative">
