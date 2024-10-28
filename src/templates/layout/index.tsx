@@ -1,9 +1,12 @@
-import { FC, PropsWithChildren } from "react"
+import { FC, PropsWithChildren, useEffect } from "react"
 import { Navbar } from "@/widgets/navbar"
 import { useLocation } from "@tanstack/react-router"
+import { useCurrentPath } from "@/contexts/current-path";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation().pathname;
+
+  const { setCurrentPath } = useCurrentPath();
 
   const isLocation = [
     "/forgot", "/login", "/forgot/new-pin", "/registration-pin", "/seed-phrase",
@@ -14,6 +17,10 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     "/profile/two-factor", "/profile/two-factor/enable", "/profile/two-factor/change-code", "/profile/two-factor/change/",
     "/trade", "/trade/hide", "/trade/token/id", "/trade/action", "/trade/wallets"
   ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location) || /\/wallet\/receive\/\d+/.test(location);
+
+  useEffect(() => {
+    setCurrentPath(location);
+  }, [location, setCurrentPath]);
 
   return (
     <div className="bg-muted flex flex-col flex-1 relative">
