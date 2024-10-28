@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { IWebApp, ITelegramUser } from "./telegram.types";
+import { useLocation } from "@tanstack/react-router"
 
 export interface ITelegramContext {
   webApp?: IWebApp;
@@ -13,6 +14,20 @@ export const TelegramProvider = ({
   children: React.ReactNode;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
+  const location = useLocation();
+
+  const noBackButtonRoutes = [
+    "/login",
+    "/forgot",
+    "/forgot/new-pin",
+    "/wallet",
+    "/seed-phrase",
+    "/seed-phrase/pin",
+    "/registration-pin",
+    "/phone",
+    "/phone-code",
+    "/wallet-created",
+  ];
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,18 +38,21 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
-      backButton.show();
+      if (noBackButtonRoutes.includes(location.pathname)) {
+        backButton.hide();
+      } else {
+        backButton.show();
+      }
 
-      backButton.onClick = () => {
+      backButton.onClick(() => {
         window.history.back();
-      };
+      });
 
       return () => {
-        backButton.offClick();
         backButton.hide();
       };
     }
-  }, []);
+  }, [location.pathname]);
 
   const value = useMemo(() => {
     return webApp
