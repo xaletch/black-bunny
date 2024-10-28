@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren } from "react"
 import { Navbar } from "@/widgets/navbar"
 import { useLocation } from "@tanstack/react-router"
-import { BackButtonManager } from "@/features/back-button-manager";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation().pathname;
@@ -22,7 +21,6 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         <div className="w-p-calc px-4 pb-4 flex flex-col flex-1">{children}</div>
       </main>
       {!isLocation && <Navbar />}
-      <BackButtonManager />
     </div>
   )
 }

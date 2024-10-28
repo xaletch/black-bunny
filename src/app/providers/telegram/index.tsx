@@ -21,10 +21,10 @@ export const TelegramProvider = ({
       app.ready();
       setWebApp(app);
 
-      app.BackButton.onClick = () => {
-        console.log("history:", window.history.length);
-        window.history.back();
-      };
+      // app.BackButton.onClick = () => {
+      //   console.log("history:", window.history.length);
+      //     window.history.back();
+      // };
     }
   }, []);
 

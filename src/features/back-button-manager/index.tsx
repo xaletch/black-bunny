@@ -4,31 +4,37 @@ import { useEffect } from "react";
 
 export const BackButtonManager = () => {
   const { webApp } = useTelegram();
-  const location = useLocation();
+  const location = useLocation().pathname;
 
   useEffect(() => {
     if (webApp) {
       const backButton = webApp.BackButton;
-      const hiddenBackButtonRoutes = [
-        "/login",
-        "/forgot",
-        "/forgot/new-pin",
-        "/wallet",
-        "/seed-phrase",
-        "/seed-phrase/pin",
-        "/registration-pin",
-        "/phone",
-        "/phone-code",
-        "/wallet-created",
-      ];
 
-      if (hiddenBackButtonRoutes.includes(location.pathname)) {
-        backButton.hide();
-      } else {
-        backButton.show();
+      if (backButton) {
+        const hiddenButtonPaths = [
+          "/login", "/forgot", "/forgot/new-pin", "/wallet", 
+          "/seed-phrase", "/seed-phrase/pin", "/registration-pin", 
+          "/phone", "/phone-code", "/wallet-created"
+        ];
+
+        const updateBackButtonVisibility = () => {
+          if (hiddenButtonPaths.includes(location)) {
+            backButton.hide();
+            console.log("hide:", location);
+          } else {
+            backButton.show();
+            console.log("show", location);
+          }
+        };
+
+        updateBackButtonVisibility();
+
+        backButton.onClick = () => {
+          window.history.back();
+        };
       }
     }
-  }, [webApp, location.pathname]);
+  }, [webApp, location]);
 
   return null;
 };
