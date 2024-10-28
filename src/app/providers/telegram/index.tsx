@@ -37,6 +37,8 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
+      console.log('window.location.pathname: ', window.location.pathname)
+
       if (noBackButtonRoutes.includes(window.location.pathname)) {
         backButton.hide();
       } else {
