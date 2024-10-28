@@ -1,11 +1,10 @@
-import { FC, PropsWithChildren, useEffect } from "react"
+import { FC, PropsWithChildren } from "react"
 import { Navbar } from "@/widgets/navbar"
 import { useLocation } from "@tanstack/react-router"
-import { useTelegram } from "@/app/providers/telegram";
+import { BackButtonManager } from "@/features/back-button-manager";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation().pathname;
-  const { webApp } = useTelegram();
 
   const isLocation = [
     "/forgot", "/login", "/forgot/new-pin", "/registration-pin", "/seed-phrase",
@@ -17,44 +16,13 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     "/trade", "/trade/hide", "/trade/token/id", "/trade/action", "/trade/wallets"
   ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location) || /\/wallet\/receive\/\d+/.test(location);
 
-
-  const hiddenButtonPaths = [
-    "/login", "/forgot", "/forgot/new-pin", "/wallet", 
-    "/seed-phrase", "/seed-phrase/pin", "/registration-pin", 
-    "/phone", "/phone-code", "/wallet-created"
-  ];
-
-  useEffect(() => {
-    if (webApp) {
-      const backButton = webApp.BackButton;
-
-      if (backButton) {
-        console.log("BackButton initialized:", backButton); 
-
-        if (hiddenButtonPaths.includes(location)) {
-          backButton.hide();
-          console.log("Back button hidden for:", location);
-        } else {
-          backButton.show();
-          console.log("Back button shown for:", location);
-
-          backButton.onClick = () => {
-            console.log("Back button clicked. Current history length:", window.history.length);
-            window.history.back();
-          };
-        }
-      } else {
-        console.warn("BackButton is not available");
-      }
-    }
-  }, [webApp, location]);
-
   return (
     <div className="bg-muted flex flex-col flex-1 relative">
       <main className="flex-1 flex">
         <div className="w-p-calc px-4 pb-4 flex flex-col flex-1">{children}</div>
       </main>
       {!isLocation && <Navbar />}
+      <BackButtonManager />
     </div>
   )
 }
