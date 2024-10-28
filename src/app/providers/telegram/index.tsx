@@ -21,14 +21,14 @@ export const TelegramProvider = ({
       app.ready();
       setWebApp(app);
 
-      app.BackButton.onClick = () => {
-        console.log("history:", window.history.length);
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          app.close();
-        }
-      };
+      // app.BackButton.onClick = () => {
+      //   console.log("history:", window.history.length);
+      //   if (window.history.length > 1) {
+      //     window.history.back();
+      //   } else {
+      //     app.close();
+      //   }
+      // };
     }
   }, []);
 

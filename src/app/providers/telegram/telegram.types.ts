@@ -39,6 +39,7 @@ export interface IWebApp {
     hide(): unknown;
     show(): void;
     isVisible: boolean;
+    onClick(): unknown;
   };
   MainButton: {
     text: string;
