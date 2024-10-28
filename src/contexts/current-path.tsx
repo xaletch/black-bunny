@@ -20,7 +20,7 @@ export const CurrentPathProvider = ({ children }: { children: React.ReactNode })
 export const useCurrentPath = () => {
   const context = useContext(CurrentPathContext);
   if (!context) {
-    throw new Error('useCurrentPath must be used within a CurrentPathProvider');
+    throw new Error('use current path');
   }
   return context;
 };

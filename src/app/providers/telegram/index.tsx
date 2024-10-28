@@ -19,6 +19,7 @@ export const TelegramProvider = ({
   const { currentPath } = useCurrentPath();
 
   const noBackButtonRoutes = [
+    "/",
     "/login",
     "/forgot",
     "/forgot/new-pin",
