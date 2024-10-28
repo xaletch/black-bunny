@@ -14,6 +14,7 @@ export const TelegramProvider = ({
   children: React.ReactNode;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   const noBackButtonRoutes = [
     "/login",
@@ -37,13 +38,20 @@ export const TelegramProvider = ({
 
       const backButton = app.BackButton;
 
-      console.log('window.location.pathname: ', window.location.pathname)
+      const updatePath = () => {
+        const newPath = window.location.pathname;
+        console.log('new path: ', newPath);
+        setCurrentPath(newPath);
+        if (noBackButtonRoutes.includes(newPath)) {
+          backButton.hide();
+        } else {
+          backButton.show();
+        }
+      };
 
-      if (noBackButtonRoutes.includes(window.location.pathname)) {
-        backButton.hide();
-      } else {
-        backButton.show();
-      }
+      updatePath();
+
+      window.addEventListener('popstate', updatePath);
 
       backButton.onClick(() => {
         window.history.back();
@@ -51,6 +59,7 @@ export const TelegramProvider = ({
 
       return () => {
         backButton.hide();
+        window.removeEventListener('popstate', updatePath);
       };
     }
   }, []);
