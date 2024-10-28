@@ -32,6 +32,10 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         backButton.hide();
       } else {
         backButton.show();
+        backButton.onClick = () => {
+          console.log("click 2");
+          window.history.back();
+        };
       }
     }
   }, [webApp, location]);
