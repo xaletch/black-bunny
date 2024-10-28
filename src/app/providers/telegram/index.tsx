@@ -14,7 +14,7 @@ export const TelegramProvider = ({
   children: React.ReactNode;
 }) => {
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
-  const [currentRoute, setCurrentRoute] = useState<string>('');
+  const [currentRoute, setCurrentRoute] = useState<string>('/');
   const [history, setHistory] = useState<string[]>([]);
 
   const noBackButtonRoutes = [
@@ -46,8 +46,7 @@ export const TelegramProvider = ({
       }
 
       backButton.onClick(() => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        setCurrentRoute((prev) => {
+        setCurrentRoute(() => {
           const newHistory = [...history];
           newHistory.pop();
 
