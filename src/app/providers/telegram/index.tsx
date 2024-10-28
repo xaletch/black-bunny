@@ -20,6 +20,18 @@ export const TelegramProvider = ({
     if (app) {
       app.ready();
       setWebApp(app);
+
+      const backButton = app.BackButton;
+      backButton.show();
+
+      backButton.onClick(() => {
+        window.history.back();
+      });
+
+      return () => {
+        backButton.offClick();
+        backButton.hide();
+      };
     }
   }, []);
 
