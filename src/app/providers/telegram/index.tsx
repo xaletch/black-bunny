@@ -70,9 +70,10 @@ export const TelegramProvider = ({
           webApp,
           unsafeData: webApp.initDataUnsafe,
           user: webApp.initDataUnsafe.user,
+          currentPath
         }
       : {};
-  }, [webApp]);
+  }, [webApp, currentPath]);
 
   return (
     <TelegramContext.Provider value={value}>
