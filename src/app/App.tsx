@@ -2,6 +2,7 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { routeTree } from "@/routeTree.gen";
 import { useEffect } from "react";
 import { useTelegram } from "./providers/telegram";
+import { BackButtonManager } from "@/features/back-button-manager";
 
 
 const router = createRouter({ routeTree });
@@ -18,7 +19,12 @@ function App() {
     webApp?.expand();
   }, [webApp]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router}/>
+      <BackButtonManager />
+    </>
+  );
 }
 
 export default App
