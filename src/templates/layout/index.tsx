@@ -33,7 +33,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (webApp) {
       const backButton = webApp.BackButton;
-      console.log("button initialized:", backButton); 
+      console.log("button initialized:", backButton);
 
       if (hiddenButton.includes(location)) {
         backButton.hide();
@@ -42,11 +42,13 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       }
 
       backButton.onClick = () => {
-        console.log("back");
+        console.log("click");
         window.history.back();
       };
+    } else {
+      console.log("webApp not");
     }
-  }, [webApp, location]);
+  }, [location]);
 
   return (
     <div className="bg-muted flex flex-col flex-1 relative">
