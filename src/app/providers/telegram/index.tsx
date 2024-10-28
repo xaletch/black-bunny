@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { IWebApp, ITelegramUser } from "./telegram.types";
-import { useTelegramBackButton } from "@/shared/hooks/useTelegramBackButton";
 
 export interface ITelegramContext {
   webApp?: IWebApp;
@@ -22,11 +21,20 @@ export const TelegramProvider = ({
       app.ready();
       setWebApp(app);
 
+      const backButton = app.BackButton;
+      backButton.show();
+
+      backButton.onClick(() => {
+        window.history.back();
+      });
+
+      return () => {
+        backButton.offClick();
+        backButton.hide();
+      };
     }
   }, []);
 
-  useTelegramBackButton(webApp);
-  
   const value = useMemo(() => {
     return webApp
       ? {
