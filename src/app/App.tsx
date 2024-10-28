@@ -3,7 +3,6 @@ import { routeTree } from "@/routeTree.gen";
 import { useEffect } from "react";
 import { useTelegram } from "./providers/telegram";
 
-
 const router = createRouter({ routeTree });
 declare module "@tanstack/react-router" {
   interface Register {
