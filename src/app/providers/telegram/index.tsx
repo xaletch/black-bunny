@@ -22,7 +22,11 @@ export const TelegramProvider = ({
       setWebApp(app);
 
       app.BackButton.onClick = () => {
-        window.history.back();
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          app.close();
+        }
       };
     }
   }, []);
