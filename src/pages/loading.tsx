@@ -85,7 +85,9 @@ export const Loading = () => {
           ))}
         </div>
         <div className="w-full">
-          <img className="w-full" src={slides[activeSlideIndex].img} alt={slides[activeSlideIndex].title} />
+          <div className="h-[480px]">
+            <img className="w-full" src={slides[activeSlideIndex].img} alt={slides[activeSlideIndex].title} />
+          </div>
           <div className="mt-[20px] flex flex-col items-center">
             <h2 className="font-bold text-[20px] text-white">{slides[activeSlideIndex].title}</h2>
             <p className="text-base text-center text-gray">{slides[activeSlideIndex].description}</p>
