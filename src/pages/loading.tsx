@@ -34,15 +34,15 @@ const slides = [
   }
 ]
 
-const STORY_DURATION_MS = 3000;
+const DURATION = 4000;
 
 export const Loading = () => {
   const navigate = useNavigate();
-  const [activeStoryIndex, setActiveStoryIndex] = useState(0);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const setActiveStory = useCallback((index: number) => {
-    setActiveStoryIndex(index);
+  const setActiveSlide = useCallback((index: number) => {
+    setActiveSlideIndex(index);
     setProgress(0);
   }, []);
 
@@ -51,11 +51,11 @@ export const Loading = () => {
 
     const timerId = setInterval(() => {
       setProgress((prevProgress) => {
-        const newProgress = prevProgress + (100 / (STORY_DURATION_MS / progressInterval));
+        const newProgress = prevProgress + (100 / (DURATION / progressInterval));
         
         if (newProgress >= 100) {
-          if (activeStoryIndex < slides.length - 1) {
-            setActiveStoryIndex((prevIndex) => prevIndex + 1);
+          if (activeSlideIndex < slides.length - 1) {
+            setActiveSlideIndex((prevIndex) => prevIndex + 1);
             return 0;
           }
         }
@@ -64,7 +64,7 @@ export const Loading = () => {
     }, progressInterval);
 
     return () => clearInterval(timerId);
-  }, [activeStoryIndex]);
+  }, [activeSlideIndex]);
   
   return (
     <Wrapper cl={"pb-4 h-full flex flex-col justify-between"}>
@@ -73,22 +73,22 @@ export const Loading = () => {
         <div className="fixed top-[10px] w-full grid grid-cols-4 gap-1 px-4">
           {slides.map((_, index) => (
             <div
-              className={`relative w-full h-[3px] overflow-hidden rounded-full bg-secondary-100 ${index < activeStoryIndex ? 'bg-white' : ''}`}
+              className={`relative w-full h-[3px] overflow-hidden rounded-full bg-secondary-100 ${index < activeSlideIndex ? 'bg-white' : ''}`}
               key={index}
-              onClick={() => setActiveStory(index)}
+              onClick={() => setActiveSlide(index)}
             >
               <div
-                style={{width: `${index === activeStoryIndex ? progress : index < activeStoryIndex ? 100 : 0}%`}}
+                style={{width: `${index === activeSlideIndex ? progress : index < activeSlideIndex ? 100 : 0}%`}}
                 className="absolute h-full rounded-full top-0 left-0 bg-white transition-width duration-100"
               />
             </div>
           ))}
         </div>
         <div className="w-full">
-          <img className="w-full" src={slides[activeStoryIndex].img} alt={slides[activeStoryIndex].title} />
+          <img className="w-full" src={slides[activeSlideIndex].img} alt={slides[activeSlideIndex].title} />
           <div className="mt-[20px] flex flex-col items-center">
-            <h2 className="font-bold text-[20px] text-white">{slides[activeStoryIndex].title}</h2>
-            <p className="text-base text-center text-gray">{slides[activeStoryIndex].description}</p>
+            <h2 className="font-bold text-[20px] text-white">{slides[activeSlideIndex].title}</h2>
+            <p className="text-base text-center text-gray">{slides[activeSlideIndex].description}</p>
           </div>
         </div>
       </div>

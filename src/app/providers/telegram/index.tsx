@@ -30,6 +30,7 @@ export const TelegramProvider = ({
     "/phone",
     "/phone-code",
     "/wallet-created",
+    "/loading",
   ];
 
   useEffect(() => {
