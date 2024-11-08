@@ -80,8 +80,8 @@ export const Loading = () => {
   return (
     <Wrapper cl={"pb-4 h-full flex flex-col justify-between"}>
       <Shadow cl={"bg-green"} />
-      <div className="">
-        <div className="fixed z-10 top-[10px] w-full grid grid-cols-4 gap-1 px-4">
+      <div>
+        <div className="fixed z-10 py-3 top-[10px] w-full grid grid-cols-4 gap-1 px-4">
           {slides.map((_, index) => (
             <div
               className={`relative w-full h-[3px] overflow-hidden rounded-full bg-secondary-100 ${index < activeSlideIndex ? 'bg-white' : ''}`}
@@ -104,8 +104,8 @@ export const Loading = () => {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="w-full">
-              <div className="h-[480px]">
-                <img className="w-full h-full object-cover" src={slide.img} alt={slide.title} />
+              <div className="h-[480px] w-full flex justify-center">
+                <img className={` min-w-[300px] w-full h-full  ${activeSlideIndex === 2 ? '' : 'object-cover '}`} src={slide.img} alt={slide.title} />
               </div>
               <div className="mt-[20px] flex flex-col items-center">
                 <h2 className="font-bold text-[20px] text-white">{slide.title}</h2>
