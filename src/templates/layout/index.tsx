@@ -15,17 +15,21 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     "/wallet/send/to/transaction", "/hot-tokens/market-order", "/hot-tokens/limit-order", "/hot-tokens/stop-loss-order",
     "/profile/seed-phrase", "/profile/security", "/profile/security/pin", "/profile/language", "/profile/customization",
     "/profile/two-factor", "/profile/two-factor/enable", "/profile/two-factor/change-code", "/profile/two-factor/change/",
-    "/trade", "/trade/hide", "/trade/token/id", "/trade/action", "/trade/wallets"
+    "/trade", "/trade/hide", "/trade/token/id", "/trade/action", "/trade/wallets", "/loading"
   ].includes(location) || /\/wallet\/\d+/.test(location) || /\/wallet\/token\/\d+/.test(location) || /\/wallet\/receive\/\d+/.test(location);
 
   useEffect(() => {
     setCurrentPath(location);
   }, [location, setCurrentPath]);
 
+  const isLoading = [
+    "/loading"
+  ].includes(location)
+
   return (
     <div className="bg-muted flex flex-col flex-1 relative">
       <main className="flex-1 flex">
-        <div className="w-p-calc px-4 pb-4 flex flex-col flex-1">{children}</div>
+        <div className={`w-p-calc ${isLoading ? 'px-0' : 'px-4'} pb-4 flex flex-col flex-1`}>{children}</div>
       </main>
       {!isLocation && <Navbar />}
     </div>

@@ -11,7 +11,7 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
     <CurrentPathProvider>
       <ReactNotifications />
       <TelegramProvider>
-        <ThemeProvider defaultTheme="light" storageKey="ui-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
           {children}
         </ThemeProvider>
       </TelegramProvider>

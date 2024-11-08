@@ -24,6 +24,7 @@ import { Route as AppLayoutProfileIndexImport } from './routes/_app/_layout/prof
 import { Route as AppLayoutPhoneIndexImport } from './routes/_app/_layout/phone/index'
 import { Route as AppLayoutPhoneCodeIndexImport } from './routes/_app/_layout/phone-code/index'
 import { Route as AppLayoutLoginIndexImport } from './routes/_app/_layout/login/index'
+import { Route as AppLayoutLoadingIndexImport } from './routes/_app/_layout/loading/index'
 import { Route as AppLayoutHotTokensIndexImport } from './routes/_app/_layout/hot-tokens/index'
 import { Route as AppLayoutForgotIndexImport } from './routes/_app/_layout/forgot/index'
 import { Route as AppLayoutWalletSendIndexImport } from './routes/_app/_layout/wallet/send/index'
@@ -118,6 +119,11 @@ const AppLayoutPhoneCodeIndexRoute = AppLayoutPhoneCodeIndexImport.update({
 
 const AppLayoutLoginIndexRoute = AppLayoutLoginIndexImport.update({
   path: '/login/',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
+
+const AppLayoutLoadingIndexRoute = AppLayoutLoadingIndexImport.update({
+  path: '/loading/',
   getParentRoute: () => AppLayoutRoute,
 } as any)
 
@@ -319,6 +325,13 @@ declare module '@tanstack/react-router' {
       path: '/hot-tokens'
       fullPath: '/hot-tokens'
       preLoaderRoute: typeof AppLayoutHotTokensIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_app/_layout/loading/': {
+      id: '/_app/_layout/loading/'
+      path: '/loading'
+      fullPath: '/loading'
+      preLoaderRoute: typeof AppLayoutLoadingIndexImport
       parentRoute: typeof AppLayoutImport
     }
     '/_app/_layout/login/': {
@@ -581,6 +594,7 @@ declare module '@tanstack/react-router' {
 interface AppLayoutRouteChildren {
   AppLayoutForgotIndexRoute: typeof AppLayoutForgotIndexRoute
   AppLayoutHotTokensIndexRoute: typeof AppLayoutHotTokensIndexRoute
+  AppLayoutLoadingIndexRoute: typeof AppLayoutLoadingIndexRoute
   AppLayoutLoginIndexRoute: typeof AppLayoutLoginIndexRoute
   AppLayoutPhoneCodeIndexRoute: typeof AppLayoutPhoneCodeIndexRoute
   AppLayoutPhoneIndexRoute: typeof AppLayoutPhoneIndexRoute
@@ -622,6 +636,7 @@ interface AppLayoutRouteChildren {
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutForgotIndexRoute: AppLayoutForgotIndexRoute,
   AppLayoutHotTokensIndexRoute: AppLayoutHotTokensIndexRoute,
+  AppLayoutLoadingIndexRoute: AppLayoutLoadingIndexRoute,
   AppLayoutLoginIndexRoute: AppLayoutLoginIndexRoute,
   AppLayoutPhoneCodeIndexRoute: AppLayoutPhoneCodeIndexRoute,
   AppLayoutPhoneIndexRoute: AppLayoutPhoneIndexRoute,
@@ -677,6 +692,7 @@ export interface FileRoutesByFullPath {
   '': typeof AppLayoutRouteWithChildren
   '/forgot': typeof AppLayoutForgotIndexRoute
   '/hot-tokens': typeof AppLayoutHotTokensIndexRoute
+  '/loading': typeof AppLayoutLoadingIndexRoute
   '/login': typeof AppLayoutLoginIndexRoute
   '/phone-code': typeof AppLayoutPhoneCodeIndexRoute
   '/phone': typeof AppLayoutPhoneIndexRoute
@@ -720,6 +736,7 @@ export interface FileRoutesByTo {
   '': typeof AppLayoutRouteWithChildren
   '/forgot': typeof AppLayoutForgotIndexRoute
   '/hot-tokens': typeof AppLayoutHotTokensIndexRoute
+  '/loading': typeof AppLayoutLoadingIndexRoute
   '/login': typeof AppLayoutLoginIndexRoute
   '/phone-code': typeof AppLayoutPhoneCodeIndexRoute
   '/phone': typeof AppLayoutPhoneIndexRoute
@@ -764,6 +781,7 @@ export interface FileRoutesById {
   '/_app/_layout': typeof AppLayoutRouteWithChildren
   '/_app/_layout/forgot/': typeof AppLayoutForgotIndexRoute
   '/_app/_layout/hot-tokens/': typeof AppLayoutHotTokensIndexRoute
+  '/_app/_layout/loading/': typeof AppLayoutLoadingIndexRoute
   '/_app/_layout/login/': typeof AppLayoutLoginIndexRoute
   '/_app/_layout/phone-code/': typeof AppLayoutPhoneCodeIndexRoute
   '/_app/_layout/phone/': typeof AppLayoutPhoneIndexRoute
@@ -809,6 +827,7 @@ export interface FileRouteTypes {
     | ''
     | '/forgot'
     | '/hot-tokens'
+    | '/loading'
     | '/login'
     | '/phone-code'
     | '/phone'
@@ -851,6 +870,7 @@ export interface FileRouteTypes {
     | ''
     | '/forgot'
     | '/hot-tokens'
+    | '/loading'
     | '/login'
     | '/phone-code'
     | '/phone'
@@ -893,6 +913,7 @@ export interface FileRouteTypes {
     | '/_app/_layout'
     | '/_app/_layout/forgot/'
     | '/_app/_layout/hot-tokens/'
+    | '/_app/_layout/loading/'
     | '/_app/_layout/login/'
     | '/_app/_layout/phone-code/'
     | '/_app/_layout/phone/'
@@ -966,6 +987,7 @@ export const routeTree = rootRoute
       "children": [
         "/_app/_layout/forgot/",
         "/_app/_layout/hot-tokens/",
+        "/_app/_layout/loading/",
         "/_app/_layout/login/",
         "/_app/_layout/phone-code/",
         "/_app/_layout/phone/",
@@ -1010,6 +1032,10 @@ export const routeTree = rootRoute
     },
     "/_app/_layout/hot-tokens/": {
       "filePath": "_app/_layout/hot-tokens/index.tsx",
+      "parent": "/_app/_layout"
+    },
+    "/_app/_layout/loading/": {
+      "filePath": "_app/_layout/loading/index.tsx",
       "parent": "/_app/_layout"
     },
     "/_app/_layout/login/": {
