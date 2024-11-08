@@ -92,7 +92,7 @@ export const Loading = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-4 px-4">
+      <div className="flex flex-col gap-4 px-4 mt-10">
         <Button text={"Create Wallet"} onClick={() => navigate({ to: '/registration-pin' })} color={"bg-button"} />
         <Button text={"Import Wallet"} icon_cl={"w2"} icon={<ArrowBottomIcon />} onClick={() => navigate({ to: '/wallet' })} />
       </div>
